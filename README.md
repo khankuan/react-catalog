@@ -2,7 +2,9 @@
 React Library is a UI Component development tool. It aims to support both developers and designers in development, documentation and testing of ui components.
 
 # Docs
-Currently, docs can be found by running it locally (it will be available on gh-pages once the library is public). To run docs:
+Visit the [Documentation](https://khankuan.github.io/react-library/#/intro)
+
+You can also run docs within this repo:
 ```
 npm install
 npm run docs
@@ -11,7 +13,7 @@ npm run docs
 # Examples
 The best example of usage is to look at the `docs` folder. The documentation is built with React Library and will be a good example of how a user's repo might look like. Refer to `library.config.js` for configuration. After starting docs, the built files are located in `library-build`.
 
-## Commands
+## Development
 ```
 //  Run docs
 npm run docs

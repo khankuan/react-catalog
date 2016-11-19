@@ -29,7 +29,6 @@ async function run () {
   } else if (program.build) {
     await build(conf)
   } else if (program.publish) {
-    throw new Error('not ready')
     await build(conf)
     await publish(conf)
   } else if (program.lint) {
