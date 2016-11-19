@@ -48,6 +48,10 @@ var _components = require('build/components');
 
 var components = _interopRequireWildcard(_components);
 
+var _StaticPage = require('../StaticPage/StaticPage');
+
+var _StaticPage2 = _interopRequireDefault(_StaticPage);
+
 var _LeftBar = require('../LeftBar/LeftBar');
 
 var _LeftBar2 = _interopRequireDefault(_LeftBar);
@@ -59,10 +63,6 @@ var _Main2 = _interopRequireDefault(_Main);
 var _RightBar = require('../RightBar/RightBar');
 
 var _RightBar2 = _interopRequireDefault(_RightBar);
-
-var _StaticPage = require('../StaticPage/StaticPage');
-
-var _StaticPage2 = _interopRequireDefault(_StaticPage);
 
 var _Browse = require('../Browse/Browse');
 

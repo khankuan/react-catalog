@@ -8,12 +8,6 @@ var _reactDom = require('react-dom');
 
 var _reactRouter = require('react-router');
 
-var _history = require('./history');
-
-var _history2 = _interopRequireDefault(_history);
-
-var _config = require('build/config');
-
 var _App = require('./components/App/App');
 
 var _App2 = _interopRequireDefault(_App);
@@ -21,6 +15,12 @@ var _App2 = _interopRequireDefault(_App);
 var _PageNotFound = require('./PageNotFound');
 
 var _PageNotFound2 = _interopRequireDefault(_PageNotFound);
+
+var _history = require('./history');
+
+var _history2 = _interopRequireDefault(_history);
+
+var _config = require('build/config');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

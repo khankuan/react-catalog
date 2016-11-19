@@ -3,10 +3,10 @@ import React, { Component, PropTypes } from 'react'
 import * as stories from 'build/stories'
 import * as components from 'build/components'
 
+import StaticPage from '../StaticPage/StaticPage'
 import LeftBar from '../LeftBar/LeftBar'
 import Main from '../Main/Main'
 import RightBar from '../RightBar/RightBar'
-import StaticPage from '../StaticPage/StaticPage'
 import Browse from '../Browse/Browse'
 import Sequencer from '../Sequencer/Sequencer'
 

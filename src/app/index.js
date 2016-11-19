@@ -2,11 +2,11 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Router, Route } from 'react-router'
 
-import history from './history'
-import { pages } from 'build/config'
-
 import App from './components/App/App'
 import PageNotFound from './PageNotFound'
+
+import history from './history'
+import { pages } from 'build/config'
 
 render((
   <Router history={history}>
