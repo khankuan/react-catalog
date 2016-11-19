@@ -28,7 +28,7 @@ var run = function () {
             return (0, _test2.default)(conf, { update: _commander2.default.update });
 
           case 4:
-            _context.next = 34;
+            _context.next = 33;
             break;
 
           case 6:
@@ -41,61 +41,62 @@ var run = function () {
             return (0, _build2.default)(conf);
 
           case 9:
-            _context.next = 34;
+            _context.next = 33;
             break;
 
           case 11:
             if (!_commander2.default.publish) {
-              _context.next = 19;
+              _context.next = 18;
               break;
             }
 
-            throw new Error('not ready');
+            _context.next = 14;
+            return (0, _build2.default)(conf);
 
-          case 15:
-            _context.next = 17;
+          case 14:
+            _context.next = 16;
             return (0, _publish2.default)(conf);
 
-          case 17:
-            _context.next = 34;
+          case 16:
+            _context.next = 33;
             break;
 
-          case 19:
+          case 18:
             if (!_commander2.default.lint) {
-              _context.next = 32;
+              _context.next = 31;
               break;
             }
 
-            _context.prev = 20;
-            _context.next = 23;
+            _context.prev = 19;
+            _context.next = 22;
             return (0, _lint2.default)(conf, { fix: _commander2.default.fix });
 
-          case 23:
-            _context.next = 30;
+          case 22:
+            _context.next = 29;
             break;
 
-          case 25:
-            _context.prev = 25;
-            _context.t0 = _context['catch'](20);
+          case 24:
+            _context.prev = 24;
+            _context.t0 = _context['catch'](19);
 
             console.error(_chalk2.default.red(_context.t0));
             console.error(_chalk2.default.red('standard: Use JavaScript Standard Style (http://standardjs.com)'));
             console.error(_chalk2.default.red('Run again with --fix` to automatically fix some problems.'));
 
-          case 30:
-            _context.next = 34;
+          case 29:
+            _context.next = 33;
             break;
 
-          case 32:
-            _context.next = 34;
+          case 31:
+            _context.next = 33;
             return (0, _start2.default)(conf);
 
-          case 34:
+          case 33:
           case 'end':
             return _context.stop();
         }
       }
-    }, _callee, this, [[20, 25]]);
+    }, _callee, this, [[19, 24]]);
   }));
 
   return function run() {
