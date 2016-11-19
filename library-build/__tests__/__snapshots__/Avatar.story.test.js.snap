@@ -1,0 +1,11 @@
+exports[`test Avatar.story - Dark theme 1`] = `
+<img
+  className="demo-avatar demo-avatar-type-round demo-avatar-theme-dark"
+  src="http://success.grownupgeek.com/wp-content/uploads/2013/01/no-avatar.png" />
+`;
+
+exports[`test Avatar.story - Square type 1`] = `
+<img
+  className="demo-avatar demo-avatar-type-square demo-avatar-theme-light"
+  src="http://success.grownupgeek.com/wp-content/uploads/2013/01/no-avatar.png" />
+`;

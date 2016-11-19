@@ -1,0 +1,29 @@
+.react-library-round-button {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  outline: none;
+  border: 2px solid black;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: opacity ease-in 0.1s;
+  user-select: none;
+  font-size: 11px;
+}
+
+.react-library-round-button:hover {
+  opacity: 1;
+}
+
+.react-library-round-button.theme-dark {
+  background: #333;
+  border-color: white;
+  color: white;
+}
+
+.react-library-round-button.theme-light {
+  background: white;
+  border-color: #333;
+  color: #333;
+}

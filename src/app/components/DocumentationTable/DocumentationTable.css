@@ -1,0 +1,73 @@
+.react-library-documentation-table {
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-size: 12px;
+}
+
+.react-library-documentation-table table {
+  border-collapse: collapse;
+  width: 100%;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.react-library-documentation-table table thead tr {
+  background: #f3f3f3;
+  font-weight: 700;
+}
+
+.react-library-documentation-table table tr {
+  background: #fcfcfc;
+}
+
+.react-library-documentation-table table tr.alt {
+  background: #f3f3f3;
+}
+
+.react-library-documentation-table table tr td {
+  padding: 5px 10px;
+  max-width: 200px;
+  vertical-align: middle;
+  word-wrap: break-word;
+}
+
+.react-library-documentation-table .field-type {
+  padding-right: 5px;
+}
+
+.react-library-documentation-table .field-description {
+  cursor: pointer;
+}
+
+.react-library-documentation-table .type-value {
+  color: #999;
+}
+
+.react-library-documentation-table .type-value.changable {
+  cursor: pointer;
+}
+
+.react-library-documentation-table .type-value.changable:hover {
+  color: #1a98ff;
+}
+
+.react-library-documentation-table .type-value.changable.active {
+  color: #008cff;
+}
+
+.react-library-documentation-table .type-prefix {
+  opacity: 0.45;
+}
+
+.react-library-documentation-table .type-oneof span {
+  padding: 3px;
+  display: inline-block;
+}
+
+.react-library-documentation-table .type-number {
+  max-width: 60px;
+}
+
+.react-library-documentation-table .type-string {
+  max-width: 60px;
+}

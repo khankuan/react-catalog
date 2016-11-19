@@ -1,0 +1,43 @@
+.react-library-nav-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: #999;
+  cursor: pointer;
+  padding: 5px 0;
+  letter-spacing: 0.03em;
+  user-select: none;
+  text-transform: capitalize;
+}
+
+.react-library-nav-link.active {
+  color: #008cff;
+}
+
+.react-library-nav-link.active.selected {
+  background: #f3f3f3;
+}
+
+.react-library-nav-link.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.react-library-nav-link .link-text {
+  flex-grow: 1
+}
+
+.react-library-nav-link .link-text:hover {
+  text-decoration: underline;
+}
+
+.react-library-nav-link .expand {
+  font-size: 14px;
+  text-align: center;
+  display: inline-block;
+  width: 20px;
+}
+
+.react-library-nav-link .expand:hover {
+  color: black;
+}

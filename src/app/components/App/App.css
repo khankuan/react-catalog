@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+}
+
+.react-library-app {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #666;
+  height: 100vh;
+  display: flex;
+  align-items: stretch;
+}

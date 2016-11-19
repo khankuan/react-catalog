@@ -1,0 +1,7 @@
+.react-library-page-wrapper.demo-pages {
+  font-size: 14px;
+  padding-left: calc(50% - 400px);
+  padding-right: calc(50% - 400px);
+  width: 800px;
+  padding-bottom: 100px;
+}

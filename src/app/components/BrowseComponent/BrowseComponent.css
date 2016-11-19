@@ -1,0 +1,31 @@
+.react-library-browse-component {
+  border-top: 1px solid transparent;
+}
+
+.react-library-browse-component .component-link {
+  color: #999;
+  text-decoration: none;
+}
+
+.react-library-browse-component .component-link:hover {
+  text-decoration: underline;
+}
+
+.react-library-browse-component .component-header select {
+  margin-left: 10px;
+  outline: none;
+}
+
+.react-library-browse-component .component-content {
+  margin-left: 20px;
+}
+
+.react-library-browse-component .component-content .component-output {
+  margin-left: 20px;
+}
+
+.react-library-browse-component .content-empty {
+  color: #aaa;
+  font-size: 12px;
+  font-style: italic;
+}

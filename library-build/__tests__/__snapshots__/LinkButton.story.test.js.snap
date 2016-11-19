@@ -1,0 +1,6 @@
+exports[`test LinkButton.story - Default 1`] = `
+<a
+  className="demo-link-button">
+  Click me
+</a>
+`;

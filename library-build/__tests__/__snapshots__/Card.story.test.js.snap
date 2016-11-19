@@ -1,0 +1,29 @@
+exports[`test Card.story - High emphasis 1`] = `
+<div
+  className="demo-card demo-card-depth-2">
+  <div
+    style={
+      Object {
+        "height": "100px",
+        "width": "200px",
+      }
+    }>
+    My Content
+  </div>
+</div>
+`;
+
+exports[`test Card.story - Low emphasis 1`] = `
+<div
+  className="demo-card demo-card-depth-1">
+  <div
+    style={
+      Object {
+        "height": "100px",
+        "width": "200px",
+      }
+    }>
+    My Content
+  </div>
+</div>
+`;

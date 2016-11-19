@@ -1,0 +1,23 @@
+.react-library-sequence-controls {
+  font-size: 14px;
+}
+
+.react-library-sequence-controls .sequence-list {
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+.react-library-sequence-controls .steppers {
+  padding-left: 20px;
+  padding-top: 10px;
+  font-size: 12px;
+}
+
+.react-library-sequence-controls .sequence-link {
+  display: inline-block;
+  padding: 5px;
+}
+
+.react-library-sequence-controls .sequence-arrow {
+  color: #aaa;
+}

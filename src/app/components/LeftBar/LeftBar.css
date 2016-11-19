@@ -1,0 +1,97 @@
+.react-library-left-bar {
+  width: 300px;
+  border-right: 1px solid #ccc;
+  flex-shrink: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+}
+
+.react-library-left-bar .app-title {
+  margin: 0;
+  padding: 10px;
+  padding-top: 20px;
+  font-size: 20px;
+  font-weight: 400;
+  color: #bbb;
+}
+
+.react-library-left-bar .bar-header {
+  padding-left: 10px;
+  margin-bottom: 5px;
+}
+
+.react-library-left-bar .page-link {
+  padding-left: 20px;
+  flex-shrink: 0;
+}
+
+.react-library-left-bar .tag-link {
+  padding-left: 20px;
+  font-weight: 700;
+}
+
+.react-library-left-bar .component-link {
+  padding-left: 30px;
+  word-break: break-all;
+}
+
+.react-library-left-bar .story-link {
+  padding-left: 40px;
+  word-break: break-all;
+  font-style: italic;
+  font-size: 12px;
+}
+
+.react-library-left-bar .bar-search {
+  display: flex;
+  position: relative;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.react-library-left-bar .bar-search input {
+  background: #f3f3f3;
+  color: orange;
+  margin: 0;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 30px;
+  font-size: 16px;
+  border: none;
+  flex-grow: 1;
+  outline: none;
+  margin-top: 5px;
+}
+
+.react-library-left-bar .bar-search input::placeholder {
+  color: orange;
+}
+
+.react-library-left-bar .bar-search input::selection {
+  background: #ffe5b4;
+  color: #ff7518;
+}
+
+.react-library-left-bar .bar-search .clear-button {
+  position: absolute;
+  font-size: 36px;
+  font-weight: 100;
+  cursor: pointer;
+  right: 0;
+  display: inline-block;
+  width: 30px;
+  text-align: center;
+  color: orange;
+}
+
+.react-library-left-bar .bar-search .clear-button:hover {
+  opacity: 1;
+}
+
+.react-library-left-bar-tags {
+  overflow-y: auto;
+  padding-top: 5px;
+  padding-bottom: 100px;
+}

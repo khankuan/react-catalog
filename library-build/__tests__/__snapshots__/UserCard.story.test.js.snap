@@ -1,0 +1,150 @@
+exports[`test UserCard.story - Customize Actions 1`] = `
+<div
+  className="demo-card demo-card-depth-1">
+  <div
+    className="demo-user-card-info">
+    <img
+      className="demo-avatar demo-avatar-type-round demo-avatar-theme-light"
+      src="http://success.grownupgeek.com/wp-content/uploads/2013/01/no-avatar.png" />
+    <span
+      className="demo-name">
+      John
+    </span>
+  </div>
+  <div
+    className="demo-user-card-actions">
+    <a
+      className="demo-link-button demo-action"
+      onClick={[Function]}>
+      Add as friend
+    </a>
+    <a
+      className="demo-link-button demo-action"
+      onClick={[Function]}>
+      Message
+    </a>
+  </div>
+</div>
+`;
+
+exports[`test UserCard.story - Default 1`] = `
+<div
+  className="demo-card demo-card-depth-1">
+  <div
+    className="demo-user-card-info">
+    <img
+      className="demo-avatar demo-avatar-type-round demo-avatar-theme-light"
+      src="http://success.grownupgeek.com/wp-content/uploads/2013/01/no-avatar.png" />
+    <span
+      className="demo-name">
+      John
+    </span>
+  </div>
+  <div
+    className="demo-user-card-more">
+    <a
+      className="demo-link-button"
+      onClick={[Function]}>
+      More
+    </a>
+  </div>
+</div>
+`;
+
+exports[`test UserCard.story - User doing an action - Card becomes expanded 1`] = `
+<div
+  className="demo-card demo-card-depth-1">
+  <div
+    className="demo-user-card-info">
+    <img
+      className="demo-avatar demo-avatar-type-round demo-avatar-theme-light"
+      src="http://success.grownupgeek.com/wp-content/uploads/2013/01/no-avatar.png" />
+    <span
+      className="demo-name">
+      John
+    </span>
+  </div>
+  <div
+    className="demo-user-card-actions">
+    <a
+      className="demo-link-button demo-action"
+      onClick={[Function]}>
+      Add as friend
+    </a>
+    <a
+      className="demo-link-button demo-action"
+      onClick={[Function]}>
+      Message
+    </a>
+  </div>
+</div>
+`;
+
+exports[`test UserCard.story - User doing an action - Card becomes expanded 2`] = `Array []`;
+
+exports[`test UserCard.story - User doing an action - Initial 1`] = `
+<div
+  className="demo-card demo-card-depth-1">
+  <div
+    className="demo-user-card-info">
+    <img
+      className="demo-avatar demo-avatar-type-round demo-avatar-theme-light"
+      src="http://success.grownupgeek.com/wp-content/uploads/2013/01/no-avatar.png" />
+    <span
+      className="demo-name">
+      John
+    </span>
+  </div>
+  <div
+    className="demo-user-card-more">
+    <a
+      className="demo-link-button"
+      onClick={undefined}>
+      More
+    </a>
+  </div>
+</div>
+`;
+
+exports[`test UserCard.story - User doing an action - Initial 2`] = `Array []`;
+
+exports[`test UserCard.story - User doing an action - User clicks on Message action 1`] = `
+<div
+  className="demo-card demo-card-depth-1">
+  <div
+    className="demo-user-card-info">
+    <img
+      className="demo-avatar demo-avatar-type-round demo-avatar-theme-light"
+      src="http://success.grownupgeek.com/wp-content/uploads/2013/01/no-avatar.png" />
+    <span
+      className="demo-name">
+      John
+    </span>
+  </div>
+  <div
+    className="demo-user-card-actions">
+    <a
+      className="demo-link-button demo-action"
+      onClick={[Function]}>
+      Add as friend
+    </a>
+    <a
+      className="demo-link-button demo-action"
+      onClick={[Function]}>
+      Message
+    </a>
+  </div>
+</div>
+`;
+
+exports[`test UserCard.story - User doing an action - User clicks on Message action 2`] = `
+Array [
+  Object {
+    "args": Array [
+      "Message",
+      undefined,
+    ],
+    "method": "onActionClick",
+  },
+]
+`;

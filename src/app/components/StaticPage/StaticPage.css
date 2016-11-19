@@ -1,0 +1,11 @@
+.react-library-page {
+  width: 100%;
+  overflow-y: auto;
+  position: relative;
+}
+
+.react-library-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}

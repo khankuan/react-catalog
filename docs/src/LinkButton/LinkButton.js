@@ -1,0 +1,21 @@
+import React, { PropTypes, Component } from 'react'
+import cx from 'classnames'
+
+import './LinkButton.css'
+
+/**
+ * @tags: Button
+ * @keywords: Links, href, url
+ * An anchor element
+ */
+export default class LinkButton extends Component {
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+    className: PropTypes.string
+  }
+
+  render () {
+    const { className, ...passProps } = this.props
+    return <a {...passProps} className={cx('demo-link-button', className)} />
+  }
+}
