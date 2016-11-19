@@ -4,12 +4,18 @@ import babelDev from './babel.dev'
 import babelProd from './babel.prod'
 import autoprefixer from 'autoprefixer'
 
+const commonPlugins = [
+  new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
+]
+
 const devPlugins = [
+  ...commonPlugins,
   new webpack.HotModuleReplacementPlugin(),
-  new webpack.NoErrorsPlugin()
+  new webpack.NoErrorsPlugin(),
 ]
 
 const prodPlugins = [
+  ...commonPlugins,
   new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }),
   new webpack.optimize.OccurrenceOrderPlugin(),
   new webpack.optimize.DedupePlugin(),
@@ -37,11 +43,25 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
 
   let output = {
     entry: {
-      app: [path.resolve(librarySrc, './app/index.js')]
+      app: [path.resolve(librarySrc, './app/index.js')],
+      vendor: [
+        'react',
+        'react-router',
+        'react-dom',
+        'history',
+        'react-codemirror',
+        'codemirror',
+        'js-beautify',
+        'react-element-to-jsx-string',
+        'classnames',
+        'react-markdown',
+        'fuse.js',
+        'react-document-title',
+      ]
     },
     output: {
       path: outputPublicDir,
-      filename: 'app.js'
+      filename: '[name].js'
     },
     module: {
       loaders: [
@@ -98,7 +118,7 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
     plugins: [
       ...(production ? prodPlugins : devPlugins)
     ],
-    devtool: 'eval'
+    devtool: 'eval',
   }
 
   if (configureWebpack) {

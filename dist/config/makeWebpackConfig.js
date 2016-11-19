@@ -32,9 +32,11 @@ var _autoprefixer2 = _interopRequireDefault(_autoprefixer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var devPlugins = [new _webpack2.default.HotModuleReplacementPlugin(), new _webpack2.default.NoErrorsPlugin()];
+var commonPlugins = [new _webpack2.default.optimize.CommonsChunkPlugin('vendor', 'vendor.js')];
 
-var prodPlugins = [new _webpack2.default.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }), new _webpack2.default.optimize.OccurrenceOrderPlugin(), new _webpack2.default.optimize.DedupePlugin(), new _webpack2.default.optimize.UglifyJsPlugin({
+var devPlugins = [].concat(commonPlugins, [new _webpack2.default.HotModuleReplacementPlugin(), new _webpack2.default.NoErrorsPlugin()]);
+
+var prodPlugins = [].concat(commonPlugins, [new _webpack2.default.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }), new _webpack2.default.optimize.OccurrenceOrderPlugin(), new _webpack2.default.optimize.DedupePlugin(), new _webpack2.default.optimize.UglifyJsPlugin({
   compress: {
     screw_ie8: true, // React doesn't support IE8
     warnings: false
@@ -46,7 +48,7 @@ var prodPlugins = [new _webpack2.default.DefinePlugin({ 'process.env.NODE_ENV': 
     comments: false,
     screw_ie8: true
   }
-})];
+})]);
 
 function makeWebpackConfig(_ref) {
   var outputDir = _ref.outputDir,
@@ -64,11 +66,12 @@ function makeWebpackConfig(_ref) {
 
   var output = {
     entry: {
-      app: [_path2.default.resolve(librarySrc, './app/index.js')]
+      app: [_path2.default.resolve(librarySrc, './app/index.js')],
+      vendor: ['react', 'react-router', 'react-dom', 'history', 'react-codemirror', 'codemirror', 'js-beautify', 'react-element-to-jsx-string', 'classnames', 'react-markdown', 'fuse.js', 'react-document-title']
     },
     output: {
       path: outputPublicDir,
-      filename: 'app.js'
+      filename: '[name].js'
     },
     module: {
       loaders: [{
