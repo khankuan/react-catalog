@@ -32,6 +32,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactDocumentTitle = require('react-document-title');
+
+var _reactDocumentTitle2 = _interopRequireDefault(_reactDocumentTitle);
+
 var _componentTags = require('../../componentTags');
 
 var _componentTags2 = _interopRequireDefault(_componentTags);
@@ -140,6 +144,7 @@ var Browse = function (_Component) {
         return _react2.default.createElement(
           'div',
           { className: 'react-library-browse' },
+          _react2.default.createElement(_reactDocumentTitle2.default, { title: component + ' - Browse ' + tag }),
           this.renderComponentBrowse(component, tag)
         );
       }
@@ -147,6 +152,7 @@ var Browse = function (_Component) {
       return _react2.default.createElement(
         'div',
         { className: 'react-library-browse' },
+        _react2.default.createElement(_reactDocumentTitle2.default, { title: 'Browse ' + tag }),
         this.renderHeader(tag, mode),
         this.renderContent(tag, mode)
       );

@@ -32,6 +32,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactDocumentTitle = require('react-document-title');
+
+var _reactDocumentTitle2 = _interopRequireDefault(_reactDocumentTitle);
+
 var _docs = require('build/docs');
 
 var docs = _interopRequireWildcard(_docs);
@@ -277,6 +281,7 @@ var Main = function (_Component) {
       return _react2.default.createElement(
         'div',
         { className: 'react-library-main' },
+        _react2.default.createElement(_reactDocumentTitle2.default, { title: '' + component + (story && story.title ? ' - ' + story.title : '') }),
         this.renderHeader(story),
         !story && !doc.hasDefault ? this.renderDefaultError(component) : this.renderPreview()
       );

@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import DocumentTitle from 'react-document-title'
 
 import * as docs from 'build/docs'
 import * as stories from 'build/stories'
@@ -202,6 +203,7 @@ export default class Main extends Component {
 
     return (
       <div className='react-library-main'>
+        <DocumentTitle title={`${component}${(story && story.title) ? ` - ${story.title}` : ''}`} />
         {this.renderHeader(story)}
         { !story && !doc.hasDefault ? this.renderDefaultError(component) : this.renderPreview() }
       </div>

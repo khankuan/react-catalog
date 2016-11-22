@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import DocumentTitle from 'react-document-title'
 
 import componentTags from '../../componentTags'
 
@@ -76,6 +77,7 @@ export default class Browse extends Component {
     if (component) {
       return (
         <div className='react-library-browse'>
+          <DocumentTitle title={`${component} - Browse ${tag}`} />
           {this.renderComponentBrowse(component, tag)}
         </div>
       );
@@ -83,6 +85,7 @@ export default class Browse extends Component {
 
     return (
       <div className='react-library-browse'>
+        <DocumentTitle title={`Browse ${tag}`} />
         {this.renderHeader(tag, mode)}
         {this.renderContent(tag, mode)}
       </div>

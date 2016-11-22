@@ -1,9 +1,10 @@
 import React from 'react'
 import cx from 'classnames'
+import DocumentTitle from 'react-document-title'
 
 import './StaticPage.css'
 
-const StaticPage = ({ children, className, ...props }) => {
+const StaticPage = ({ title, children, className, ...props }) => {
   if (typeof children === 'string') {
     children = <div dangerouslySetInnerHTML={{ __html: children }} />
   } else {
@@ -12,6 +13,7 @@ const StaticPage = ({ children, className, ...props }) => {
   }
   return (
     <div {...props} className='react-library-page'>
+      <DocumentTitle title={title} />
       <div className={cx('react-library-page-wrapper', className)}>
         {children}
       </div>

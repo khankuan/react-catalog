@@ -145,7 +145,11 @@ export default class App extends Component {
     const { route } = this.props
     const { story } = routeParams
     if (route.page) {
-      return <StaticPage className={route.className}>{route.page}</StaticPage>
+      return (
+        <StaticPage className={route.className} title={route.title}>
+          {route.page}
+        </StaticPage>
+      )
     } else if (browse || story === 'browse') {
       return (
         <Browse

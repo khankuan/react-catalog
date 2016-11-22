@@ -241,7 +241,7 @@ var App = function (_Component) {
       if (route.page) {
         return _react2.default.createElement(
           _StaticPage2.default,
-          { className: route.className },
+          { className: route.className, title: route.title },
           route.page
         );
       } else if (browse || story === 'browse') {

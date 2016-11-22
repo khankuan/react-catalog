@@ -20,14 +20,19 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+var _reactDocumentTitle = require('react-document-title');
+
+var _reactDocumentTitle2 = _interopRequireDefault(_reactDocumentTitle);
+
 require('./StaticPage.css');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var StaticPage = function StaticPage(_ref) {
-  var children = _ref.children,
+  var title = _ref.title,
+      children = _ref.children,
       className = _ref.className,
-      props = (0, _objectWithoutProperties3.default)(_ref, ['children', 'className']);
+      props = (0, _objectWithoutProperties3.default)(_ref, ['title', 'children', 'className']);
 
   if (typeof children === 'string') {
     children = _react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: children } });
@@ -38,6 +43,7 @@ var StaticPage = function StaticPage(_ref) {
   return _react2.default.createElement(
     'div',
     (0, _extends3.default)({}, props, { className: 'react-library-page' }),
+    _react2.default.createElement(_reactDocumentTitle2.default, { title: title }),
     _react2.default.createElement(
       'div',
       { className: (0, _classnames2.default)('react-library-page-wrapper', className) },
