@@ -15,7 +15,8 @@ export default class BrowseComponent extends Component {
   static propTypes = {
     name: PropTypes.string,
     mode: PropTypes.string,
-    tag: PropTypes.string
+    tag: PropTypes.string,
+    story: PropTypes.string,
   }
 
   constructor (props) {
@@ -23,7 +24,9 @@ export default class BrowseComponent extends Component {
     let selectedStory
     const doc = docs[props.name]
     const story = stories[props.name]
-    if (doc.hasDefault) {
+    if (props.story) {
+      selectedStory = props.story
+    } else if (doc.hasDefault) {
       selectedStory = ''
     } else if (story && story.stories[0]) {
       selectedStory = story.stories[0].title
@@ -77,12 +80,12 @@ export default class BrowseComponent extends Component {
     )
   }
 
-  renderContent (tag, name, mode) {
+  renderContent (tag, name, mode, activeStory) {
     const output = []
     const doc = docs[name]
     const story = stories[name]
-    if (!mode) {
-      const { selectedStory } = this.state
+    if (!mode || activeStory && activeStory !== 'browse') {
+      const selectedStory = this.state.selectedStory
       if (selectedStory) {
         const s = story.stories.find(s => s.title === selectedStory)
         output.push(this.renderStory(tag, name, s))
@@ -132,13 +135,13 @@ export default class BrowseComponent extends Component {
   }
 
   render () {
-    const { name, mode, tag } = this.props
-    const content = this.renderContent(tag, name, mode)
+    const { name, mode, tag, story } = this.props
+    const content = this.renderContent(tag, name, mode, story)
     return (
       <div className='react-library-browse-component'>
         <h4 className='component-header'>
           <Link className='component-link' to={`/${tag}/${name}`}>{name}</Link>
-          {!mode ? this.renderStorySelect(name) : null}
+          {(!mode && !story) ? this.renderStorySelect(name) : null}
         </h4>
         { content || this.renderEmpty() }
       </div>

@@ -14,7 +14,8 @@ export default class Browse extends Component {
     history: PropTypes.object,
     routeParams: PropTypes.shape({
       tag: PropTypes.string,
-      mode: PropTypes.oneOf(['full'])
+      mode: PropTypes.oneOf(['full']),
+      story: PropTypes.string,
     })
   }
 
@@ -33,10 +34,10 @@ export default class Browse extends Component {
     })
   }
 
-  renderComponent (name, mode, tag) {
+  renderComponent (name, mode, tag, story) {
     return (
       <div className='component-section' key={name}>
-        <BrowseComponent name={name} mode={mode} tag={tag} />
+        <BrowseComponent name={name} mode={story ? 'single' : mode} tag={tag} story={story} />
       </div>
     )
   }
@@ -64,21 +65,21 @@ export default class Browse extends Component {
     )
   }
 
-  renderComponentBrowse (component, tag) {
+  renderComponentBrowse (component, tag, story) {
     return (
-      this.renderComponent(component, 'full', tag)
+      this.renderComponent(component, 'full', tag, story)
     )
   }
 
   render () {
     const { routeParams } = this.props
-    const { tag, mode, component } = routeParams
+    const { tag, mode, component, story } = routeParams
 
     if (component) {
       return (
         <div className='react-library-browse'>
           <DocumentTitle title={`${component} - Browse ${tag}`} />
-          {this.renderComponentBrowse(component, tag)}
+          {this.renderComponentBrowse(component, tag, story)}
         </div>
       );
     }
@@ -87,7 +88,7 @@ export default class Browse extends Component {
       <div className='react-library-browse'>
         <DocumentTitle title={`Browse ${tag}`} />
         {this.renderHeader(tag, mode)}
-        {this.renderContent(tag, mode)}
+        {this.renderContent(tag, mode, story)}
       </div>
     )
   }

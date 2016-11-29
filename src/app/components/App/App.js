@@ -9,6 +9,7 @@ import Main from '../Main/Main'
 import RightBar from '../RightBar/RightBar'
 import Browse from '../Browse/Browse'
 import Sequencer from '../Sequencer/Sequencer'
+import BrowseComponent from '../BrowseComponent/BrowseComponent'
 
 import './App.css'
 
@@ -48,13 +49,6 @@ export default class App extends Component {
         const { router } = this.context
         router.push('')
       }
-    }
-    const componentStory = stories[component] && stories[component].stories.find(x => x.title === story);
-    if (componentStory && React.isValidElement(componentStory.content)) {
-      const { router } = this.context
-      router.replace({
-        pathname: `/${tag}/${component}/browse`,
-      })
     }
   }
 
@@ -143,14 +137,16 @@ export default class App extends Component {
 
   renderContent (routeParams, location, browse) {
     const { route } = this.props
-    const { story } = routeParams
+    const { story, tag } = routeParams
+    const activeStory = this.getActiveStory(this.props)
     if (route.page) {
       return (
         <StaticPage className={route.className} title={route.title}>
           {route.page}
         </StaticPage>
       )
-    } else if (browse || story === 'browse') {
+    } else if (browse || story === 'browse' ||
+      (activeStory && React.isValidElement(activeStory.content))) {
       return (
         <Browse
           key='browse'
@@ -158,12 +154,11 @@ export default class App extends Component {
           location={location} />
       )
     } else {
-      const story = this.getActiveStory(this.props)
       const queryProps = this.getQueryProps()
       let error
       let rendered, component, renderProps
       try {
-        rendered = this.renderComponent(story, queryProps)
+        rendered = this.renderComponent(activeStory, queryProps)
         component = rendered.component
         renderProps = rendered.renderProps
       } catch (err) {
@@ -177,7 +172,7 @@ export default class App extends Component {
           location={location}
           component={component}
           renderProps={renderProps}
-          story={story}
+          story={activeStory}
           error={error} />,
         <RightBar
           key='rightBar'
@@ -186,7 +181,7 @@ export default class App extends Component {
           renderProps={renderProps}
           queryProps={queryProps}
           error={error}
-          disabled={story && story.sequence} />
+          disabled={activeStory && !!activeStory.sequence} />
       ]
     }
   }
