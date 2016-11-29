@@ -78,11 +78,11 @@ var Browse = function (_Component) {
 
   (0, _createClass3.default)(Browse, [{
     key: 'renderComponent',
-    value: function renderComponent(name, mode, tag) {
+    value: function renderComponent(name, mode, tag, story) {
       return _react2.default.createElement(
         'div',
         { className: 'component-section', key: name },
-        _react2.default.createElement(_BrowseComponent2.default, { name: name, mode: mode, tag: tag })
+        _react2.default.createElement(_BrowseComponent2.default, { name: name, mode: story ? 'single' : mode, tag: tag, story: story })
       );
     }
   }, {
@@ -128,8 +128,8 @@ var Browse = function (_Component) {
     }
   }, {
     key: 'renderComponentBrowse',
-    value: function renderComponentBrowse(component, tag) {
-      return this.renderComponent(component, 'full', tag);
+    value: function renderComponentBrowse(component, tag, story) {
+      return this.renderComponent(component, 'full', tag, story);
     }
   }, {
     key: 'render',
@@ -137,7 +137,8 @@ var Browse = function (_Component) {
       var routeParams = this.props.routeParams;
       var tag = routeParams.tag,
           mode = routeParams.mode,
-          component = routeParams.component;
+          component = routeParams.component,
+          story = routeParams.story;
 
 
       if (component) {
@@ -145,7 +146,7 @@ var Browse = function (_Component) {
           'div',
           { className: 'react-library-browse' },
           _react2.default.createElement(_reactDocumentTitle2.default, { title: component + ' - Browse ' + tag }),
-          this.renderComponentBrowse(component, tag)
+          this.renderComponentBrowse(component, tag, story)
         );
       }
 
@@ -154,7 +155,7 @@ var Browse = function (_Component) {
         { className: 'react-library-browse' },
         _react2.default.createElement(_reactDocumentTitle2.default, { title: 'Browse ' + tag }),
         this.renderHeader(tag, mode),
-        this.renderContent(tag, mode)
+        this.renderContent(tag, mode, story)
       );
     }
   }]);
@@ -166,7 +167,8 @@ Browse.propTypes = {
   history: _react.PropTypes.object,
   routeParams: _react.PropTypes.shape({
     tag: _react.PropTypes.string,
-    mode: _react.PropTypes.oneOf(['full'])
+    mode: _react.PropTypes.oneOf(['full']),
+    story: _react.PropTypes.string
   })
 };
 Browse.contextTypes = {

@@ -72,6 +72,10 @@ var _Sequencer = require('../Sequencer/Sequencer');
 
 var _Sequencer2 = _interopRequireDefault(_Sequencer);
 
+var _BrowseComponent = require('../BrowseComponent/BrowseComponent');
+
+var _BrowseComponent2 = _interopRequireDefault(_BrowseComponent);
+
 require('./App.css');
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
@@ -126,16 +130,6 @@ var App = function (_Component) {
 
           router.push('');
         }
-      }
-      var componentStory = stories[component] && stories[component].stories.find(function (x) {
-        return x.title === story;
-      });
-      if (componentStory && _react2.default.isValidElement(componentStory.content)) {
-        var _router = this.context.router;
-
-        _router.replace({
-          pathname: '/' + tag + '/' + component + '/browse'
-        });
       }
     }
   }, {
@@ -236,28 +230,29 @@ var App = function (_Component) {
     key: 'renderContent',
     value: function renderContent(routeParams, location, browse) {
       var route = this.props.route;
-      var story = routeParams.story;
+      var story = routeParams.story,
+          tag = routeParams.tag;
 
+      var activeStory = this.getActiveStory(this.props);
       if (route.page) {
         return _react2.default.createElement(
           _StaticPage2.default,
           { className: route.className, title: route.title },
           route.page
         );
-      } else if (browse || story === 'browse') {
+      } else if (browse || story === 'browse' || activeStory && _react2.default.isValidElement(activeStory.content)) {
         return _react2.default.createElement(_Browse2.default, {
           key: 'browse',
           routeParams: routeParams,
           location: location });
       } else {
-        var _story = this.getActiveStory(this.props);
         var queryProps = this.getQueryProps();
         var error = void 0;
         var rendered = void 0,
             component = void 0,
             renderProps = void 0;
         try {
-          rendered = this.renderComponent(_story, queryProps);
+          rendered = this.renderComponent(activeStory, queryProps);
           component = rendered.component;
           renderProps = rendered.renderProps;
         } catch (err) {
@@ -270,7 +265,7 @@ var App = function (_Component) {
           location: location,
           component: component,
           renderProps: renderProps,
-          story: _story,
+          story: activeStory,
           error: error }), _react2.default.createElement(_RightBar2.default, {
           key: 'rightBar',
           routeParams: routeParams,
@@ -278,7 +273,7 @@ var App = function (_Component) {
           renderProps: renderProps,
           queryProps: queryProps,
           error: error,
-          disabled: _story && _story.sequence })];
+          disabled: activeStory && !!activeStory.sequence })];
       }
     }
   }, {

@@ -74,7 +74,9 @@ var BrowseComponent = function (_Component) {
     var selectedStory = void 0;
     var doc = docs[props.name];
     var story = stories[props.name];
-    if (doc.hasDefault) {
+    if (props.story) {
+      selectedStory = props.story;
+    } else if (doc.hasDefault) {
       selectedStory = '';
     } else if (story && story.stories[0]) {
       selectedStory = story.stories[0].title;
@@ -155,16 +157,15 @@ var BrowseComponent = function (_Component) {
     }
   }, {
     key: 'renderContent',
-    value: function renderContent(tag, name, mode) {
+    value: function renderContent(tag, name, mode, activeStory) {
       var _this2 = this;
 
       var output = [];
       var doc = docs[name];
       var story = stories[name];
-      if (!mode) {
+      if (!mode || activeStory && activeStory !== 'browse') {
         (function () {
           var selectedStory = _this2.state.selectedStory;
-
           if (selectedStory) {
             var s = story.stories.find(function (s) {
               return s.title === selectedStory;
@@ -236,9 +237,10 @@ var BrowseComponent = function (_Component) {
       var _props = this.props,
           name = _props.name,
           mode = _props.mode,
-          tag = _props.tag;
+          tag = _props.tag,
+          story = _props.story;
 
-      var content = this.renderContent(tag, name, mode);
+      var content = this.renderContent(tag, name, mode, story);
       return _react2.default.createElement(
         'div',
         { className: 'react-library-browse-component' },
@@ -250,7 +252,7 @@ var BrowseComponent = function (_Component) {
             { className: 'component-link', to: '/' + tag + '/' + name },
             name
           ),
-          !mode ? this.renderStorySelect(name) : null
+          !mode && !story ? this.renderStorySelect(name) : null
         ),
         content || this.renderEmpty()
       );
@@ -262,6 +264,7 @@ var BrowseComponent = function (_Component) {
 BrowseComponent.propTypes = {
   name: _react.PropTypes.string,
   mode: _react.PropTypes.string,
-  tag: _react.PropTypes.string
+  tag: _react.PropTypes.string,
+  story: _react.PropTypes.string
 };
 exports.default = BrowseComponent;
