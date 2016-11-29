@@ -11,6 +11,12 @@
   text-decoration: underline;
 }
 
+.react-library-browse-component .component-description {
+  font-size: 14px;
+  padding: 10px;
+  color: #aaa;
+}
+
 .react-library-browse-component .component-header select {
   margin-left: 10px;
   outline: none;

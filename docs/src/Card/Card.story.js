@@ -9,12 +9,12 @@ const SampleContent = () => <div style={{ width: '200px', height: '100px' }}>My 
 
 story.add({
   title: 'Low emphasis',
-  description: 'The card is has less contrast',
+  description: 'The card has less contrast',
   content: { depth: '1', children: <SampleContent /> }
 })
 
 story.add({
   title: 'High emphasis',
-  description: 'The card is has more contrast and attention',
+  description: 'The card has more contrast and attention',
   content: <Card depth='2'><SampleContent /></Card>
 })

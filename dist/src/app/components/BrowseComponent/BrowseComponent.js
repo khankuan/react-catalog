@@ -119,6 +119,11 @@ var BrowseComponent = function (_Component) {
             story.title
           )
         ) : null,
+        story.description ? _react2.default.createElement(
+          'p',
+          { className: 'component-description' },
+          story.description
+        ) : null,
         _react2.default.createElement(
           'div',
           { className: 'component-output' },

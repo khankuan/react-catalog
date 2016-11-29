@@ -59,6 +59,7 @@ export default class BrowseComponent extends Component {
     return (
       <div key={story.title} className='component-content-story' id={story.title}>
         {showName ? <h5><Link className='component-link' to={`/${tag}/${name}/${story.title}`}>{story.title}</Link></h5> : null}
+        { story.description ? <p className='component-description'>{story.description}</p> : null }
         <div className='component-output'>
           {output}
         </div>
