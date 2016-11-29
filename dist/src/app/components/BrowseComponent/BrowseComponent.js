@@ -74,9 +74,7 @@ var BrowseComponent = function (_Component) {
     var selectedStory = void 0;
     var doc = docs[props.name];
     var story = stories[props.name];
-    if (props.story) {
-      selectedStory = props.story;
-    } else if (doc.hasDefault) {
+    if (doc.hasDefault) {
       selectedStory = '';
     } else if (story && story.stories[0]) {
       selectedStory = story.stories[0].title;
@@ -165,7 +163,7 @@ var BrowseComponent = function (_Component) {
       var story = stories[name];
       if (!mode || activeStory && activeStory !== 'browse') {
         (function () {
-          var selectedStory = _this2.state.selectedStory;
+          var selectedStory = activeStory || _this2.state.selectedStory;
           if (selectedStory) {
             var s = story.stories.find(function (s) {
               return s.title === selectedStory;

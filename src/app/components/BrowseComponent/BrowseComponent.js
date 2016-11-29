@@ -24,9 +24,7 @@ export default class BrowseComponent extends Component {
     let selectedStory
     const doc = docs[props.name]
     const story = stories[props.name]
-    if (props.story) {
-      selectedStory = props.story
-    } else if (doc.hasDefault) {
+    if (doc.hasDefault) {
       selectedStory = ''
     } else if (story && story.stories[0]) {
       selectedStory = story.stories[0].title
@@ -84,8 +82,8 @@ export default class BrowseComponent extends Component {
     const output = []
     const doc = docs[name]
     const story = stories[name]
-    if (!mode || activeStory && activeStory !== 'browse') {
-      const selectedStory = this.state.selectedStory
+    if (!mode || (activeStory && activeStory !== 'browse')) {
+      const selectedStory = activeStory || this.state.selectedStory
       if (selectedStory) {
         const s = story.stories.find(s => s.title === selectedStory)
         output.push(this.renderStory(tag, name, s))

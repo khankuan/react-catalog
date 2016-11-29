@@ -12,7 +12,7 @@
     "publish-docs": "babel-node ./scripts/index.js --publish",
     "test-docs": "babel-node ./scripts/index.js --test",
     "lint-docs": "babel-node ./scripts/index.js --lint",
-    "build": "rm -rf dist && babel ./scripts --out-dir ./dist && babel ./src --out-dir ./dist/src"
+    "build": "rm -rf dist && babel ./scripts --out-dir ./dist/scripts && babel ./src --out-dir ./dist/src"
   },
   "keywords": [
     "react",
