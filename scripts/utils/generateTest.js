@@ -51,6 +51,10 @@ story.stories.forEach(s => {
     })
   }
 })
+if (story.stories.length === 0) {
+  it(\`${name} - No stories\`, () => {
+  });
+}
 `
   return test
 }
