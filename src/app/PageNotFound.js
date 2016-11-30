@@ -7,8 +7,13 @@ export default class PageNotFound extends Component {
 
   componentWillMount () {
     let pathname
-    if (pages && pages[0] && pages[0].props.path) {
-      pathname = `/${pages[0].props.path}`
+    if (pages) {
+      for (let i = 0; i < pages.length; i++) {
+        if (pages[i] && pages[i].props.path) {
+          pathname = `/${pages[i].props.path}`
+          break;
+        }
+      }
     }
     if (!pathname) {
       pathname = `/All/${Object.keys(components)[0]}`
