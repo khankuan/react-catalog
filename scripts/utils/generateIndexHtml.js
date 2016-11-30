@@ -5,6 +5,7 @@ export default function ({ head = '', body = '', production }) {
 
 <head>
   <meta charset="utf-8">
+  ${production ? '<link href="library.css" rel="stylesheet" type="text/css">' : ''}
   ${typeof head === 'function' ? head(production) : head }
 </head>
 

@@ -30,6 +30,10 @@ var _autoprefixer = require('autoprefixer');
 
 var _autoprefixer2 = _interopRequireDefault(_autoprefixer);
 
+var _extractTextWebpackPlugin = require('extract-text-webpack-plugin');
+
+var _extractTextWebpackPlugin2 = _interopRequireDefault(_extractTextWebpackPlugin);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var commonPlugins = [new _webpack2.default.optimize.CommonsChunkPlugin('vendor', 'vendor.js')];
@@ -48,7 +52,7 @@ var prodPlugins = [].concat(commonPlugins, [new _webpack2.default.DefinePlugin({
     comments: false,
     screw_ie8: true
   }
-})]);
+}), new _extractTextWebpackPlugin2.default('library.css')]);
 
 function makeWebpackConfig(_ref) {
   var outputDir = _ref.outputDir,
@@ -87,7 +91,7 @@ function makeWebpackConfig(_ref) {
       }, {
         test: /\.css$/,
         include: [srcSrc, librarySrc, outputDir, pagesSrc, /node_modules/],
-        loader: 'style!css!postcss'
+        loader: production ? _extractTextWebpackPlugin2.default.extract('css!postcss') : 'style!css!postcss'
       }, {
         test: /\.html$/,
         loader: 'html'

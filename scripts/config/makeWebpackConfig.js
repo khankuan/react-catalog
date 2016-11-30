@@ -3,6 +3,7 @@ import webpack from 'webpack'
 import babelDev from './babel.dev'
 import babelProd from './babel.prod'
 import autoprefixer from 'autoprefixer'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 const commonPlugins = [
   new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
@@ -31,7 +32,8 @@ const prodPlugins = [
       comments: false,
       screw_ie8: true
     }
-  })
+  }),
+  new ExtractTextPlugin('library.css'),
 ]
 
 export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pagesDir, configureWebpack, production }) {
@@ -92,7 +94,7 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
             pagesSrc,
             /node_modules/
           ],
-          loader: 'style!css!postcss'
+          loader: production ? ExtractTextPlugin.extract('css!postcss') : 'style!css!postcss',
         },
         {
           test: /\.html$/,
