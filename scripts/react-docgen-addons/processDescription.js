@@ -8,13 +8,13 @@ export default function processDescription (inputDescription) {
   //  Find tags
   const tagMatches = inputDescription.match(tagsRegex)
   if (tagMatches) {
-    tags = tagMatches[1].trim().split(',').map(t => t.trim())
+    tags = tagMatches[1].trim().split(',').map(t => t.trim()).filter(t => !!t)
   }
 
   //  Find keywords
   const keywordMatches = inputDescription.match(keywordsRegex)
   if (keywordMatches) {
-    keywords = keywordMatches[1].trim().split(',').map(t => t.trim())
+    keywords = keywordMatches[1].trim().split(',').map(k => k.trim()).filter(k => !!k)
   }
 
   //  Check default

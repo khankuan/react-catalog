@@ -19,14 +19,18 @@ function processDescription(inputDescription) {
   if (tagMatches) {
     tags = tagMatches[1].trim().split(',').map(function (t) {
       return t.trim();
+    }).filter(function (t) {
+      return !!t;
     });
   }
 
   //  Find keywords
   var keywordMatches = inputDescription.match(keywordsRegex);
   if (keywordMatches) {
-    keywords = keywordMatches[1].trim().split(',').map(function (t) {
-      return t.trim();
+    keywords = keywordMatches[1].trim().split(',').map(function (k) {
+      return k.trim();
+    }).filter(function (k) {
+      return !!k;
     });
   }
 
