@@ -159,6 +159,9 @@ export default class DocumentationTable extends Component {
 
   renderForOneOf (key, values, changable, disabled) {
     const curValue = this.getValueForKey(key)
+    if (!Array.isArray(values)) { //  Fallback
+      return this.renderForString(key, changable, disabled);
+    }
     const items = values.map(v => {
       return v.value
     }).map(value => {
