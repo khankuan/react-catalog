@@ -99,3 +99,6 @@ story.sequence({
   }
 ])
 ```
+
+## skipTest(bool)
+Set to true to skip test for the story.
