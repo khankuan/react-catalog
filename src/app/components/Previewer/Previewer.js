@@ -107,16 +107,14 @@ export default class Previewer extends Component {
 
   renderComponent () {
     const { component, mode } = this.props
-    const style = {}
-    if (mode !== 'react') {
-      style.display = 'none'
+    if (mode === 'react') {
+      return component
     }
-    return React.cloneElement(component, {
-      style: {
-        ...component.props.style,
-        display: mode !== 'react' ? 'none' : undefined,
-      },
-    });
+    return (
+      <div style={{ display: 'none' }}>
+        {component}
+      </div>
+    )
   }
 
   renderComponentSource () {
