@@ -5,6 +5,7 @@
 .react-library-browse-component .component-link {
   color: #999;
   text-decoration: none;
+  display: inline-block;
 }
 
 .react-library-browse-component .component-link:hover {
