@@ -4,7 +4,7 @@ import * as docs from 'build/docs'
 import * as stories from 'build/stories'
 import * as components from 'build/components'
 
-import { Link } from 'react-router'
+import NavLink from '../NavLink/NavLink'
 import RenderSafe from '../RenderSafe/RenderSafe'
 import BrowseComponentSequence from '../BrowseComponentSequence/BrowseComponentSequence'
 
@@ -58,7 +58,7 @@ export default class BrowseComponent extends Component {
     const output = this.renderStoryOutput(name, story)
     return (
       <div key={story.title} className='component-content-story' id={story.title}>
-        {showName ? <h5><Link className='component-link' to={`/${tag}/${name}/${story.title}`}>{story.title}</Link></h5> : null}
+        {showName ? <h5><NavLink className='component-link' to={`/${tag}/${name}/${story.title}`}>{story.title}</NavLink></h5> : null}
         { story.description ? <p className='component-description'>{story.description}</p> : null }
         <div className='component-output'>
           {output}
@@ -71,7 +71,7 @@ export default class BrowseComponent extends Component {
     const Component = components[name]
     return (
       <div key='default' className='component-content-story'>
-        {showName ? <h5><Link className='component-link' to={`/${tag}/${name}`}>Default</Link></h5> : null}
+        {showName ? <h5><NavLink className='component-link' to={`/${tag}/${name}`}>Default</NavLink></h5> : null}
         <div className='component-output'>
           <RenderSafe><Component key='default' /></RenderSafe>
         </div>
@@ -139,7 +139,7 @@ export default class BrowseComponent extends Component {
     return (
       <div className='react-library-browse-component'>
         <h4 className='component-header'>
-          <Link className='component-link' to={`/${tag}/${name}`}>{name}</Link>
+          <NavLink className='component-link' to={`/${tag}/${name}`}>{name}</NavLink>
           {(!mode && !story) ? this.renderStorySelect(name) : null}
         </h4>
         { content || this.renderEmpty() }

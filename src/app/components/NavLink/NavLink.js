@@ -3,9 +3,11 @@ import cx from 'classnames'
 import { Link } from 'react-router'
 import './NavLink.css'
 
+const encodeTo = url => url.split('/').map(encodeURIComponent).join('/')
+
 const NavLink = ({ expandable, expanded, onExpandClick, active, activeHighlights, children,
-  disabled, className, ...passProps }) => {
-  const Component = passProps.to ? Link : 'a'
+  disabled, className, to, ...passProps }) => {
+  const Component = to ? Link : 'a'
 
   let expansion
   if (expandable) {
@@ -16,9 +18,16 @@ const NavLink = ({ expandable, expanded, onExpandClick, active, activeHighlights
     )
   }
 
+  if (typeof to === 'string') {
+    to = encodeTo(to)
+  } else if (typeof to === 'object') {
+    to.pathname = encodeTo(to.pathname)
+  }
+
   return (
     <Component
       {...passProps}
+      to={to}
       className={cx(
           'react-library-nav-link',
           { active, selected: active && activeHighlights, disabled },
