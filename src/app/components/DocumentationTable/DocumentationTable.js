@@ -157,25 +157,25 @@ export default class DocumentationTable extends Component {
     )
   }
 
-  renderForOneOf (key, values, changable, disabled) {
+  renderForOneOf (key, values, changable, disabled, prop) {
     const curValue = this.getValueForKey(key)
     if (!Array.isArray(values)) { //  Fallback
       return this.renderForString(key, changable, disabled);
     }
-    const items = values.map(v => {
-      return v.value
-    }).map(value => {
+    const items = values.map(v => v.value).map(value => {
       if (!isNaN(value)) {
         value = parseFloat(value)
       }
       if (typeof value === 'string' && value[0] === "'" && value[value.length - 1] === "'") {
         value = value.substring(1, value.length - 1)
       }
+      const active = curValue == value
+      const changedValue = active ? (prop.required ? value : undefined) : value
       return (
         <span
           key={value}
-          className={cx('type-value', { active: curValue == value, changable })}
-          onClick={(changable && !disabled)? this.handleChange.bind(null, key, value) : null}>
+          className={cx('type-value', { active, changable })}
+          onClick={(changable && !disabled)? this.handleChange.bind(null, key, changedValue) : null}>
           {value}
         </span>
       )
@@ -232,7 +232,7 @@ export default class DocumentationTable extends Component {
             {type === 'number' ? this.renderForNumber(row.key, changable, disabled) : null}
             {type === 'string' ? this.renderForString(row.key, changable, disabled) : null}
             {type === 'bool' ? this.renderForBoolean(row.key, changable, disabled) : null}
-            {type === 'oneOf' ? this.renderForOneOf(row.key, prop.type.value, changable, disabled) : null}
+            {type === 'oneOf' ? this.renderForOneOf(row.key, prop.type.value, changable, disabled, prop) : null}
           </td>
           <td className='field-description'>{prop.description ? <span title={prop.description}>?</span> : null}</td>
         </tr>

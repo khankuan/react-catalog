@@ -10,7 +10,7 @@ const SampleContent = () => <div style={{ width: '200px', height: '100px' }}>My 
 story.add({
   title: 'Low emphasis',
   description: 'The card has less contrast',
-  content: { depth: '1', children: <SampleContent /> }
+  content: { children: <SampleContent /> }
 })
 
 story.add({
