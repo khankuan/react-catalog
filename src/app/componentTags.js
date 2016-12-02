@@ -19,9 +19,7 @@ Object.keys(components).forEach(component => {
     })
   }
 })
-for (let key in tags) {
-  componentTags.push({ tag: key, components: tags[key] })
-}
+Object.keys(tags).sort().forEach(tag => componentTags.push({ tag, components: tags[tag] }))
 
 componentTags.forEach(componentTag => componentTag.components.sort())
 
