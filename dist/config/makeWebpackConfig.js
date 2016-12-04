@@ -84,14 +84,14 @@ function makeWebpackConfig(_ref) {
         include: [srcSrc, librarySrc, outputDir, pagesSrc],
         query: production ? _babel4.default : _babel2.default
       }, {
+        test: /\.css$/,
+        include: [srcSrc, pagesSrc, librarySrc, outputDir, /node_modules/],
+        loader: production ? _extractTextWebpackPlugin2.default.extract('css!postcss') : 'style!css!postcss'
+      }, {
         test: /\.json$/, loader: 'json'
       }, {
         test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|eot|ttf)$/,
         loader: 'url?limit=10000'
-      }, {
-        test: /\.css$/,
-        include: [srcSrc, librarySrc, outputDir, pagesSrc, /node_modules/],
-        loader: production ? _extractTextWebpackPlugin2.default.extract('css!postcss') : 'style!css!postcss'
       }, {
         test: /\.html$/,
         loader: 'html'

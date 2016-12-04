@@ -79,22 +79,22 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
           query: production ? babelProd : babelDev
         },
         {
+          test: /\.css$/,
+          include: [
+            srcSrc,
+            pagesSrc,
+            librarySrc,
+            outputDir,
+            /node_modules/
+          ],
+          loader: production ? ExtractTextPlugin.extract('css!postcss') : 'style!css!postcss',
+        },
+        {
           test: /\.json$/, loader: 'json'
         },
         {
           test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|eot|ttf)$/,
           loader: 'url?limit=10000'
-        },
-        {
-          test: /\.css$/,
-          include: [
-            srcSrc,
-            librarySrc,
-            outputDir,
-            pagesSrc,
-            /node_modules/
-          ],
-          loader: production ? ExtractTextPlugin.extract('css!postcss') : 'style!css!postcss',
         },
         {
           test: /\.html$/,
