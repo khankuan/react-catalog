@@ -40,6 +40,7 @@ var commonPlugins = [new _webpack2.default.optimize.CommonsChunkPlugin('vendor',
 
 var devPlugins = [].concat(commonPlugins, [new _webpack2.default.HotModuleReplacementPlugin(), new _webpack2.default.NoErrorsPlugin()]);
 
+var extractLibraryCss = new _extractTextWebpackPlugin2.default('library.css');
 var prodPlugins = [].concat(commonPlugins, [new _webpack2.default.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }), new _webpack2.default.optimize.OccurrenceOrderPlugin(), new _webpack2.default.optimize.DedupePlugin(), new _webpack2.default.optimize.UglifyJsPlugin({
   compress: {
     screw_ie8: true, // React doesn't support IE8
@@ -52,7 +53,7 @@ var prodPlugins = [].concat(commonPlugins, [new _webpack2.default.DefinePlugin({
     comments: false,
     screw_ie8: true
   }
-}), new _extractTextWebpackPlugin2.default('library.css')]);
+}), extractLibraryCss]);
 
 function makeWebpackConfig(_ref) {
   var outputDir = _ref.outputDir,
@@ -86,7 +87,7 @@ function makeWebpackConfig(_ref) {
       }, {
         test: /\.css$/,
         include: [srcSrc, pagesSrc, librarySrc, outputDir, /node_modules/],
-        loader: production ? _extractTextWebpackPlugin2.default.extract('css!postcss') : 'style!css!postcss'
+        loader: production ? extractLibraryCss.extract('css!postcss') : 'style!css!postcss'
       }, {
         test: /\.json$/, loader: 'json'
       }, {
