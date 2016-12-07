@@ -28,7 +28,7 @@ export async function generateComponentDocs ({ src, componentPattern, storyPatte
       .catch(err => {
         if (err.message === 'IGNORED') {
           console.warn(chalk.yellow('Ignored:', f))
-        } else if (err.message !== 'No suitable component definition found.') {
+        } else if (err.message === 'No suitable component definition found.') {
           return
         } else {
           console.warn(chalk.red('Error parsing file:', f, err.message))

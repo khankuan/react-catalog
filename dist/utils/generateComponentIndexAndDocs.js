@@ -56,7 +56,7 @@ var generateComponentDocs = exports.generateComponentDocs = function () {
                       }).catch(function (err) {
                         if (err.message === 'IGNORED') {
                           console.warn(_chalk2.default.yellow('Ignored:', f));
-                        } else if (err.message !== 'No suitable component definition found.') {
+                        } else if (err.message === 'No suitable component definition found.') {
                           return;
                         } else {
                           console.warn(_chalk2.default.red('Error parsing file:', f, err.message));
