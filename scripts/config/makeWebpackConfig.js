@@ -15,6 +15,7 @@ const devPlugins = [
   new webpack.NoErrorsPlugin(),
 ]
 
+const extractLibraryCss = new ExtractTextPlugin('library.css')
 const prodPlugins = [
   ...commonPlugins,
   new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }),
@@ -33,7 +34,7 @@ const prodPlugins = [
       screw_ie8: true
     }
   }),
-  new ExtractTextPlugin('library.css'),
+  extractLibraryCss,
 ]
 
 export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pagesDir, configureWebpack, production }) {
@@ -87,7 +88,7 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
             outputDir,
             /node_modules/
           ],
-          loader: production ? ExtractTextPlugin.extract('css!postcss') : 'style!css!postcss',
+          loader: production ? extractLibraryCss.extract('css!postcss') : 'style!css!postcss',
         },
         {
           test: /\.json$/, loader: 'json'
