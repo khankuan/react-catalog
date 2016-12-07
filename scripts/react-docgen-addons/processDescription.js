@@ -1,9 +1,10 @@
 const tagsRegex = /@tags:(.*)/i
 const keywordsRegex = /@keywords:(.*)/i
 const defaultRegex = /@default/i
+const ignoreRegex = /@ignore/i
 
 export default function processDescription (inputDescription) {
-  let tags, keywords, description, hasDefault
+  let tags, keywords, description, hasDefault, ignore
 
   //  Find tags
   const tagMatches = inputDescription.match(tagsRegex)
@@ -23,12 +24,19 @@ export default function processDescription (inputDescription) {
     hasDefault = true
   }
 
+  //  Check ignore
+  const ignoreMatch = inputDescription.match(ignoreRegex)
+  if (ignoreMatch) {
+    ignore = true
+  }
+
   //  Process description
   description = inputDescription
     .replace(tagsRegex, '')
     .replace(keywordsRegex, '')
     .replace(defaultRegex, '')
+    .replace(ignoreRegex, '')
     .trim()
 
-  return { tags, keywords, description, hasDefault }
+  return { tags, keywords, description, hasDefault, ignore }
 }

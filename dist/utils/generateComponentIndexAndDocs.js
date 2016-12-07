@@ -54,7 +54,11 @@ var generateComponentDocs = exports.generateComponentDocs = function () {
                         exports.components[name] = _path2.default.relative(outputDir, './' + src + '/' + f);
                         exports.docs[name] = './docs/' + name;
                       }).catch(function (err) {
-                        if (err.message !== 'No suitable component definition found.') {
+                        if (err.message === 'IGNORED') {
+                          console.warn(_chalk2.default.yellow('Ignored:', f));
+                        } else if (err.message !== 'No suitable component definition found.') {
+                          return;
+                        } else {
                           console.warn(_chalk2.default.red('Error parsing file:', f, err.message));
                         }
                       });

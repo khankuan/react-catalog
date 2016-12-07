@@ -7,12 +7,14 @@ exports.default = processDescription;
 var tagsRegex = /@tags:(.*)/i;
 var keywordsRegex = /@keywords:(.*)/i;
 var defaultRegex = /@default/i;
+var ignoreRegex = /@ignore/i;
 
 function processDescription(inputDescription) {
   var tags = void 0,
       keywords = void 0,
       description = void 0,
-      hasDefault = void 0;
+      hasDefault = void 0,
+      ignore = void 0;
 
   //  Find tags
   var tagMatches = inputDescription.match(tagsRegex);
@@ -40,8 +42,14 @@ function processDescription(inputDescription) {
     hasDefault = true;
   }
 
-  //  Process description
-  description = inputDescription.replace(tagsRegex, '').replace(keywordsRegex, '').replace(defaultRegex, '').trim();
+  //  Check ignore
+  var ignoreMatch = inputDescription.match(ignoreRegex);
+  if (ignoreMatch) {
+    ignore = true;
+  }
 
-  return { tags: tags, keywords: keywords, description: description, hasDefault: hasDefault };
+  //  Process description
+  description = inputDescription.replace(tagsRegex, '').replace(keywordsRegex, '').replace(defaultRegex, '').replace(ignoreRegex, '').trim();
+
+  return { tags: tags, keywords: keywords, description: description, hasDefault: hasDefault, ignore: ignore };
 }

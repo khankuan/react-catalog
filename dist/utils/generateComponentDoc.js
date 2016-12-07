@@ -49,9 +49,18 @@ var parseComponentDoc = exports.parseComponentDoc = function () {
             if (doc.props && doc.hasDefault) {
               doc.hasDefault = (0, _hasDefault2.default)(doc.props);
             }
+
+            if (!doc.ignore) {
+              _context.next = 10;
+              break;
+            }
+
+            throw new Error('IGNORED');
+
+          case 10:
             return _context.abrupt('return', doc);
 
-          case 9:
+          case 11:
           case 'end':
             return _context.stop();
         }

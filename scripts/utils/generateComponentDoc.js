@@ -21,6 +21,9 @@ export async function parseComponentDoc ({ inputPath }) {
   if (doc.props && doc.hasDefault) {
     doc.hasDefault = hasDefault(doc.props)
   }
+  if (doc.ignore) {
+    throw new Error('IGNORED')
+  }
   return doc
 }
 

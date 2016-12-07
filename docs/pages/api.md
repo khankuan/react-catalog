@@ -102,3 +102,26 @@ story.sequence({
 
 ## skipTest(bool)
 Set to true to skip test for the story.
+
+# Description
+
+## Tags
+```
+@tags: Buttons, Forms
+```
+
+## Keywords
+```
+@keywords: Select, Dropdown, Menu
+```
+
+## Default
+Enable default story for component
+```
+@default
+```
+
+## Ignore components
+```
+@ignored
+```
