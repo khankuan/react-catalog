@@ -46,7 +46,7 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
 
   let output = {
     entry: {
-      app: [path.resolve(librarySrc, './app/index.js')],
+      app: ['babel-polyfill', path.resolve(librarySrc, './app/index.js')],
       vendor: [
         'react',
         'react-router',
