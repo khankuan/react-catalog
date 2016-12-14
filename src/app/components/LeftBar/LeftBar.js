@@ -185,21 +185,19 @@ export default class LeftBar extends Component {
       )
     }
 
-    if (componentDoc.hasDefault) {
-      output.unshift(
-        <NavLink
-          className='story-link'
-          to={{
-            pathname: `/${tag}/${component}`,
-            query
-          }}
-          key='DEFAULT'
-          active={!activeStory && componentActive}
-          activeHighlights>
-          Default
-        </NavLink>
-      )
-    }
+    output.unshift(
+      <NavLink
+        className='story-link'
+        to={{
+          pathname: `/${tag}/${component}`,
+          query
+        }}
+        key='DEFAULT'
+        active={!activeStory && componentActive}
+        activeHighlights>
+        { componentDoc.hasDefault ? 'Default' : 'View Props' }
+      </NavLink>
+    )
 
     return <div key='stories'>{output}</div>
   }

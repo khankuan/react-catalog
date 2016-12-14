@@ -11,6 +11,7 @@ story.add({
 
 story.add({
   title: 'Customize Actions',
+  theme: 'dark',
   content: {
     name: 'John',
     expanded: true,
@@ -29,7 +30,7 @@ story.sequence({
     onActionClick: story.handler('onActionClick')
   })
 }, {
-  title: 'Card becomes expanded',
+  title: 'Card becomes expanded (after 1 sec)',
   update: async function(props) {
     await delay(1000)
     props.expanded = true

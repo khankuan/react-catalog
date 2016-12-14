@@ -7,6 +7,7 @@ import * as components from 'build/components'
 import NavLink from '../NavLink/NavLink'
 import RenderSafe from '../RenderSafe/RenderSafe'
 import BrowseComponentSequence from '../BrowseComponentSequence/BrowseComponentSequence'
+import Well from '../Well/Well'
 
 import './BrowseComponent.css'
 
@@ -49,7 +50,11 @@ export default class BrowseComponent extends Component {
       output = story.content
     } else {
       const Component = components[name]
-      output = <RenderSafe><Component {...story.content} /></RenderSafe>
+      output = (
+        <RenderSafe>
+          <Component {...story.content} />
+        </RenderSafe>
+      )
     }
     return output
   }
@@ -60,9 +65,9 @@ export default class BrowseComponent extends Component {
       <div key={story.title} className='component-content-story' id={story.title}>
         {showName ? <h5><NavLink className='component-link' to={`/${tag}/${name}/${story.title}`}>{story.title}</NavLink></h5> : null}
         { story.description ? <p className='component-description'>{story.description}</p> : null }
-        <div className='component-output'>
+        <Well className='component-output' theme={story.theme}>
           {output}
-        </div>
+        </Well>
       </div>
     )
   }
@@ -72,9 +77,9 @@ export default class BrowseComponent extends Component {
     return (
       <div key='default' className='component-content-story'>
         {showName ? <h5><NavLink className='component-link' to={`/${tag}/${name}`}>Default</NavLink></h5> : null}
-        <div className='component-output'>
+        <Well className='component-output'>
           <RenderSafe><Component key='default' /></RenderSafe>
-        </div>
+        </Well>
       </div>
     )
   }

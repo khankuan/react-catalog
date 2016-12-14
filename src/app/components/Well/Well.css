@@ -1,0 +1,32 @@
+
+.react-library-well {
+  padding: 20px;
+  border: 1px dashed;
+}
+
+.react-library-well > * {
+  vertical-align: top;
+}
+
+.react-library-well-title {
+  padding-bottom: 20px;
+}
+
+.react-library-well-dark {
+  background: black;
+}
+.react-library-well-dark > .react-library-well-title {
+  color: white;
+}
+
+.react-library-well-light {
+  background: white;
+}
+
+.react-library-well-dark {
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.react-library-well-light {
+  border-color: rgba(0, 0, 0, 0.8);
+}

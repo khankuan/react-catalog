@@ -32,34 +32,6 @@ export default class Main extends Component {
     router: PropTypes.object
   }
 
-  componentWillMount () {
-    this.checkForwardToStory(this.props)
-  }
-
-  componentWillReceiveProps (nextProps) {
-    this.checkForwardToStory(nextProps)
-  }
-
-  //  Forward to a story if default is not available
-  checkForwardToStory (props) {
-    const { component, story, tag } = props.routeParams
-    const { router } = this.context
-    const { location } = props
-    const componentDoc = docs[component]
-    if (!componentDoc) {
-      return
-    }
-
-    const componentStory = stories[component]
-    if (!story && !componentDoc.hasDefault && componentStory && componentStory.stories.length) {
-      const firstStory = componentStory.stories[0]
-      router.replace({
-        ...location,
-        pathname: `/${tag}/${component}/${firstStory.title}`
-      })
-    }
-  }
-
   formatText = text => {
     return text.split('\n')
       .map((t, i) => <Markdown className='header-description' key={i} source={t} />)

@@ -3,6 +3,7 @@ import React, { PropTypes, Component } from 'react'
 import SequenceControls from '../SequenceControls/SequenceControls'
 import Sequencer from '../Sequencer/Sequencer'
 import RenderSafe from '../RenderSafe/RenderSafe'
+import Well from '../Well/Well'
 
 import './BrowseComponentSequence.css'
 
@@ -35,7 +36,9 @@ export default class BrowseComponentSequence extends Component {
           stepIndex={stepIndex}
           onStepChange={this.handleStepChange} />
         <RenderSafe key='output'>
-          <Sequencer component={component} story={story} stepIndex={stepIndex} />
+          <Well theme={story.theme}>
+            <Sequencer component={component} story={story} stepIndex={stepIndex} />
+          </Well>
         </RenderSafe>
       </div>
     )

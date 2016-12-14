@@ -103,6 +103,9 @@ story.sequence({
 ## skipTest(bool)
 Set to true to skip test for the story.
 
+## theme
+Set the theme of the well that contains the rendered output.
+
 # Description
 
 ## Tags
@@ -125,3 +128,16 @@ Enable default story for component
 ```
 @ignored
 ```
+
+# Components
+Simple components available for use for writing stories.
+
+## Well
+`theme` - ['light', 'dark']
+`title` - String
+`className` - String
+`children` - Node
+
+## ListLayout
+`className` - String
+`children` - Node
