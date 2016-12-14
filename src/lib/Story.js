@@ -17,6 +17,12 @@ export default class Story {
       if (process.env.NODE_ENV === 'TEST') {
         this.handleCalls.push({ method, args })
       } else {
+        args = args.map(arg => {
+          if (arg.preventDefault) {
+            return `[Event ${arg.constructor.name}]`;
+          }
+          return arg
+        })
         alert(`${method} called with\n\n${JSON.stringify(args, null, 2)}`)
       }
     }
