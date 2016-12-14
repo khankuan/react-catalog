@@ -16,5 +16,9 @@ story.add({
 story.add({
   title: 'High emphasis',
   description: 'The card has more contrast and attention',
-  content: <Card depth='2'><SampleContent /></Card>
+  content: [
+    <Card depth='1'><SampleContent /></Card>,
+    <br />,
+    <Card depth='2'><SampleContent /></Card>,
+  ],
 })

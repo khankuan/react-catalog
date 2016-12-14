@@ -126,7 +126,7 @@ export default class App extends Component {
     if (!story || typeof story.content === 'object') {  //  Default or Object story
       const component = this.renderObjectStoryComponent(story, queryProps)
       return { component, renderProps: component.props }
-    } else if (React.isValidElement(story.content)) { //  Node story
+    } else if (React.isValidElement(story.content) || Array.isArray(story.content)) { //  Node story
       const component = this.renderNodeStoryComponent(story, queryProps)
       return { component, renderProps: component.props }
     } else if (story.sequence) {  //  sequence story
@@ -146,7 +146,7 @@ export default class App extends Component {
         </StaticPage>
       )
     } else if (browse || story === 'browse' ||
-      (activeStory && React.isValidElement(activeStory.content))) {
+      (activeStory && (React.isValidElement(activeStory.content) || Array.isArray(activeStory.content)))) {
       return (
         <Browse
           key='browse'

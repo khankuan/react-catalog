@@ -46,6 +46,8 @@ export default class BrowseComponent extends Component {
     let output
     if (story.sequence) {
       output = <BrowseComponentSequence className='component-sequence' story={story} component={name} />
+    } else if (Array.isArray(story.content)) {
+      output = React.Children.map(story.content, (child, i) => React.cloneElement(child, { key: i }))
     } else if (React.isValidElement(story.content)) {
       output = story.content
     } else {
