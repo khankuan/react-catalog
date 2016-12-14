@@ -71,7 +71,7 @@ function makeWebpackConfig(_ref) {
 
   var output = {
     entry: {
-      app: [_path2.default.resolve(librarySrc, './app/index.js')],
+      app: ['babel-polyfill', _path2.default.resolve(librarySrc, './app/index.js')],
       vendor: ['react', 'react-router', 'react-dom', 'history', 'react-codemirror', 'codemirror', 'js-beautify', 'react-element-to-jsx-string', 'classnames', 'react-markdown', 'fuse.js', 'react-document-title']
     },
     output: {
