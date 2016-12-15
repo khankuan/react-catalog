@@ -2,7 +2,7 @@
   "name": "react-library",
   "version": "0.1.0",
   "description": "React Library is a UI Component development tool",
-  "main": "dist/src",
+  "main": "src",
   "directories": {
     "doc": "docs"
   },
