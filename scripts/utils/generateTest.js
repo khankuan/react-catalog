@@ -44,6 +44,8 @@ stories
       let node
       if (React.isValidElement(s.content)) {
         node = s.content
+      } else if (Array.isArray(s.content)) {
+        node = <div>{React.Children.map(s.content, (child, i) => React.cloneElement(child, { key: i }))}</div>
       } else {
         const Component = story.type
         node = <Component {...s.content} />
