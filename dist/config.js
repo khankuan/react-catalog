@@ -16,8 +16,8 @@ exports.default = function (configPath) {
     outputDir: 'library-build',
     assets: [],
     title: 'React Library',
-    componentPattern: '**/*.{js,jsx}',
-    storyPattern: '**/*.story.{js,jsx}',
+    componentPattern: '**/*.jsx',
+    storyPattern: '**/*.story.jsx',
     configureWebpack: null,
     postBuild: null,
     port: 9000
