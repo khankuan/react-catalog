@@ -7,6 +7,7 @@
   flex-direction: column;
   font-size: 13px;
   padding-bottom: 100px;
+  box-sizing: border-box;
 }
 
 .react-library-left-bar .show-button {
@@ -123,7 +124,7 @@
     border: 0;
     border-bottom: 1px solid #ccc;
     padding-bottom: 0px;
-    overflow: auto;
+    overflow: hidden;
   }
 
   .react-library-left-bar.show {

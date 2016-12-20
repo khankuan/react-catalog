@@ -9,3 +9,9 @@
   flex-direction: column;
   padding: 10px;
 }
+
+@media all and (max-width: 768px) {
+  .react-library-page-wrapper {
+    margin-top: 60px;
+  }
+}
