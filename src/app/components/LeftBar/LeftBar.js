@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import cx from 'classnames';
 
 import * as docs from 'build/docs'
 import * as stories from 'build/stories'
@@ -25,6 +26,10 @@ export default class LeftBar extends Component {
     router: PropTypes.object
   }
 
+  state = {
+    show: true,
+  }
+
   constructor (props) {
     super(props)
     const { search } = props.location.query
@@ -41,6 +46,10 @@ export default class LeftBar extends Component {
       feelingLucky,
       search
     }
+  }
+
+  toggleShow = () => {
+    this.setState({ show: !this.state.show })
   }
 
   getSavedQuery () {
@@ -337,11 +346,17 @@ export default class LeftBar extends Component {
     return output
   }
 
+  renderClose() {
+    return (
+      <span className='show-button' onClick={this.toggleShow}>{this.state.show ? '×' : '≡'}</span>
+    )
+  }
+
   render () {
     const { search } = this.state
     return (
-      <div className='react-library-left-bar'>
-        <h1 className='app-title'>{config.title}</h1>
+      <div className={cx('react-library-left-bar', { show: this.state.show })}>
+        <h1 className='app-title'>{config.title}{this.renderClose()}</h1>
         {this.renderStatic()}
         {this.renderTags(this.getSavedQuery(), search)}
       </div>

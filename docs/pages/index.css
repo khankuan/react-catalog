@@ -5,3 +5,10 @@
   width: 800px;
   padding-bottom: 100px;
 }
+
+@media all and (max-width: 768px) {
+  .demo-pages {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

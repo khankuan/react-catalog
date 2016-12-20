@@ -4,6 +4,13 @@
   overflow-y: auto;
   padding-bottom: 100px;
   background: #f3f3f3;
+  box-sizing: border-box;
+}
+
+@media all and (max-width: 768px) {
+  .react-library-browse {
+    margin-top: 60px;
+  }
 }
 
 .react-library-browse .browse-header {
