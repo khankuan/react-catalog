@@ -19,6 +19,6 @@ story.add({
   content: [
     <Card depth='1'><SampleContent /></Card>,
     <br />,
-    <Card depth='2'><SampleContent /></Card>,
-  ],
+    <Card depth='2'><SampleContent /></Card>
+  ]
 })

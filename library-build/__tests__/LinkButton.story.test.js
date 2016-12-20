@@ -1,7 +1,7 @@
 
 import React from 'react'
 import renderer from 'react-test-renderer'
-import story from '../../docs/src/LinkButton/LinkButton.story.js'
+import story from '../../docs/src/LinkButton/LinkButton.story.jsx'
 import { Story } from 'react-library'
 
 jest.useFakeTimers()
@@ -31,6 +31,8 @@ stories
       let node
       if (React.isValidElement(s.content)) {
         node = s.content
+      } else if (Array.isArray(s.content)) {
+        node = <div>{React.Children.map(s.content, (child, i) => React.cloneElement(child, { key: i }))}</div>
       } else {
         const Component = story.type
         node = <Component {...s.content} />

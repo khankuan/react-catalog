@@ -51,7 +51,7 @@ exports[`test UserCard.story - Default 1`] = `
 </div>
 `;
 
-exports[`test UserCard.story - User doing an action - Card becomes expanded 1`] = `
+exports[`test UserCard.story - User doing an action - Card becomes expanded (after 1 sec) 1`] = `
 <div
   className="demo-card demo-card-depth-1">
   <div
@@ -80,7 +80,7 @@ exports[`test UserCard.story - User doing an action - Card becomes expanded 1`] 
 </div>
 `;
 
-exports[`test UserCard.story - User doing an action - Card becomes expanded 2`] = `Array []`;
+exports[`test UserCard.story - User doing an action - Card becomes expanded (after 1 sec) 2`] = `Array []`;
 
 exports[`test UserCard.story - User doing an action - Initial 1`] = `
 <div

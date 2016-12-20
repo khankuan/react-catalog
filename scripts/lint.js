@@ -6,7 +6,7 @@ export default async function lint ({ src }, { fix } = {}) {
   fix = fix ? ' --fix' : ''
 
   return new Promise((resolve, reject) => {
-    child.ChildProcess = child.exec(`standard ${src}/**/*${fix}`, (err, stdout, stderr) => {
+    child.ChildProcess = child.exec(`standard ${src}${fix}`, (err, stdout, stderr) => {
       if (err) {
         reject(stdout)
       } else if (stderr) {
