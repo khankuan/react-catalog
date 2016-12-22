@@ -43,7 +43,7 @@ exports.default = function () {
             fix = fix ? ' --fix' : '';
 
             return _context.abrupt('return', new _promise2.default(function (resolve, reject) {
-              child.ChildProcess = child.exec('standard ' + src + '/**/*' + fix, function (err, stdout, stderr) {
+              child.ChildProcess = child.exec('standard ' + src + fix, function (err, stdout, stderr) {
                 if (err) {
                   reject(stdout);
                 } else if (stderr) {
@@ -62,7 +62,7 @@ exports.default = function () {
     }, _callee, this);
   }));
 
-  function lint(_x, _x2) {
+  function lint(_x) {
     return _ref.apply(this, arguments);
   }
 

@@ -140,6 +140,12 @@ export default class LeftBar extends Component {
     this.setSearch(undefined, 0)
   }
 
+  handleLinkClick = e => {
+    if (this.state.show) {
+      this.setState({ show: false });
+    }
+  }
+
   handleSearchPress = e => {
     //  Feeling lucky
     if (e.key === 'Enter' && e.target.value) {
@@ -172,7 +178,8 @@ export default class LeftBar extends Component {
           }}
           key='browse2'
           active={(activeStory === 'browse') && componentActive}
-          activeHighlights>
+          activeHighlights
+          onClick={this.handleLinkClick}>
           Browse..
         </NavLink>
       )
@@ -185,6 +192,7 @@ export default class LeftBar extends Component {
                 pathname: `/${tag}/${component}/${story.title}`,
                 query
               }}
+              onClick={this.handleLinkClick}
               key={story.title}
               active={(activeStory === story.title) && componentActive && !this.hasQueryProps()}
               activeHighlights>
@@ -201,6 +209,7 @@ export default class LeftBar extends Component {
           pathname: `/${tag}/${component}`,
           query
         }}
+        onClick={this.handleLinkClick}
         key='DEFAULT'
         active={!activeStory && componentActive}
         activeHighlights>
@@ -223,6 +232,7 @@ export default class LeftBar extends Component {
           pathname: `/${tag}/${component}`,
           query
         }}
+        onClick={this.handleLinkClick}
         key={component}
         expandable={hasStories}
         expanded={expanded}
@@ -247,6 +257,7 @@ export default class LeftBar extends Component {
         expandable
         expanded={active}
         key={tag}
+        onClick={this.handleLinkClick}
         active={tag === this.props.routeParams.tag}
         onClick={this.handleTagClick.bind(null, tag)}>
         {tag} ({count})
@@ -260,6 +271,7 @@ export default class LeftBar extends Component {
       <NavLink
         className='component-link'
         key={`${tag}_browse`}
+        onClick={this.handleLinkClick}
         active={tag === this.props.routeParams.tag && browse}
         to={`/${tag}/browse`}>
         Browse..
@@ -330,6 +342,7 @@ export default class LeftBar extends Component {
           <NavLink
             className='page-link'
             key={`page_${i}`}
+            onClick={this.handleLinkClick}
             active={path === this.props.location.pathname}
             activeHighlights
             to={path}>

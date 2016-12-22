@@ -2,6 +2,7 @@
   width: 400px;
   border-left: 1px solid #ccc;
   flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 .react-library-right-bar .bar-header {
