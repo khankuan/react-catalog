@@ -16,7 +16,7 @@ export default class Main extends Component {
   static propTypes = {
     location: PropTypes.object,
     routeParams: PropTypes.shape({
-      tag: PropTypes.string,
+      category: PropTypes.string,
       component: PropTypes.string,
       story: PropTypes.string
     }),
@@ -95,38 +95,38 @@ export default class Main extends Component {
     return null
   }
 
-  renderHeaderTags (componentDoc) {
-    if (!componentDoc.tags) {
+  renderHeaderCategories (componentDoc) {
+    if (!componentDoc.categories) {
       return null
     }
 
-    const tags = componentDoc.tags.map(tag => {
+    const categories = componentDoc.categories.map(category => {
       return (
         <NavLink
-          className='tag-link'
-          to={{ pathname: `/${tag}/browse` }}
-          key={tag}
-          active={tag === this.props.routeParams.tag}>
-          {tag}
+          className='category-link'
+          to={{ pathname: `/${category}/browse` }}
+          key={category}
+          active={category === this.props.routeParams.category}>
+          {category}
         </NavLink>
       )
     })
 
     return (
-      <div className='header-tags'>
-        {tags}
+      <div className='header-categories'>
+        {categories}
       </div>
     )
   }
 
-  renderHeaderKeywords (componentDoc) {
-    if (!componentDoc.keywords) {
+  renderHeaderTags (componentDoc) {
+    if (!componentDoc.tags) {
       return null
     }
 
     return (
-      <div className='header-keywords'>
-        <em>{componentDoc.keywords.join(', ')}</em>
+      <div className='header-tags'>
+        <em>{componentDoc.tags.join(', ')}</em>
       </div>
     )
   }
@@ -138,8 +138,8 @@ export default class Main extends Component {
     return (
       <div className='react-library-main-header'>
         <h2 className='component-title'>{component}</h2>
+        {this.renderHeaderCategories(componentDoc)}
         {this.renderHeaderTags(componentDoc)}
-        {this.renderHeaderKeywords(componentDoc)}
         {description ? this.formatText(description) : null}
         {this.renderStory(story)}
       </div>

@@ -10,8 +10,8 @@ const componentObjs = Object.keys(components).map(name => {
     name,
     nameText: name.replace(/([A-Z])/g, ' $1').trim(),  //  Make camel case searchable
     description: doc ? doc.description : '',
+    categories: doc ? doc.categories : null,
     tags: doc ? doc.tags : null,
-    keywords: doc ? doc.keywords : null,
     stories: stories[name] ? stories[name].stories : null
   }
 })
@@ -21,13 +21,13 @@ export const componentSearch = new Fuse(componentObjs, {
     name: 'nameText',
     weight: 1
   }, {
-    name: 'tags',
+    name: 'categories',
     weight: 1
   }, {
     name: 'description',
     weight: 0.3
   }, {
-    name: 'keywords',
+    name: 'tags',
     weight: 1
   }, {
     name: 'stories.title',

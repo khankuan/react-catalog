@@ -4,32 +4,32 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = processDescription;
+var categoriesRegex = /@categories:(.*)/i;
 var tagsRegex = /@tags:(.*)/i;
-var keywordsRegex = /@keywords:(.*)/i;
 var defaultRegex = /@default/i;
 var ignoreRegex = /@ignore/i;
 
 function processDescription(inputDescription) {
-  var tags = void 0,
-      keywords = void 0,
+  var categories = void 0,
+      tags = void 0,
       description = void 0,
       hasDefault = void 0,
       ignore = void 0;
 
-  //  Find tags
-  var tagMatches = inputDescription.match(tagsRegex);
-  if (tagMatches) {
-    tags = tagMatches[1].trim().split(',').map(function (t) {
+  //  Find categories
+  var categoryMatches = inputDescription.match(categoriesRegex);
+  if (categoryMatches) {
+    categories = categoryMatches[1].trim().split(',').map(function (t) {
       return t.trim();
     }).filter(function (t) {
       return !!t;
     });
   }
 
-  //  Find keywords
-  var keywordMatches = inputDescription.match(keywordsRegex);
-  if (keywordMatches) {
-    keywords = keywordMatches[1].trim().split(',').map(function (k) {
+  //  Find tags
+  var tagMatches = inputDescription.match(tagsRegex);
+  if (tagMatches) {
+    tags = tagMatches[1].trim().split(',').map(function (k) {
       return k.trim();
     }).filter(function (k) {
       return !!k;
@@ -49,7 +49,7 @@ function processDescription(inputDescription) {
   }
 
   //  Process description
-  description = inputDescription.replace(tagsRegex, '').replace(keywordsRegex, '').replace(defaultRegex, '').replace(ignoreRegex, '').trim();
+  description = inputDescription.replace(categoriesRegex, '').replace(tagsRegex, '').replace(defaultRegex, '').replace(ignoreRegex, '').trim();
 
-  return { tags: tags, keywords: keywords, description: description, hasDefault: hasDefault, ignore: ignore };
+  return { categories: categories, tags: tags, description: description, hasDefault: hasDefault, ignore: ignore };
 }

@@ -60,10 +60,10 @@ export default {
     }
   },
   "name": "Avatar",
-  "tags": [
+  "categories": [
     "Image"
   ],
-  "keywords": [
+  "tags": [
     "Profile",
     "Picture"
   ],

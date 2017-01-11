@@ -4,8 +4,8 @@ import cx from 'classnames'
 import './LinkButton.css'
 
 /**
- * @tags: Button
- * @keywords: Links, href, url
+ * @categories: Button
+ * @tags: Links, href, url
  * An anchor element
  */
 export default class LinkButton extends Component {

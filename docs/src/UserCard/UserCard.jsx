@@ -7,8 +7,8 @@ import LinkButton from '../LinkButton/LinkButton'
 import './UserCard.css'
 
 /**
- * @tags: User, Cards
- * @keywords: Profile
+ * @categories: User, Cards
+ * @tags: Profile
  * A component display a user info with options to add menu actions
  */
 export default class UserCard extends Component {

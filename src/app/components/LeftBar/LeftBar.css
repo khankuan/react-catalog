@@ -42,7 +42,7 @@
   flex-shrink: 0;
 }
 
-.react-library-left-bar .tag-link {
+.react-library-left-bar .category-link {
   padding-left: 20px;
   font-weight: 700;
 }
@@ -106,7 +106,7 @@
   opacity: 1;
 }
 
-.react-library-left-bar-tags {
+.react-library-left-bar-categories {
   overflow-y: auto;
   padding-top: 5px;
   padding-bottom: 50px;

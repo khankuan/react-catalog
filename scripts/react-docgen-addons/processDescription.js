@@ -1,21 +1,21 @@
+const categoriesRegex = /@categories:(.*)/i
 const tagsRegex = /@tags:(.*)/i
-const keywordsRegex = /@keywords:(.*)/i
 const defaultRegex = /@default/i
 const ignoreRegex = /@ignore/i
 
 export default function processDescription (inputDescription) {
-  let tags, keywords, description, hasDefault, ignore
+  let categories, tags, description, hasDefault, ignore
+
+  //  Find categories
+  const categoryMatches = inputDescription.match(categoriesRegex)
+  if (categoryMatches) {
+    categories = categoryMatches[1].trim().split(',').map(t => t.trim()).filter(t => !!t)
+  }
 
   //  Find tags
   const tagMatches = inputDescription.match(tagsRegex)
   if (tagMatches) {
-    tags = tagMatches[1].trim().split(',').map(t => t.trim()).filter(t => !!t)
-  }
-
-  //  Find keywords
-  const keywordMatches = inputDescription.match(keywordsRegex)
-  if (keywordMatches) {
-    keywords = keywordMatches[1].trim().split(',').map(k => k.trim()).filter(k => !!k)
+    tags = tagMatches[1].trim().split(',').map(k => k.trim()).filter(k => !!k)
   }
 
   //  Check default
@@ -32,11 +32,11 @@ export default function processDescription (inputDescription) {
 
   //  Process description
   description = inputDescription
+    .replace(categoriesRegex, '')
     .replace(tagsRegex, '')
-    .replace(keywordsRegex, '')
     .replace(defaultRegex, '')
     .replace(ignoreRegex, '')
     .trim()
 
-  return { tags, keywords, description, hasDefault, ignore }
+  return { categories, tags, description, hasDefault, ignore }
 }

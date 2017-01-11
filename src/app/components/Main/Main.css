@@ -36,16 +36,16 @@
   margin: 5px 0;
 }
 
-.react-library-main-header .header-tags {
+.react-library-main-header .header-categories {
   display: flex;
   padding-left: 10px;
 }
 
-.react-library-main-header .header-tags .tag-link {
+.react-library-main-header .header-categories .category-link {
   padding-right: 10px;
 }
 
-.react-library-main-header .header-keywords {
+.react-library-main-header .header-tags {
   color: #aaa;
   font-size: 12px;
   padding-left: 10px;

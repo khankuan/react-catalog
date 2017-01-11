@@ -75,11 +75,11 @@ export default {
     }
   },
   "name": "UserCard",
-  "tags": [
+  "categories": [
     "User",
     "Cards"
   ],
-  "keywords": [
+  "tags": [
     "Profile"
   ]
 }

@@ -16,7 +16,7 @@ export default class BrowseComponent extends Component {
   static propTypes = {
     name: PropTypes.string,
     mode: PropTypes.string,
-    tag: PropTypes.string,
+    category: PropTypes.string,
     story: PropTypes.string,
   }
 
@@ -61,11 +61,11 @@ export default class BrowseComponent extends Component {
     return output
   }
 
-  renderStory (tag, name, story, showName) {
+  renderStory (category, name, story, showName) {
     const output = this.renderStoryOutput(name, story)
     return (
       <div key={story.title} className='component-content-story' id={story.title}>
-        {showName ? <h5><NavLink className='component-link' to={`/${tag}/${name}/${story.title}`}>{story.title}</NavLink></h5> : null}
+        {showName ? <h5><NavLink className='component-link' to={`/${category}/${name}/${story.title}`}>{story.title}</NavLink></h5> : null}
         { story.description ? <p className='component-description'>{story.description}</p> : null }
         <Well className='component-output' theme={story.theme}>
           {output}
@@ -74,11 +74,11 @@ export default class BrowseComponent extends Component {
     )
   }
 
-  renderDefault (tag, name, showName) {
+  renderDefault (category, name, showName) {
     const Component = components[name]
     return (
       <div key='default' className='component-content-story'>
-        {showName ? <h5><NavLink className='component-link' to={`/${tag}/${name}`}>Default</NavLink></h5> : null}
+        {showName ? <h5><NavLink className='component-link' to={`/${category}/${name}`}>Default</NavLink></h5> : null}
         <Well className='component-output'>
           <RenderSafe><Component key='default' /></RenderSafe>
         </Well>
@@ -86,7 +86,7 @@ export default class BrowseComponent extends Component {
     )
   }
 
-  renderContent (tag, name, mode, activeStory) {
+  renderContent (category, name, mode, activeStory) {
     const output = []
     const doc = docs[name]
     const story = stories[name]
@@ -94,17 +94,17 @@ export default class BrowseComponent extends Component {
       const selectedStory = activeStory || this.state.selectedStory
       if (selectedStory) {
         const s = story.stories.find(s => s.title === selectedStory)
-        output.push(this.renderStory(tag, name, s))
+        output.push(this.renderStory(category, name, s))
       } else if (doc.hasDefault) {
-        output.push(this.renderDefault(tag, name))
+        output.push(this.renderDefault(category, name))
       }
     } else {
       if (doc.hasDefault) {
-        output.push(this.renderDefault(tag, name, true))
+        output.push(this.renderDefault(category, name, true))
       }
       if (story && story.stories) {
         story.stories.forEach(s => {
-          output.push(this.renderStory(tag, name, s, true))
+          output.push(this.renderStory(category, name, s, true))
         })
       }
     }
@@ -141,12 +141,12 @@ export default class BrowseComponent extends Component {
   }
 
   render () {
-    const { name, mode, tag, story } = this.props
-    const content = this.renderContent(tag, name, mode, story)
+    const { name, mode, category, story } = this.props
+    const content = this.renderContent(category, name, mode, story)
     return (
       <div className='react-library-browse-component'>
         <h4 className='component-header'>
-          <NavLink className='component-link' to={`/${tag}/${name}`}>{name}</NavLink>
+          <NavLink className='component-link' to={`/${category}/${name}`}>{name}</NavLink>
           {(!mode && !story) ? this.renderStorySelect(name) : null}
         </h4>
         { content || this.renderEmpty() }

@@ -4,7 +4,7 @@ import * as docs from 'build/docs'
 import * as components from 'build/components'
 
 import deps from '../../dependencies'
-import componentTags from '../../componentTags'
+import componentCategories from '../../componentCategories'
 
 import DocumentationTable from '../DocumentationTable/DocumentationTable'
 import NavLink from '../NavLink/NavLink'
@@ -17,7 +17,7 @@ export default class RightBar extends Component {
     location: PropTypes.object,
     history: PropTypes.object,
     routeParams: PropTypes.shape({
-      tag: PropTypes.string,
+      category: PropTypes.string,
       component: PropTypes.string,
       story: PropTypes.string
     }),
@@ -81,15 +81,15 @@ export default class RightBar extends Component {
     if (!components[name]) {
       return <span className='dependency' key={name}>{name}</span>
     }
-    const { tag } = this.props.routeParams
-    const componentTag = componentTags.find(x => x.tag === tag)
-    const tagHasComponent = componentTag.components.indexOf(name) > -1
+    const { category } = this.props.routeParams
+    const componentCategory = componentCategories.find(x => x.category === category)
+    const categoryHasComponent = componentCategory.components.indexOf(name) > -1
     return (
       <NavLink
         key={name}
         active
         className='dependency'
-        to={`/${tagHasComponent ? tag : 'All'}/${name}`}>
+        to={`/${categoryHasComponent ? category : 'All'}/${name}`}>
         {name}
       </NavLink>
     )

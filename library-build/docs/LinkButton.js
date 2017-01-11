@@ -21,10 +21,10 @@ export default {
     }
   },
   "name": "LinkButton",
-  "tags": [
+  "categories": [
     "Button"
   ],
-  "keywords": [
+  "tags": [
     "Links",
     "href",
     "url"

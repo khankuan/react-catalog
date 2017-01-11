@@ -3,12 +3,12 @@ The library output files are generated at the `outputDir` folder, defaulted to `
 
 # Writing of Component Docs
 
-## Description, Tags, Keywords, Default
+## Description, Categories, Keywords, Default
 The documentation is powered by [react-docgen](https://github.com/reactjs/react-docgen). You can add description to a component or a particular propType:
 ```
 /**
- *  @tags: Forms, Settings
- *  @keywords: Toggle, Switch
+ *  @categories: Forms, Settings
+ *  @tags: Toggle, Switch
  *  @default
  *  This is use to denote a boolean value, usually used in forms.
  */
@@ -23,7 +23,7 @@ class CheckBox extends React.Component {
   ..
 }
 ```
-Tags and keywords are used in the navigation as well as the component search. Be sure to define them so that components can be easily found.
+Categories and tags are used in the navigation as well as the component search. Be sure to define them so that components can be easily found.
 
 ## Defining PropTypes
 PropTypes provides the reader with option to interact with the documentation. PropTypes also help to identity required fields which will help to identity stories that cannot have a default story.

@@ -4,7 +4,7 @@ import cx from 'classnames';
 import * as docs from 'build/docs'
 import * as stories from 'build/stories'
 import config, { pages } from 'build/config'
-import componentTags from '../../componentTags'
+import componentCategories from '../../componentCategories'
 import { componentSearch } from '../../searcher'
 
 import NavHeader from '../NavHeader/NavHeader'
@@ -16,7 +16,7 @@ export default class LeftBar extends Component {
   static propTypes = {
     location: PropTypes.object,
     routeParams: PropTypes.shape({
-      tag: PropTypes.string,
+      category: PropTypes.string,
       component: PropTypes.string,
       story: PropTypes.string
     })
@@ -33,14 +33,14 @@ export default class LeftBar extends Component {
   constructor (props) {
     super(props)
     const { search } = props.location.query
-    const { tag, component } = props.routeParams
+    const { category, component } = props.routeParams
     const { resultsMap, feelingLucky } = this.getFilteredComponents(search)
     this.state = {
-      expandedTag: {
-        [tag]: true
+      expandedCategory: {
+        [category]: true
       },
-      expandedTagComponent: {
-        [`${tag}_${component}`]: true
+      expandedCategoryComponent: {
+        [`${category}_${component}`]: true
       },
       filteredComponents: resultsMap,
       feelingLucky,
@@ -80,34 +80,34 @@ export default class LeftBar extends Component {
     return stories[component] && stories[component].stories && stories[component].stories.length
   }
 
-  handleTagClick = (tag, e) => {
+  handleCategoryClick = (category, e) => {
     e.preventDefault()
     this.setState({
-      expandedTag: {
-        ...this.state.expandedTag,
-        [tag]: !this.state.expandedTag[tag]
+      expandedCategory: {
+        ...this.state.expandedCategory,
+        [category]: !this.state.expandedCategory[category]
       }
     })
   }
 
-  toggleExpandComponent = (tag, component) => {
-    const key = `${tag}_${component}`
+  toggleExpandComponent = (category, component) => {
+    const key = `${category}_${component}`
     this.setState({
-      expandedTagComponent: {
-        ...this.state.expandedTagComponent,
-        [key]: !this.state.expandedTagComponent[key]
+      expandedCategoryComponent: {
+        ...this.state.expandedCategoryComponent,
+        [key]: !this.state.expandedCategoryComponent[key]
       }
     })
   }
 
-  handleComponentExpandClick = (tag, component, e) => {
+  handleComponentExpandClick = (category, component, e) => {
     e.preventDefault()
     e.stopPropagation()
-    this.toggleExpandComponent(tag, component)
+    this.toggleExpandComponent(category, component)
   }
 
-  handleComponentClick = (tag, component, e) => {
-    this.toggleExpandComponent(tag, component)
+  handleComponentClick = (category, component, e) => {
+    this.toggleExpandComponent(category, component)
   }
 
   setSearch = (search, delay = 1000) => {
@@ -149,22 +149,22 @@ export default class LeftBar extends Component {
   handleSearchPress = e => {
     //  Feeling lucky
     if (e.key === 'Enter' && e.target.value) {
-      const { tag, component } = this.props.routeParams
+      const { category, component } = this.props.routeParams
       const { filteredComponents, feelingLucky } = this.state
       if (!filteredComponents[component] && feelingLucky) { //  If current component is not a result
-        const componentTag = componentTags.find(x => x.tag === tag)
-        const tagHasComponent = componentTag && componentTag.components.indexOf(feelingLucky) > -1
-        const nextTag = tagHasComponent ? tag : 'All'
+        const componentCategory = componentCategories.find(x => x.category === category)
+        const categoryHasComponent = componentCategory && componentCategory.components.indexOf(feelingLucky) > -1
+        const nextCategory = categoryHasComponent ? category : 'All'
         const { router } = this.context
         router.push({
-          pathname: `/${nextTag}/${feelingLucky}`,
+          pathname: `/${nextCategory}/${feelingLucky}`,
           query: this.getSavedQuery()
         })
       }
     }
   }
 
-  renderTagComponentStories (tag, component, componentActive, query) {
+  renderCategoryComponentStories (category, component, componentActive, query) {
     const componentDoc = docs[component]
     const activeStory = this.props.routeParams.story
     const componentStories = stories[component]
@@ -174,7 +174,7 @@ export default class LeftBar extends Component {
         <NavLink
           className='story-link'
           to={{
-            pathname: `/${tag}/${component}/browse`,
+            pathname: `/${category}/${component}/browse`,
           }}
           key='browse2'
           active={(activeStory === 'browse') && componentActive}
@@ -189,7 +189,7 @@ export default class LeftBar extends Component {
             <NavLink
               className='story-link'
               to={{
-                pathname: `/${tag}/${component}/${story.title}`,
+                pathname: `/${category}/${component}/${story.title}`,
                 query
               }}
               onClick={this.handleLinkClick}
@@ -206,7 +206,7 @@ export default class LeftBar extends Component {
       <NavLink
         className='story-link'
         to={{
-          pathname: `/${tag}/${component}`,
+          pathname: `/${category}/${component}`,
           query
         }}
         onClick={this.handleLinkClick}
@@ -220,16 +220,16 @@ export default class LeftBar extends Component {
     return <div key='stories'>{output}</div>
   }
 
-  renderTagComponent (tag, component, query) {
+  renderCategoryComponent (category, component, query) {
     const hasStories = this.hasStories(component)
-    const expanded = this.state.expandedTagComponent[`${tag}_${component}`]
-    const active = this.props.routeParams.tag === tag && this.props.routeParams.component === component
+    const expanded = this.state.expandedCategoryComponent[`${category}_${component}`]
+    const active = this.props.routeParams.category === category && this.props.routeParams.component === component
     let output = []
     output.push(
       <NavLink
         className='component-link'
         to={{
-          pathname: `/${tag}/${component}`,
+          pathname: `/${category}/${component}`,
           query
         }}
         onClick={this.handleLinkClick}
@@ -238,50 +238,50 @@ export default class LeftBar extends Component {
         expanded={expanded}
         active={active}
         activeHighlights={!hasStories}
-        onExpandClick={this.handleComponentExpandClick.bind(null, tag, component)}
-        onClick={this.handleComponentClick.bind(null, tag, component)}>
+        onExpandClick={this.handleComponentExpandClick.bind(null, category, component)}
+        onClick={this.handleComponentClick.bind(null, category, component)}>
         {component}
       </NavLink>
     )
     if (hasStories && expanded) {
-      output.push(this.renderTagComponentStories(tag, component, active, query))
+      output.push(this.renderCategoryComponentStories(category, component, active, query))
     }
 
-    return <div key={`${tag}_${component}`}>{output}</div>
+    return <div key={`${category}_${component}`}>{output}</div>
   }
 
-  renderTag (tag, active, count) {
+  renderCategory (category, active, count) {
     return (
       <NavLink
-        className='tag-link'
+        className='category-link'
         expandable
         expanded={active}
-        key={tag}
+        key={category}
         onClick={this.handleLinkClick}
-        active={tag === this.props.routeParams.tag}
-        onClick={this.handleTagClick.bind(null, tag)}>
-        {tag} ({count})
+        active={category === this.props.routeParams.category}
+        onClick={this.handleCategoryClick.bind(null, category)}>
+        {category} ({count})
       </NavLink>
     )
   }
 
-  renderTagBrowse (tag) {
+  renderCategoryBrowse (category) {
     const { browse } = this.props
     return (
       <NavLink
         className='component-link'
-        key={`${tag}_browse`}
+        key={`${category}_browse`}
         onClick={this.handleLinkClick}
-        active={tag === this.props.routeParams.tag && browse}
-        to={`/${tag}/browse`}>
+        active={category === this.props.routeParams.category && browse}
+        to={`/${category}/browse`}>
         Browse..
       </NavLink>
     )
   }
 
-  renderTagSection (section, query) {
+  renderCategorySection (section, query) {
     const { filteredComponents } = this.state
-    const { tag } = section
+    const { category } = section
     let { components } = section
     if (filteredComponents) {
       components = components.filter(name => filteredComponents[name])
@@ -291,25 +291,25 @@ export default class LeftBar extends Component {
       return null
     }
 
-    const active = this.state.expandedTag[tag]
+    const active = this.state.expandedCategory[category]
     let output = []
     if (active) {
-      output.push(this.renderTagBrowse(tag))
-      components.forEach(component => (output.push(this.renderTagComponent(tag, component, query))))
+      output.push(this.renderCategoryBrowse(category))
+      components.forEach(component => (output.push(this.renderCategoryComponent(category, component, query))))
     }
-    output.unshift(this.renderTag(tag, active, components.length))
+    output.unshift(this.renderCategory(category, active, components.length))
 
     return output
   }
 
-  renderTags (query, search) {
+  renderCategories (query, search) {
     const output = [
-      <NavHeader key='componentTags' header='Components' className='bar-header' />,
+      <NavHeader key='componentCategories' header='Components' className='bar-header' />,
       this.renderSearch(search)
     ]
     output.push(
-      <div className='react-library-left-bar-tags' key='bar-tags'>
-        {componentTags.map(section => this.renderTagSection(section, query))}
+      <div className='react-library-left-bar-categories' key='bar-categories'>
+        {componentCategories.map(section => this.renderCategorySection(section, query))}
       </div>
     )
 
@@ -371,7 +371,7 @@ export default class LeftBar extends Component {
       <div className={cx('react-library-left-bar', { show: this.state.show })}>
         <h1 className='app-title'>{config.title}{this.renderClose()}</h1>
         {this.renderStatic()}
-        {this.renderTags(this.getSavedQuery(), search)}
+        {this.renderCategories(this.getSavedQuery(), search)}
       </div>
     )
   }

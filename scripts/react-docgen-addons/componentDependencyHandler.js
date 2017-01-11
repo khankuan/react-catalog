@@ -22,7 +22,7 @@ function addDependencies(documentation, paths, variableDeclarations, jsx) {
           return moduleName;
         }
       } else {
-        //  Native tags
+        //  Native elements
         if (typeof value !== 'string' && value.value) {
           return value.value;
         }

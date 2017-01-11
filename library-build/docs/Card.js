@@ -35,11 +35,11 @@ export default {
     }
   },
   "name": "Card",
-  "tags": [
+  "categories": [
     "Containers",
     "Cards"
   ],
-  "keywords": [
+  "tags": [
     "Box"
   ]
 }

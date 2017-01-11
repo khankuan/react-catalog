@@ -108,14 +108,14 @@ Set the theme of the well that contains the rendered output.
 
 # Description
 
-## Tags
+## Categories
 ```
-@tags: Buttons, Forms
+@categories: Buttons, Forms
 ```
 
 ## Keywords
 ```
-@keywords: Select, Dropdown, Menu
+@tags: Select, Dropdown, Menu
 ```
 
 ## Default

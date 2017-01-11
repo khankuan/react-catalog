@@ -13,10 +13,10 @@ window.onload = () => {
     <Router history={history}>
       <Route path=''>
         {pages ? pages.map((page, i) => React.cloneElement(page, { key: i, component: App, page: page.props.component })) : null}
-        <Route path=':tag/browse' component={App} />
-        <Route path=':tag/browse/:mode' component={App} />
-        <Route path=':tag/:component' component={App} />
-        <Route path=':tag/:component/:story' component={App} />
+        <Route path=':category/browse' component={App} />
+        <Route path=':category/browse/:mode' component={App} />
+        <Route path=':category/:component' component={App} />
+        <Route path=':category/:component/:story' component={App} />
         <Route path='*' component={PageNotFound} />
       </Route>
     </Router>

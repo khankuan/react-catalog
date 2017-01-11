@@ -18,7 +18,7 @@ export default class App extends Component {
   static propTypes = {
     location: PropTypes.object,
     routeParams: PropTypes.shape({
-      tag: PropTypes.string,
+      category: PropTypes.string,
       component: PropTypes.string,
       story: PropTypes.string
     })
@@ -42,8 +42,8 @@ export default class App extends Component {
 
   redirectIfNotFound (props) {
     const { route, routeParams } = props
-    const { component, story, tag } = routeParams
-    const browse = tag && !component && !story
+    const { component, story, category } = routeParams
+    const browse = category && !component && !story
     if (!route.page && !browse && story !== 'browse') { //  if component page
       if (!components[component]) {
         const { router } = this.context
@@ -137,7 +137,7 @@ export default class App extends Component {
 
   renderContent (routeParams, location, browse) {
     const { route } = this.props
-    const { story, tag } = routeParams
+    const { story, category } = routeParams
     const activeStory = this.getActiveStory(this.props)
     if (route.page) {
       return (
@@ -188,8 +188,8 @@ export default class App extends Component {
 
   render () {
     const { routeParams, location } = this.props
-    const { tag, component, story } = routeParams
-    const browse = tag && !component && !story
+    const { category, component, story } = routeParams
+    const browse = category && !component && !story
     return (
       <div className='react-library-app'>
         <LeftBar routeParams={routeParams} location={location} browse={browse} />

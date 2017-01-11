@@ -4,8 +4,8 @@ import cx from 'classnames'
 import './Card.css'
 
 /**
- * @tags: Containers, Cards
- * @keywords: Box
+ * @categories: Containers, Cards
+ * @tags: Box
  * To wrap contents in a box-like div
  */
 const Card = ({ children, depth, ...passProps }) => {

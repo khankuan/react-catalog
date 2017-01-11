@@ -4,8 +4,8 @@ import cx from 'classnames'
 import './Avatar.css'
 
 /**
- *  @tags: Image
- *  @keywords: Profile, Picture
+ *  @categories: Image
+ *  @tags: Profile, Picture
  *  @default
  *  Display pic of a user
  */
