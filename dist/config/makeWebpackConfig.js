@@ -36,11 +36,18 @@ var _extractTextWebpackPlugin2 = _interopRequireDefault(_extractTextWebpackPlugi
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var commonPlugins = [new _webpack2.default.optimize.CommonsChunkPlugin('vendor', 'vendor.js')];
+var commonPlugins = [new _webpack2.default.optimize.CommonsChunkPlugin({
+  name: 'index',
+  chunks: ['components', 'app']
+}), new _webpack2.default.optimize.CommonsChunkPlugin({
+  name: 'vendor',
+  chunks: ['vendor', 'index', 'app']
+})];
 
 var devPlugins = [].concat(commonPlugins, [new _webpack2.default.HotModuleReplacementPlugin(), new _webpack2.default.NoErrorsPlugin()]);
 
 var extractLibraryCss = new _extractTextWebpackPlugin2.default('library.css');
+var extractSourceCss = new _extractTextWebpackPlugin2.default('index.css');
 var prodPlugins = [].concat(commonPlugins, [new _webpack2.default.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }), new _webpack2.default.optimize.OccurrenceOrderPlugin(), new _webpack2.default.optimize.DedupePlugin(), new _webpack2.default.optimize.UglifyJsPlugin({
   compress: {
     screw_ie8: true, // React doesn't support IE8
@@ -53,7 +60,7 @@ var prodPlugins = [].concat(commonPlugins, [new _webpack2.default.DefinePlugin({
     comments: false,
     screw_ie8: true
   }
-}), extractLibraryCss]);
+}), extractLibraryCss, extractSourceCss]);
 
 function makeWebpackConfig(_ref) {
   var outputDir = _ref.outputDir,
@@ -72,7 +79,8 @@ function makeWebpackConfig(_ref) {
   var output = {
     entry: {
       app: ['babel-polyfill', _path2.default.resolve(librarySrc, './app/index.js')],
-      vendor: ['react', 'react-router', 'react-dom', 'history', 'react-codemirror', 'codemirror', 'js-beautify', 'react-element-to-jsx-string', 'classnames', 'react-markdown', 'fuse.js', 'react-document-title']
+      vendor: ['react', 'react-router', 'react-dom', 'history', 'react-codemirror', 'codemirror', 'js-beautify', 'react-element-to-jsx-string', 'classnames', 'react-markdown', 'fuse.js', 'react-document-title'],
+      components: [_path2.default.resolve(outputDir, './components.js')]
     },
     output: {
       path: outputPublicDir,
@@ -86,7 +94,11 @@ function makeWebpackConfig(_ref) {
         query: production ? _babel4.default : _babel2.default
       }, {
         test: /\.css$/,
-        include: [srcSrc, pagesSrc, librarySrc, outputDir, /node_modules/],
+        include: [srcSrc, pagesSrc],
+        loader: production ? extractSourceCss.extract('css!postcss') : 'style!css!postcss'
+      }, {
+        test: /\.css$/,
+        include: [librarySrc, outputDir, /node_modules/],
         loader: production ? extractLibraryCss.extract('css!postcss') : 'style!css!postcss'
       }, {
         test: /\.json$/, loader: 'json'

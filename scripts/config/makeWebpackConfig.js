@@ -6,7 +6,14 @@ import autoprefixer from 'autoprefixer'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 const commonPlugins = [
-  new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'index',
+    chunks: ['components', 'app'],
+  }),
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'vendor',
+    chunks: ['vendor', 'index', 'app'],
+  }),
 ]
 
 const devPlugins = [
@@ -16,6 +23,7 @@ const devPlugins = [
 ]
 
 const extractLibraryCss = new ExtractTextPlugin('library.css')
+const extractSourceCss = new ExtractTextPlugin('index.css')
 const prodPlugins = [
   ...commonPlugins,
   new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }),
@@ -35,6 +43,7 @@ const prodPlugins = [
     }
   }),
   extractLibraryCss,
+  extractSourceCss,
 ]
 
 export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pagesDir, configureWebpack, production }) {
@@ -60,6 +69,9 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
         'react-markdown',
         'fuse.js',
         'react-document-title',
+      ],
+      components: [
+        path.resolve(outputDir, './components.js'),
       ]
     },
     output: {
@@ -84,6 +96,12 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
           include: [
             srcSrc,
             pagesSrc,
+          ],
+          loader: production ? extractSourceCss.extract('css!postcss') : 'style!css!postcss',
+        },
+        {
+          test: /\.css$/,
+          include: [
             librarySrc,
             outputDir,
             /node_modules/
