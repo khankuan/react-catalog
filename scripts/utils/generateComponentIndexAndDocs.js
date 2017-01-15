@@ -5,7 +5,7 @@ import Promise from 'bluebird'
 import generateComponentDoc from './generateComponentDoc'
 import writeIndex from './writeIndex'
 
-export async function generateComponentDocs ({ src, componentPattern, storyPattern, outputDir }) {
+export async function generateComponentDocs ({ src, componentPattern, storyPattern, outputDir, production }) {
   const globPromise = Promise.promisify(glob)
   const files = await globPromise(componentPattern, {
     cwd: src,
@@ -15,7 +15,8 @@ export async function generateComponentDocs ({ src, componentPattern, storyPatte
   const docsDir = `${outputDir}/docs`
   const exports = {
     components: {},
-    docs: {}
+    docs: {},
+    lib: {}
   }
 
   for (let i = 0; i < files.length; i++) {
@@ -24,6 +25,9 @@ export async function generateComponentDocs ({ src, componentPattern, storyPatte
       .then(name => {
         exports.components[name] = path.relative(outputDir, `./${src}/${f}`)
         exports.docs[name] = `./docs/${name}`
+        if (production) {
+          exports.lib[name] = `./lib/${f.replace('.jsx', '.js')}`
+        }
       })
       .catch(err => {
         if (err.message === 'IGNORED') {
@@ -39,9 +43,12 @@ export async function generateComponentDocs ({ src, componentPattern, storyPatte
   return exports
 }
 
-export default async function generateComponentIndexAndDocs ({ src, componentPattern, storyPattern, outputDir }) {
-  const exports = await generateComponentDocs({ src, componentPattern, storyPattern, outputDir })
+export default async function generateComponentIndexAndDocs ({ src, componentPattern, storyPattern, outputDir, production }) {
+  const exports = await generateComponentDocs({ src, componentPattern, storyPattern, outputDir, production })
   await writeIndex({ index: 'components', exports: exports.components, outputDir })
   await writeIndex({ index: 'docs', exports: exports.docs, outputDir })
+  if (production) {
+    await writeIndex({ index: 'lib', exports: exports.lib, outputDir, es5: true })
+  }
   return exports
 }

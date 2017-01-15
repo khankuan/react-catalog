@@ -28,7 +28,8 @@ exports.default = function () {
   var _ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(_ref2) {
     var index = _ref2.index,
         exports = _ref2.exports,
-        outputDir = _ref2.outputDir;
+        outputDir = _ref2.outputDir,
+        es5 = _ref2.es5;
     var data;
     return _regenerator2.default.wrap(function _callee$(_context) {
       while (1) {
@@ -44,7 +45,7 @@ exports.default = function () {
             }).map(function (_ref3) {
               var name = _ref3.name,
                   exportName = _ref3.exportName;
-              return 'export { default as ' + exportName + ' } from \'' + exports[name] + '\'';
+              return es5 ? 'exports[\'' + exportName + '\'] = require(\'' + exports[name] + '\')' : 'export { default as ' + exportName + ' } from \'' + exports[name] + '\'';
             }).join('\n') + '\n';
             _context.next = 3;
             return (0, _writeFile2.default)({ outputPath: outputDir + '/' + index + '.js', data: data });

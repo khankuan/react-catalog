@@ -1,5 +1,5 @@
 # Library Build Files
-The library output files are generated at the `outputDir` folder, defaulted to `library-build`. You should not include this folder in gitignore. Test snapshots are stored in this folder, under the `__tests__` subfolder. In the `components.js` file, it also contains the index file to all of your components. This might be helpful when you wish to export your library as a npm module and you can reference it directly.
+The library output files are generated at the `outputDir` folder, defaulted to `library-build`. You should not include this folder in gitignore. Test snapshots are stored in this folder, under the `__tests__` subfolder. In the `lib.js` file, it also contains the index file to all of your components. This might be helpful when you wish to export your library as a npm module and you can reference it directly.
 
 # Writing of Component Docs
 

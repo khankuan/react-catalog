@@ -7,12 +7,12 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 const commonPlugins = [
   new webpack.optimize.CommonsChunkPlugin({
-    name: 'index',
+    name: 'lib',
     chunks: ['components', 'app'],
   }),
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
-    chunks: ['vendor', 'index', 'app'],
+    chunks: ['vendor', 'lib', 'app'],
   }),
 ]
 
@@ -23,7 +23,7 @@ const devPlugins = [
 ]
 
 const extractLibraryCss = new ExtractTextPlugin('library.css')
-const extractSourceCss = new ExtractTextPlugin('index.css')
+const extractSourceCss = new ExtractTextPlugin('lib.css')
 const prodPlugins = [
   ...commonPlugins,
   new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }),

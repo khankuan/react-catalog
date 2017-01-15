@@ -20,7 +20,8 @@ var generateComponentDocs = exports.generateComponentDocs = function () {
     var src = _ref2.src,
         componentPattern = _ref2.componentPattern,
         storyPattern = _ref2.storyPattern,
-        outputDir = _ref2.outputDir;
+        outputDir = _ref2.outputDir,
+        production = _ref2.production;
 
     var globPromise, files, docsDir, exports, _loop, i;
 
@@ -40,7 +41,8 @@ var generateComponentDocs = exports.generateComponentDocs = function () {
             docsDir = outputDir + '/docs';
             exports = {
               components: {},
-              docs: {}
+              docs: {},
+              lib: {}
             };
             _loop = _regenerator2.default.mark(function _callee(i) {
               var f;
@@ -53,6 +55,9 @@ var generateComponentDocs = exports.generateComponentDocs = function () {
                       return (0, _generateComponentDoc2.default)({ inputPath: _path2.default.resolve(src + '/', f), outputDir: docsDir }).then(function (name) {
                         exports.components[name] = _path2.default.relative(outputDir, './' + src + '/' + f);
                         exports.docs[name] = './docs/' + name;
+                        if (production) {
+                          exports.lib[name] = './lib/' + f.replace('.jsx', '.js');
+                        }
                       }).catch(function (err) {
                         if (err.message === 'IGNORED') {
                           console.warn(_chalk2.default.yellow('Ignored:', f));
@@ -132,14 +137,15 @@ exports.default = function () {
     var src = _ref4.src,
         componentPattern = _ref4.componentPattern,
         storyPattern = _ref4.storyPattern,
-        outputDir = _ref4.outputDir;
+        outputDir = _ref4.outputDir,
+        production = _ref4.production;
     var exports;
     return _regenerator2.default.wrap(function _callee3$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
             _context3.next = 2;
-            return generateComponentDocs({ src: src, componentPattern: componentPattern, storyPattern: storyPattern, outputDir: outputDir });
+            return generateComponentDocs({ src: src, componentPattern: componentPattern, storyPattern: storyPattern, outputDir: outputDir, production: production });
 
           case 2:
             exports = _context3.sent;
@@ -151,9 +157,18 @@ exports.default = function () {
             return (0, _writeIndex2.default)({ index: 'docs', exports: exports.docs, outputDir: outputDir });
 
           case 7:
+            if (!production) {
+              _context3.next = 10;
+              break;
+            }
+
+            _context3.next = 10;
+            return (0, _writeIndex2.default)({ index: 'lib', exports: exports.lib, outputDir: outputDir, es5: true });
+
+          case 10:
             return _context3.abrupt('return', exports);
 
-          case 8:
+          case 11:
           case 'end':
             return _context3.stop();
         }

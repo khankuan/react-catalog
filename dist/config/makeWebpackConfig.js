@@ -37,17 +37,17 @@ var _extractTextWebpackPlugin2 = _interopRequireDefault(_extractTextWebpackPlugi
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var commonPlugins = [new _webpack2.default.optimize.CommonsChunkPlugin({
-  name: 'index',
+  name: 'lib',
   chunks: ['components', 'app']
 }), new _webpack2.default.optimize.CommonsChunkPlugin({
   name: 'vendor',
-  chunks: ['vendor', 'index', 'app']
+  chunks: ['vendor', 'lib', 'app']
 })];
 
 var devPlugins = [].concat(commonPlugins, [new _webpack2.default.HotModuleReplacementPlugin(), new _webpack2.default.NoErrorsPlugin()]);
 
 var extractLibraryCss = new _extractTextWebpackPlugin2.default('library.css');
-var extractSourceCss = new _extractTextWebpackPlugin2.default('index.css');
+var extractSourceCss = new _extractTextWebpackPlugin2.default('lib.css');
 var prodPlugins = [].concat(commonPlugins, [new _webpack2.default.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }), new _webpack2.default.optimize.OccurrenceOrderPlugin(), new _webpack2.default.optimize.DedupePlugin(), new _webpack2.default.optimize.UglifyJsPlugin({
   compress: {
     screw_ie8: true, // React doesn't support IE8

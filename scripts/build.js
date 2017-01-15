@@ -5,6 +5,7 @@ import generateComponentIndexAndDocs from './utils/generateComponentIndexAndDocs
 import generateStoryIndex from './utils/generateStoryIndex'
 import generateConfig from './utils/generateConfig'
 import startWebpackProd from './utils/startWebpackProd'
+import transpile from './utils/transpile'
 import makeWebpackConfig from './config/makeWebpackConfig'
 
 export default async function build ({ src, pagesDir, assets, outputDir, head, body, title,
@@ -15,8 +16,12 @@ export default async function build ({ src, pagesDir, assets, outputDir, head, b
   await generateAssets({ outputDir, assets, head, body, production: true })
   console.log(chalk.green('Assets generated.'))
 
+  //  Transpile to lib
+  await transpile({ src, outputDir, storyPattern })
+  console.log(chalk.green('Src transpiled'))
+
   //  Generate component index, docs and story index
-  await generateComponentIndexAndDocs({ src, componentPattern, storyPattern, outputDir })
+  await generateComponentIndexAndDocs({ src, componentPattern, storyPattern, outputDir, production: true })
   console.log(chalk.green('Component docs generated.'))
   generateStoryIndex({ src, storyPattern, outputDir })
   console.log(chalk.green('Stories generated.'))
@@ -27,7 +32,14 @@ export default async function build ({ src, pagesDir, assets, outputDir, head, b
 
   //  Start build and server
   const outputPublicDir = `${outputDir}/public`
-  const webpackConfig = makeWebpackConfig({ src, outputDir, outputPublicDir, pagesDir, configureWebpack, production: true })
+  const webpackConfig = makeWebpackConfig({
+    src,
+    outputDir,
+    outputPublicDir,
+    pagesDir,
+    configureWebpack,
+    production: true,
+  })
 
   await startWebpackProd({ webpackConfig, outputDir: outputPublicDir })
   console.log(chalk.green('Bundle built.'))

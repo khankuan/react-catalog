@@ -40,6 +40,10 @@ var _startWebpackProd = require('./utils/startWebpackProd');
 
 var _startWebpackProd2 = _interopRequireDefault(_startWebpackProd);
 
+var _transpile = require('./utils/transpile');
+
+var _transpile2 = _interopRequireDefault(_transpile);
+
 var _makeWebpackConfig = require('./config/makeWebpackConfig');
 
 var _makeWebpackConfig2 = _interopRequireDefault(_makeWebpackConfig);
@@ -76,43 +80,57 @@ exports.default = function () {
           case 5:
             console.log(_chalk2.default.green('Assets generated.'));
 
-            //  Generate component index, docs and story index
+            //  Transpile to lib
             _context.next = 8;
-            return (0, _generateComponentIndexAndDocs2.default)({ src: src, componentPattern: componentPattern, storyPattern: storyPattern, outputDir: outputDir });
+            return (0, _transpile2.default)({ src: src, outputDir: outputDir, storyPattern: storyPattern });
 
           case 8:
+            console.log(_chalk2.default.green('Src transpiled'));
+
+            //  Generate component index, docs and story index
+            _context.next = 11;
+            return (0, _generateComponentIndexAndDocs2.default)({ src: src, componentPattern: componentPattern, storyPattern: storyPattern, outputDir: outputDir, production: true });
+
+          case 11:
             console.log(_chalk2.default.green('Component docs generated.'));
             (0, _generateStoryIndex2.default)({ src: src, storyPattern: storyPattern, outputDir: outputDir });
             console.log(_chalk2.default.green('Stories generated.'));
 
             //  Generate config file
-            _context.next = 13;
+            _context.next = 16;
             return (0, _generateConfig2.default)({ outputDir: outputDir, title: title, pagesDir: pagesDir });
 
-          case 13:
+          case 16:
             console.log(_chalk2.default.green('Config generated.'));
 
             //  Start build and server
             outputPublicDir = outputDir + '/public';
-            webpackConfig = (0, _makeWebpackConfig2.default)({ src: src, outputDir: outputDir, outputPublicDir: outputPublicDir, pagesDir: pagesDir, configureWebpack: configureWebpack, production: true });
-            _context.next = 18;
+            webpackConfig = (0, _makeWebpackConfig2.default)({
+              src: src,
+              outputDir: outputDir,
+              outputPublicDir: outputPublicDir,
+              pagesDir: pagesDir,
+              configureWebpack: configureWebpack,
+              production: true
+            });
+            _context.next = 21;
             return (0, _startWebpackProd2.default)({ webpackConfig: webpackConfig, outputDir: outputPublicDir });
 
-          case 18:
+          case 21:
             console.log(_chalk2.default.green('Bundle built.'));
 
             if (!postBuild) {
-              _context.next = 23;
+              _context.next = 26;
               break;
             }
 
-            _context.next = 22;
+            _context.next = 25;
             return postBuild();
 
-          case 22:
+          case 25:
             console.log(_chalk2.default.green('Post build completed.'));
 
-          case 23:
+          case 26:
           case 'end':
             return _context.stop();
         }
