@@ -28,7 +28,7 @@ var run = function () {
             return (0, _test2.default)(conf, { update: _commander2.default.update });
 
           case 4:
-            _context.next = 33;
+            _context.next = 31;
             break;
 
           case 6:
@@ -41,62 +41,58 @@ var run = function () {
             return (0, _build2.default)(conf);
 
           case 9:
-            _context.next = 33;
+            _context.next = 31;
             break;
 
           case 11:
             if (!_commander2.default.publish) {
-              _context.next = 18;
+              _context.next = 16;
               break;
             }
 
             _context.next = 14;
-            return (0, _build2.default)(conf);
-
-          case 14:
-            _context.next = 16;
             return (0, _publish2.default)(conf);
 
-          case 16:
-            _context.next = 33;
+          case 14:
+            _context.next = 31;
             break;
 
-          case 18:
+          case 16:
             if (!_commander2.default.lint) {
-              _context.next = 31;
+              _context.next = 29;
               break;
             }
 
-            _context.prev = 19;
-            _context.next = 22;
+            _context.prev = 17;
+            _context.next = 20;
             return (0, _lint2.default)(conf, { fix: _commander2.default.fix });
 
-          case 22:
-            _context.next = 29;
+          case 20:
+            _context.next = 27;
             break;
 
-          case 24:
-            _context.prev = 24;
-            _context.t0 = _context['catch'](19);
+          case 22:
+            _context.prev = 22;
+            _context.t0 = _context['catch'](17);
 
             console.error(_chalk2.default.red(_context.t0));
             console.error(_chalk2.default.red('standard: Use JavaScript Standard Style (http://standardjs.com)'));
             console.error(_chalk2.default.red('Run again with --fix` to automatically fix some problems.'));
 
-          case 29:
-            _context.next = 33;
+          case 27:
+            _context.next = 31;
             break;
 
-          case 31:
-            _context.next = 33;
+          case 29:
+            _context.next = 31;
             return (0, _start2.default)(conf);
 
-          case 33:
+          case 31:
           case 'end':
             return _context.stop();
         }
       }
-    }, _callee, this, [[19, 24]]);
+    }, _callee, this, [[17, 22]]);
   }));
 
   return function run() {

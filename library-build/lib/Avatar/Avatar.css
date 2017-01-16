@@ -1,0 +1,23 @@
+.demo-avatar {
+  height: 40px;
+  width: 40px;
+  display: inline-block;
+  border-width: 3px;
+  border-style: solid;
+}
+
+.demo-avatar-type-round {
+  border-radius: 22px;
+}
+
+.demo-avatar-type-square {
+  border-radius: 2px;
+}
+
+.demo-avatar-theme-light {
+  border-color: #ccc;
+}
+
+.demo-avatar-theme-dark {
+  border-color: #999;
+}
