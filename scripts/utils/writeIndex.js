@@ -10,7 +10,7 @@ export default async function writeIndex ({ index, exports, outputDir, es5 }) {
     }))
     .sort((a, b) => (a.exportName - b.exportName))
     .map(({ name, exportName }) => es5 ?
-      `exports['${exportName}'] = require('${exports[name]}')` :
+      `exports['${exportName}'] = require('${exports[name]}').default` :
       `export { default as ${exportName} } from '${exports[name]}'`)
     .join('\n') + '\n'
   await writeFile({ outputPath: `${outputDir}/${index}.js`, data })

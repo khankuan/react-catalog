@@ -45,7 +45,7 @@ exports.default = function () {
             }).map(function (_ref3) {
               var name = _ref3.name,
                   exportName = _ref3.exportName;
-              return es5 ? 'exports[\'' + exportName + '\'] = require(\'' + exports[name] + '\')' : 'export { default as ' + exportName + ' } from \'' + exports[name] + '\'';
+              return es5 ? 'exports[\'' + exportName + '\'] = require(\'' + exports[name] + '\').default' : 'export { default as ' + exportName + ' } from \'' + exports[name] + '\'';
             }).join('\n') + '\n';
             _context.next = 3;
             return (0, _writeFile2.default)({ outputPath: outputDir + '/' + index + '.js', data: data });
