@@ -40,7 +40,8 @@ var commonPlugins = [new _webpack2.default.LoaderOptionsPlugin({
   options: {
     postcss: [(0, _autoprefixer2.default)({
       browsers: ['last 2 version']
-    })]
+    })],
+    context: process.cwd()
   }
 }), new _webpack2.default.optimize.CommonsChunkPlugin({
   name: 'lib',
@@ -67,6 +68,13 @@ var prodPlugins = [].concat(commonPlugins, [new _webpack2.default.DefinePlugin({
     screw_ie8: true
   }
 }), extractLibraryCss, extractSourceCss]);
+
+var cssLoader = {
+  loader: 'css-loader',
+  options: {
+    sourceMap: true
+  }
+};
 
 function makeWebpackConfig(_ref) {
   var outputDir = _ref.outputDir,
@@ -104,14 +112,14 @@ function makeWebpackConfig(_ref) {
         test: /\.css$/,
         include: [srcSrc, pagesSrc],
         use: production ? extractSourceCss.extract({
-          loader: ['css-loader', 'postcss-loader']
-        }) : ['style-loader', 'css-loader', 'postcss-loader']
+          loader: [cssLoader, 'postcss-loader']
+        }) : ['style-loader', cssLoader, 'postcss-loader']
       }, {
         test: /\.css$/,
         include: [librarySrc, outputDir, /node_modules/],
         use: production ? extractSourceCss.extract({
-          loader: ['css-loader', 'postcss-loader']
-        }) : ['style-loader', 'css-loader', 'postcss-loader']
+          loader: [cssLoader, 'postcss-loader']
+        }) : ['style-loader', cssLoader, 'postcss-loader']
       }, {
         test: /\.json$/,
         use: 'json-loader'

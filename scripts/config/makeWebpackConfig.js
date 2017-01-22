@@ -12,7 +12,8 @@ const commonPlugins = [
         autoprefixer({
           browsers: ['last 2 version']
         })
-      ]
+      ],
+      context: process.cwd(),
     }
   }),
   new webpack.optimize.CommonsChunkPlugin({
@@ -53,6 +54,13 @@ const prodPlugins = [
   extractLibraryCss,
   extractSourceCss,
 ];
+
+const cssLoader = {
+  loader: 'css-loader',
+  options: {
+    sourceMap: true,
+  },
+}
 
 export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pagesDir, configureWebpack, production }) {
   const librarySrc = path.resolve(__dirname, '../../src')
@@ -110,8 +118,8 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
             pagesSrc,
           ],
           use: production ? extractSourceCss.extract({
-            loader: ['css-loader', 'postcss-loader'],
-          }) : ['style-loader', 'css-loader', 'postcss-loader'],
+            loader: [cssLoader, 'postcss-loader'],
+          }) : ['style-loader', cssLoader, 'postcss-loader'],
         },
         {
           test: /\.css$/,
@@ -121,8 +129,8 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
             /node_modules/
           ],
           use: production ? extractSourceCss.extract({
-            loader: ['css-loader', 'postcss-loader'],
-          }) : ['style-loader', 'css-loader', 'postcss-loader'],
+            loader: [cssLoader, 'postcss-loader'],
+          }) : ['style-loader', cssLoader, 'postcss-loader'],
         },
         {
           test: /\.json$/,
