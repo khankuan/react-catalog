@@ -6,6 +6,15 @@ import autoprefixer from 'autoprefixer'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 const commonPlugins = [
+  new webpack.LoaderOptionsPlugin({
+    options: {
+      postcss: [
+        autoprefixer({
+          browsers: ['last 2 version']
+        })
+      ]
+    }
+  }),
   new webpack.optimize.CommonsChunkPlugin({
     name: 'lib',
     chunks: ['components', 'app'],
@@ -19,7 +28,7 @@ const commonPlugins = [
 const devPlugins = [
   ...commonPlugins,
   new webpack.HotModuleReplacementPlugin(),
-  new webpack.NoErrorsPlugin(),
+  new webpack.NoEmitOnErrorsPlugin(),
 ]
 
 const extractLibraryCss = new ExtractTextPlugin('library.css')
@@ -27,7 +36,6 @@ const extractSourceCss = new ExtractTextPlugin('lib.css')
 const prodPlugins = [
   ...commonPlugins,
   new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }),
-  new webpack.optimize.OccurrenceOrderPlugin(),
   new webpack.optimize.DedupePlugin(),
   new webpack.optimize.UglifyJsPlugin({
     compress: {
@@ -44,7 +52,7 @@ const prodPlugins = [
   }),
   extractLibraryCss,
   extractSourceCss,
-]
+];
 
 export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pagesDir, configureWebpack, production }) {
   const librarySrc = path.resolve(__dirname, '../../src')
@@ -79,17 +87,21 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
       filename: '[name].js'
     },
     module: {
-      loaders: [
+      rules: [
         {
           test: /\.jsx?$/,
-          loader: 'babel',
+          use: [
+            {
+              loader: 'babel-loader',
+              options: production ? babelProd : babelDev
+            },
+          ],
           include: [
             srcSrc,
             librarySrc,
             outputDir,
             pagesSrc
           ],
-          query: production ? babelProd : babelDev
         },
         {
           test: /\.css$/,
@@ -97,7 +109,9 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
             srcSrc,
             pagesSrc,
           ],
-          loader: production ? extractSourceCss.extract('css!postcss') : 'style!css!postcss',
+          use: production ? extractSourceCss.extract({
+            loader: ['css-loader', 'postcss-loader'],
+          }) : ['style-loader', 'css-loader', 'postcss-loader'],
         },
         {
           test: /\.css$/,
@@ -106,31 +120,34 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
             outputDir,
             /node_modules/
           ],
-          loader: production ? extractLibraryCss.extract('css!postcss') : 'style!css!postcss',
+          use: production ? extractSourceCss.extract({
+            loader: ['css-loader', 'postcss-loader'],
+          }) : ['style-loader', 'css-loader', 'postcss-loader'],
         },
         {
-          test: /\.json$/, loader: 'json'
+          test: /\.json$/,
+          use: 'json-loader'
         },
         {
           test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|eot|ttf)$/,
-          loader: 'url?limit=10000'
+          use: {
+            loader: 'url-loader',
+            options: { limit: 10000 },
+          },
         },
         {
           test: /\.html$/,
-          loader: 'html'
+          use: 'html-loader'
         },
         {
           test: /\.md$/,
-          loader: 'html!markdown'
+          use: ['html-loader', 'markdown-loader'],
         }
       ]
     },
-    postcss: function () {
-      return [autoprefixer]
-    },
     resolve: {
-      extensions: ['', '.js', '.jsx', '.html', '.md', '.json'],
-      modulesDirectories: ['node_modules'],
+      extensions: ['.js', '.jsx', '.html', '.md', '.json'],
+      modules: ['node_modules'],
       alias: {
         build: outputDir,
         'react-library': librarySrc
