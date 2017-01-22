@@ -5,6 +5,9 @@ export default async function webpackProd ({ webpackConfig, outputDir, port }) {
     webpack(webpackConfig).run((err, stats) => {
       if (err) {
         reject(err)
+      } else if (stats.hasErrors()) {
+        const info = stats.toJson();
+        reject(info.errors)
       } else {
         resolve()
       }

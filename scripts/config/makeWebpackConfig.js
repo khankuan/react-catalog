@@ -14,7 +14,7 @@ const commonPlugins = [
         })
       ],
       context: process.cwd(),
-    }
+    },
   }),
   new webpack.optimize.CommonsChunkPlugin({
     name: 'lib',
@@ -32,8 +32,8 @@ const devPlugins = [
   new webpack.NoEmitOnErrorsPlugin(),
 ]
 
-const extractLibraryCss = new ExtractTextPlugin('library.css')
-const extractSourceCss = new ExtractTextPlugin('lib.css')
+const extractLibraryCss = new ExtractTextPlugin({ filename: 'library.css', allChunks: true })
+const extractSourceCss = new ExtractTextPlugin({ filename: 'lib.css' })
 const prodPlugins = [
   ...commonPlugins,
   new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }),
@@ -115,22 +115,24 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
           test: /\.css$/,
           include: [
             srcSrc,
-            pagesSrc,
           ],
-          use: production ? extractSourceCss.extract({
+          loader: production ? extractSourceCss.extract({
             loader: [cssLoader, 'postcss-loader'],
-          }) : ['style-loader', cssLoader, 'postcss-loader'],
+          }) : undefined,
+          use: production ? undefined : ['style-loader', cssLoader, 'postcss-loader'],
         },
         {
           test: /\.css$/,
           include: [
+            pagesSrc,
             librarySrc,
             outputDir,
-            /node_modules/
+            /node_modules/,
           ],
-          use: production ? extractSourceCss.extract({
+          loader: production ? extractLibraryCss.extract({
             loader: [cssLoader, 'postcss-loader'],
-          }) : ['style-loader', cssLoader, 'postcss-loader'],
+          }) : undefined,
+          use: production ? undefined : ['style-loader', cssLoader, 'postcss-loader'],
         },
         {
           test: /\.json$/,

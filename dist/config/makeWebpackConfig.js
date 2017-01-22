@@ -53,8 +53,8 @@ var commonPlugins = [new _webpack2.default.LoaderOptionsPlugin({
 
 var devPlugins = [].concat(commonPlugins, [new _webpack2.default.HotModuleReplacementPlugin(), new _webpack2.default.NoEmitOnErrorsPlugin()]);
 
-var extractLibraryCss = new _extractTextWebpackPlugin2.default('library.css');
-var extractSourceCss = new _extractTextWebpackPlugin2.default('lib.css');
+var extractLibraryCss = new _extractTextWebpackPlugin2.default({ filename: 'library.css', allChunks: true });
+var extractSourceCss = new _extractTextWebpackPlugin2.default({ filename: 'lib.css' });
 var prodPlugins = [].concat(commonPlugins, [new _webpack2.default.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }), new _webpack2.default.optimize.DedupePlugin(), new _webpack2.default.optimize.UglifyJsPlugin({
   compress: {
     screw_ie8: true, // React doesn't support IE8
@@ -110,16 +110,18 @@ function makeWebpackConfig(_ref) {
         include: [srcSrc, librarySrc, outputDir, pagesSrc]
       }, {
         test: /\.css$/,
-        include: [srcSrc, pagesSrc],
-        use: production ? extractSourceCss.extract({
+        include: [srcSrc],
+        loader: production ? extractSourceCss.extract({
           loader: [cssLoader, 'postcss-loader']
-        }) : ['style-loader', cssLoader, 'postcss-loader']
+        }) : undefined,
+        use: production ? undefined : ['style-loader', cssLoader, 'postcss-loader']
       }, {
         test: /\.css$/,
-        include: [librarySrc, outputDir, /node_modules/],
-        use: production ? extractSourceCss.extract({
+        include: [pagesSrc, librarySrc, outputDir, /node_modules/],
+        loader: production ? extractLibraryCss.extract({
           loader: [cssLoader, 'postcss-loader']
-        }) : ['style-loader', cssLoader, 'postcss-loader']
+        }) : undefined,
+        use: production ? undefined : ['style-loader', cssLoader, 'postcss-loader']
       }, {
         test: /\.json$/,
         use: 'json-loader'

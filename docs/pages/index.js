@@ -8,7 +8,7 @@ import Guide from './guide'
 import Backlog from './backlog'
 import Api from './api'
 
-import './index.css'
+import x from './index.css'
 
 export default [
   <NavHeader header='Documentation' />,
