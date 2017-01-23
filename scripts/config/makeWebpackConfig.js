@@ -32,8 +32,9 @@ const devPlugins = [
   new webpack.NoEmitOnErrorsPlugin(),
 ]
 
-const extractLibraryCss = new ExtractTextPlugin({ filename: 'library.css', allChunks: true })
+const extractLibraryCss = new ExtractTextPlugin({ filename: 'library.css' })
 const extractSourceCss = new ExtractTextPlugin({ filename: 'lib.css' })
+const extractPagesCss = new ExtractTextPlugin({ filename: 'pages.css' })
 const prodPlugins = [
   ...commonPlugins,
   new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }),
@@ -53,6 +54,7 @@ const prodPlugins = [
   }),
   extractLibraryCss,
   extractSourceCss,
+  extractPagesCss,
 ];
 
 const cssLoader = {
@@ -88,7 +90,7 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
       ],
       components: [
         path.resolve(outputDir, './components.js'),
-      ]
+      ],
     },
     output: {
       path: outputPublicDir,
@@ -114,6 +116,18 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
         {
           test: /\.css$/,
           include: [
+            librarySrc,
+            outputDir,
+            /node_modules/,
+          ],
+          loader: production ? extractLibraryCss.extract({
+            loader: [cssLoader, 'postcss-loader'],
+          }) : undefined,
+          use: production ? undefined : ['style-loader', cssLoader, 'postcss-loader'],
+        },
+        {
+          test: /\.css$/,
+          include: [
             srcSrc,
           ],
           loader: production ? extractSourceCss.extract({
@@ -125,11 +139,8 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
           test: /\.css$/,
           include: [
             pagesSrc,
-            librarySrc,
-            outputDir,
-            /node_modules/,
           ],
-          loader: production ? extractLibraryCss.extract({
+          loader: production ? extractPagesCss.extract({
             loader: [cssLoader, 'postcss-loader'],
           }) : undefined,
           use: production ? undefined : ['style-loader', cssLoader, 'postcss-loader'],

@@ -8,6 +8,7 @@ export default function ({ head = '', body = '', production }) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   ${production ? '<link href="library.css" rel="stylesheet" type="text/css">' : ''}
   ${production ? '<link href="lib.css" rel="stylesheet" type="text/css">' : ''}
+  ${production ? '<link href="pages.css" rel="stylesheet" type="text/css">' : ''}
   ${typeof head === 'function' ? head(production) : head }
 </head>
 

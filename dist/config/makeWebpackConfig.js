@@ -53,8 +53,9 @@ var commonPlugins = [new _webpack2.default.LoaderOptionsPlugin({
 
 var devPlugins = [].concat(commonPlugins, [new _webpack2.default.HotModuleReplacementPlugin(), new _webpack2.default.NoEmitOnErrorsPlugin()]);
 
-var extractLibraryCss = new _extractTextWebpackPlugin2.default({ filename: 'library.css', allChunks: true });
+var extractLibraryCss = new _extractTextWebpackPlugin2.default({ filename: 'library.css' });
 var extractSourceCss = new _extractTextWebpackPlugin2.default({ filename: 'lib.css' });
+var extractPagesCss = new _extractTextWebpackPlugin2.default({ filename: 'pages.css' });
 var prodPlugins = [].concat(commonPlugins, [new _webpack2.default.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }), new _webpack2.default.optimize.DedupePlugin(), new _webpack2.default.optimize.UglifyJsPlugin({
   compress: {
     screw_ie8: true, // React doesn't support IE8
@@ -67,7 +68,7 @@ var prodPlugins = [].concat(commonPlugins, [new _webpack2.default.DefinePlugin({
     comments: false,
     screw_ie8: true
   }
-}), extractLibraryCss, extractSourceCss]);
+}), extractLibraryCss, extractSourceCss, extractPagesCss]);
 
 var cssLoader = {
   loader: 'css-loader',
@@ -110,6 +111,13 @@ function makeWebpackConfig(_ref) {
         include: [srcSrc, librarySrc, outputDir, pagesSrc]
       }, {
         test: /\.css$/,
+        include: [librarySrc, outputDir, /node_modules/],
+        loader: production ? extractLibraryCss.extract({
+          loader: [cssLoader, 'postcss-loader']
+        }) : undefined,
+        use: production ? undefined : ['style-loader', cssLoader, 'postcss-loader']
+      }, {
+        test: /\.css$/,
         include: [srcSrc],
         loader: production ? extractSourceCss.extract({
           loader: [cssLoader, 'postcss-loader']
@@ -117,8 +125,8 @@ function makeWebpackConfig(_ref) {
         use: production ? undefined : ['style-loader', cssLoader, 'postcss-loader']
       }, {
         test: /\.css$/,
-        include: [pagesSrc, librarySrc, outputDir, /node_modules/],
-        loader: production ? extractLibraryCss.extract({
+        include: [pagesSrc],
+        loader: production ? extractPagesCss.extract({
           loader: [cssLoader, 'postcss-loader']
         }) : undefined,
         use: production ? undefined : ['style-loader', cssLoader, 'postcss-loader']
