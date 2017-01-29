@@ -7,6 +7,7 @@ import build from './build'
 import publish from './publish'
 import test from './test'
 import lint from './lint'
+import transpile from './transpile'
 
 //  Script
 program
@@ -18,6 +19,7 @@ program
   .option('-u, --update', 'Run test and update')
   .option('-l, --lint', 'Lint code')
   .option('-f, --fix', 'Lint code and fix')
+  .option('-r, --transpile', 'Transpile')
   .parse(process.argv)
 
 async function run () {
@@ -28,6 +30,8 @@ async function run () {
     await test(conf, { update: program.update })
   } else if (program.build) {
     await build(conf)
+  } else if (program.transpile) {
+    await transpile(conf)
   } else if (program.publish) {
     await publish(conf)
   } else if (program.lint) {

@@ -4,8 +4,7 @@ import path from 'path'
 
 import generateComponentsTests from './utils/generateComponentsTests'
 
-export default async function test ({ src, componentPattern, storyPattern, outputDir }, { update }) {
-  const testDir = path.resolve(outputDir, '__tests__')
+export default async function test ({ src, componentPattern, storyPattern, testDir }, { update }) {
   const stub = path.resolve(__dirname, 'utils/stub.js')
   await generateComponentsTests({ src, componentPattern, storyPattern, outputDir: testDir })
   console.log(chalk.green('Tests generated.'))

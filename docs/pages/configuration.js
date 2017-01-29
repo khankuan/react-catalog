@@ -30,6 +30,11 @@ const Configuration = () => (
           <td>library-build</td>
         </tr>
         <tr>
+          <td>testDir</td>
+          <td>Directory that will contain all tests generated and snapshots</td>
+          <td>library-tests</td>
+        </tr>
+        <tr>
           <td>assets</td>
           <td>Array of assets to copy, e.g, <code>{`[{ src: 'assets/fonts', dest: 'fonts' }]`}</code></td>
           <td>[]</td>

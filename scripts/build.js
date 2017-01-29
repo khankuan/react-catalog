@@ -10,17 +10,13 @@ import makeWebpackConfig from './config/makeWebpackConfig'
 
 export default async function build ({ src, pagesDir, assets, outputDir, head, body, title,
   componentPattern, storyPattern, configureWebpack, postBuild }) {
-  await clearOutput({ outputDir: `${outputDir}/!(__tests__)` })
+  await clearOutput({ outputDir })
   console.log(chalk.green('Folder reset.'))
 
   await generateAssets({ outputDir, assets, head, body, production: true })
   console.log(chalk.green('Assets generated.'))
 
-  //  Transpile to lib
-  await transpile({ src, outputDir, storyPattern })
-  console.log(chalk.green('Src transpiled'))
-
-  //  Generate component index, docs and story index
+  //  Generate docs and story index
   await generateComponentIndexAndDocs({ src, componentPattern, storyPattern, outputDir, production: true })
   console.log(chalk.green('Component docs generated.'))
   generateStoryIndex({ src, storyPattern, outputDir })

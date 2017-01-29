@@ -1,5 +1,5 @@
 # Library Build Files
-The library output files are generated at the `outputDir` folder, defaulted to `library-build`. You should not include this folder in gitignore. Test snapshots are stored in this folder, under the `__tests__` subfolder. In the `lib.js` file, it also contains the index file to all of your components. This might be helpful when you wish to export your library as a npm module and you can reference it directly.
+The library output files are generated at the `outputDir` folder, defaults to `library-build`. Test snapshots are stored in `testDir` folder, defaults to `library-tests`. You might want to include these folders in gitignore, except `library-tests/__snapshots__`.
 
 # Writing of Component Docs
 
@@ -135,3 +135,14 @@ Linting is always helpful to reduce code inconsistency and more important identi
   ..
 ```
 `fix-lint` is provided by StandardJS to automatically fix certain errors/warnings that it knows how to fix.
+
+# Transpile
+You might want to transpile the components to es5 for exporting. The transpiled folder is at `library-build/lib/*` and the index file of all the components is at `library-build/lib.js`
+```
+  ..,
+  "scripts": {
+    ..,
+    "lint": "react-library --transpile",
+  },
+  ..
+```

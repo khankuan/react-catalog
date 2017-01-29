@@ -11,7 +11,7 @@ import makeWebpackConfig from './config/makeWebpackConfig'
 
 export default async function start ({ src, pagesDir, assets, outputDir, head, body, title,
   componentPattern, storyPattern, configureWebpack, postBuild, port }) {
-  await clearOutput({ outputDir: `${outputDir}/!(__tests__)` })
+  await clearOutput({ outputDir })
   console.log(chalk.green('Folder reset.'))
 
   await generateAssets({ outputDir, assets, head, body })
