@@ -156,7 +156,7 @@ function makeWebpackConfig(_ref) {
       }
     },
     plugins: [].concat((0, _toConsumableArray3.default)(production ? prodPlugins : devPlugins)),
-    devtool: 'eval'
+    devtool: production ? 'source-map' : 'cheap-module-source-map'
   };
 
   if (configureWebpack) {

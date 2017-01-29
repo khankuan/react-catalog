@@ -177,7 +177,7 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
     plugins: [
       ...(production ? prodPlugins : devPlugins)
     ],
-    devtool: 'eval',
+    devtool: production ? 'source-map' : 'cheap-module-source-map',
   }
 
   if (configureWebpack) {
