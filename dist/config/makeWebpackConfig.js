@@ -36,7 +36,14 @@ var _extractTextWebpackPlugin2 = _interopRequireDefault(_extractTextWebpackPlugi
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var commonPlugins = [new _webpack2.default.optimize.CommonsChunkPlugin({
+var commonPlugins = [new _webpack2.default.LoaderOptionsPlugin({
+  options: {
+    postcss: [(0, _autoprefixer2.default)({
+      browsers: ['last 2 version']
+    })],
+    context: process.cwd()
+  }
+}), new _webpack2.default.optimize.CommonsChunkPlugin({
   name: 'lib',
   chunks: ['components', 'app']
 }), new _webpack2.default.optimize.CommonsChunkPlugin({
@@ -44,11 +51,12 @@ var commonPlugins = [new _webpack2.default.optimize.CommonsChunkPlugin({
   chunks: ['vendor', 'lib', 'app']
 })];
 
-var devPlugins = [].concat(commonPlugins, [new _webpack2.default.HotModuleReplacementPlugin(), new _webpack2.default.NoErrorsPlugin()]);
+var devPlugins = [].concat(commonPlugins, [new _webpack2.default.HotModuleReplacementPlugin(), new _webpack2.default.NoEmitOnErrorsPlugin()]);
 
-var extractLibraryCss = new _extractTextWebpackPlugin2.default('library.css');
-var extractSourceCss = new _extractTextWebpackPlugin2.default('lib.css');
-var prodPlugins = [].concat(commonPlugins, [new _webpack2.default.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }), new _webpack2.default.optimize.OccurrenceOrderPlugin(), new _webpack2.default.optimize.DedupePlugin(), new _webpack2.default.optimize.UglifyJsPlugin({
+var extractLibraryCss = new _extractTextWebpackPlugin2.default({ filename: 'library.css' });
+var extractSourceCss = new _extractTextWebpackPlugin2.default({ filename: 'lib.css' });
+var extractPagesCss = new _extractTextWebpackPlugin2.default({ filename: 'pages.css' });
+var prodPlugins = [].concat(commonPlugins, [new _webpack2.default.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }), new _webpack2.default.optimize.DedupePlugin(), new _webpack2.default.optimize.UglifyJsPlugin({
   compress: {
     screw_ie8: true, // React doesn't support IE8
     warnings: false
@@ -60,7 +68,14 @@ var prodPlugins = [].concat(commonPlugins, [new _webpack2.default.DefinePlugin({
     comments: false,
     screw_ie8: true
   }
-}), extractLibraryCss, extractSourceCss]);
+}), extractLibraryCss, extractSourceCss, extractPagesCss]);
+
+var cssLoader = {
+  loader: 'css-loader',
+  options: {
+    sourceMap: true
+  }
+};
 
 function makeWebpackConfig(_ref) {
   var outputDir = _ref.outputDir,
@@ -87,38 +102,54 @@ function makeWebpackConfig(_ref) {
       filename: '[name].js'
     },
     module: {
-      loaders: [{
+      rules: [{
         test: /\.jsx?$/,
-        loader: 'babel',
-        include: [srcSrc, librarySrc, outputDir, pagesSrc],
-        query: production ? _babel4.default : _babel2.default
-      }, {
-        test: /\.css$/,
-        include: [srcSrc, pagesSrc],
-        loader: production ? extractSourceCss.extract('css!postcss') : 'style!css!postcss'
+        use: [{
+          loader: 'babel-loader',
+          options: production ? _babel4.default : _babel2.default
+        }],
+        include: [srcSrc, librarySrc, outputDir, pagesSrc]
       }, {
         test: /\.css$/,
         include: [librarySrc, outputDir, /node_modules/],
-        loader: production ? extractLibraryCss.extract('css!postcss') : 'style!css!postcss'
+        loader: production ? extractLibraryCss.extract({
+          loader: [cssLoader, 'postcss-loader']
+        }) : undefined,
+        use: production ? undefined : ['style-loader', cssLoader, 'postcss-loader']
       }, {
-        test: /\.json$/, loader: 'json'
+        test: /\.css$/,
+        include: [srcSrc],
+        loader: production ? extractSourceCss.extract({
+          loader: [cssLoader, 'postcss-loader']
+        }) : undefined,
+        use: production ? undefined : ['style-loader', cssLoader, 'postcss-loader']
+      }, {
+        test: /\.css$/,
+        include: [pagesSrc],
+        loader: production ? extractPagesCss.extract({
+          loader: [cssLoader, 'postcss-loader']
+        }) : undefined,
+        use: production ? undefined : ['style-loader', cssLoader, 'postcss-loader']
+      }, {
+        test: /\.json$/,
+        use: 'json-loader'
       }, {
         test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|eot|ttf)$/,
-        loader: 'url?limit=10000'
+        use: {
+          loader: 'url-loader',
+          options: { limit: 10000 }
+        }
       }, {
         test: /\.html$/,
-        loader: 'html'
+        use: 'html-loader'
       }, {
         test: /\.md$/,
-        loader: 'html!markdown'
+        use: ['html-loader', 'markdown-loader']
       }]
     },
-    postcss: function postcss() {
-      return [_autoprefixer2.default];
-    },
     resolve: {
-      extensions: ['', '.js', '.jsx', '.html', '.md', '.json'],
-      modulesDirectories: ['node_modules'],
+      extensions: ['.js', '.jsx', '.html', '.md', '.json'],
+      modules: ['node_modules'],
       alias: {
         build: outputDir,
         'react-library': librarySrc

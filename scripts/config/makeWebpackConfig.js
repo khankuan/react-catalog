@@ -6,6 +6,16 @@ import autoprefixer from 'autoprefixer'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 const commonPlugins = [
+  new webpack.LoaderOptionsPlugin({
+    options: {
+      postcss: [
+        autoprefixer({
+          browsers: ['last 2 version']
+        })
+      ],
+      context: process.cwd(),
+    },
+  }),
   new webpack.optimize.CommonsChunkPlugin({
     name: 'lib',
     chunks: ['components', 'app'],
@@ -19,15 +29,15 @@ const commonPlugins = [
 const devPlugins = [
   ...commonPlugins,
   new webpack.HotModuleReplacementPlugin(),
-  new webpack.NoErrorsPlugin(),
+  new webpack.NoEmitOnErrorsPlugin(),
 ]
 
-const extractLibraryCss = new ExtractTextPlugin('library.css')
-const extractSourceCss = new ExtractTextPlugin('lib.css')
+const extractLibraryCss = new ExtractTextPlugin({ filename: 'library.css' })
+const extractSourceCss = new ExtractTextPlugin({ filename: 'lib.css' })
+const extractPagesCss = new ExtractTextPlugin({ filename: 'pages.css' })
 const prodPlugins = [
   ...commonPlugins,
   new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }),
-  new webpack.optimize.OccurrenceOrderPlugin(),
   new webpack.optimize.DedupePlugin(),
   new webpack.optimize.UglifyJsPlugin({
     compress: {
@@ -44,7 +54,15 @@ const prodPlugins = [
   }),
   extractLibraryCss,
   extractSourceCss,
-]
+  extractPagesCss,
+];
+
+const cssLoader = {
+  loader: 'css-loader',
+  options: {
+    sourceMap: true,
+  },
+}
 
 export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pagesDir, configureWebpack, production }) {
   const librarySrc = path.resolve(__dirname, '../../src')
@@ -72,65 +90,85 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
       ],
       components: [
         path.resolve(outputDir, './components.js'),
-      ]
+      ],
     },
     output: {
       path: outputPublicDir,
       filename: '[name].js'
     },
     module: {
-      loaders: [
+      rules: [
         {
           test: /\.jsx?$/,
-          loader: 'babel',
+          use: [
+            {
+              loader: 'babel-loader',
+              options: production ? babelProd : babelDev
+            },
+          ],
           include: [
             srcSrc,
             librarySrc,
             outputDir,
             pagesSrc
           ],
-          query: production ? babelProd : babelDev
-        },
-        {
-          test: /\.css$/,
-          include: [
-            srcSrc,
-            pagesSrc,
-          ],
-          loader: production ? extractSourceCss.extract('css!postcss') : 'style!css!postcss',
         },
         {
           test: /\.css$/,
           include: [
             librarySrc,
             outputDir,
-            /node_modules/
+            /node_modules/,
           ],
-          loader: production ? extractLibraryCss.extract('css!postcss') : 'style!css!postcss',
+          loader: production ? extractLibraryCss.extract({
+            loader: [cssLoader, 'postcss-loader'],
+          }) : undefined,
+          use: production ? undefined : ['style-loader', cssLoader, 'postcss-loader'],
         },
         {
-          test: /\.json$/, loader: 'json'
+          test: /\.css$/,
+          include: [
+            srcSrc,
+          ],
+          loader: production ? extractSourceCss.extract({
+            loader: [cssLoader, 'postcss-loader'],
+          }) : undefined,
+          use: production ? undefined : ['style-loader', cssLoader, 'postcss-loader'],
+        },
+        {
+          test: /\.css$/,
+          include: [
+            pagesSrc,
+          ],
+          loader: production ? extractPagesCss.extract({
+            loader: [cssLoader, 'postcss-loader'],
+          }) : undefined,
+          use: production ? undefined : ['style-loader', cssLoader, 'postcss-loader'],
+        },
+        {
+          test: /\.json$/,
+          use: 'json-loader'
         },
         {
           test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|eot|ttf)$/,
-          loader: 'url?limit=10000'
+          use: {
+            loader: 'url-loader',
+            options: { limit: 10000 },
+          },
         },
         {
           test: /\.html$/,
-          loader: 'html'
+          use: 'html-loader'
         },
         {
           test: /\.md$/,
-          loader: 'html!markdown'
+          use: ['html-loader', 'markdown-loader'],
         }
       ]
     },
-    postcss: function () {
-      return [autoprefixer]
-    },
     resolve: {
-      extensions: ['', '.js', '.jsx', '.html', '.md', '.json'],
-      modulesDirectories: ['node_modules'],
+      extensions: ['.js', '.jsx', '.html', '.md', '.json'],
+      modules: ['node_modules'],
       alias: {
         build: outputDir,
         'react-library': librarySrc
