@@ -39,19 +39,18 @@ exports.default = function () {
     var src = _ref2.src,
         componentPattern = _ref2.componentPattern,
         storyPattern = _ref2.storyPattern,
-        outputDir = _ref2.outputDir;
+        testDir = _ref2.testDir;
     var update = _ref3.update;
-    var testDir, stub, jestConfig, args;
+    var stub, jestConfig, args;
     return _regenerator2.default.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            testDir = _path2.default.resolve(outputDir, '__tests__');
             stub = _path2.default.resolve(__dirname, 'utils/stub.js');
-            _context.next = 4;
+            _context.next = 3;
             return (0, _generateComponentsTests2.default)({ src: src, componentPattern: componentPattern, storyPattern: storyPattern, outputDir: testDir });
 
-          case 4:
+          case 3:
             console.log(_chalk2.default.green('Tests generated.'));
 
             jestConfig = {
@@ -77,7 +76,7 @@ exports.default = function () {
             process.env.NODE_ENV = 'TEST';
             _jest2.default.run(args);
 
-          case 11:
+          case 10:
           case 'end':
             return _context.stop();
         }

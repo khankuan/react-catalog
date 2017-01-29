@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.generateComponentDocs = undefined;
+exports.generateTranspiledIndex = exports.generateComponentDocs = undefined;
 
 var _regenerator = require('babel-runtime/regenerator');
 
@@ -41,8 +41,7 @@ var generateComponentDocs = exports.generateComponentDocs = function () {
             docsDir = outputDir + '/docs';
             exports = {
               components: {},
-              docs: {},
-              lib: {}
+              docs: {}
             };
             _loop = _regenerator2.default.mark(function _callee(i) {
               var f;
@@ -55,18 +54,7 @@ var generateComponentDocs = exports.generateComponentDocs = function () {
                       return (0, _generateComponentDoc2.default)({ inputPath: _path2.default.resolve(src + '/', f), outputDir: docsDir }).then(function (name) {
                         exports.components[name] = _path2.default.relative(outputDir, './' + src + '/' + f);
                         exports.docs[name] = './docs/' + name;
-                        if (production) {
-                          exports.lib[name] = './lib/' + f.replace('.jsx', '.js');
-                        }
-                      }).catch(function (err) {
-                        if (err.message === 'IGNORED') {
-                          console.warn(_chalk2.default.yellow('Ignored:', f));
-                        } else if (err.message === 'No suitable component definition found.') {
-                          return;
-                        } else {
-                          console.warn(_chalk2.default.red('Error parsing file:', f, err.message));
-                        }
-                      });
+                      }).catch(parseComponentDocErrorHandler);
 
                     case 3:
                     case 'end':
@@ -106,6 +94,77 @@ var generateComponentDocs = exports.generateComponentDocs = function () {
   };
 }();
 
+var generateTranspiledIndex = exports.generateTranspiledIndex = function () {
+  var _ref5 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee4(_ref6) {
+    var src = _ref6.src,
+        componentPattern = _ref6.componentPattern,
+        storyPattern = _ref6.storyPattern,
+        outputDir = _ref6.outputDir;
+
+    var globPromise, files, lib, i, _f, component;
+
+    return _regenerator2.default.wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            globPromise = _bluebird2.default.promisify(_glob2.default);
+            _context4.next = 3;
+            return globPromise(componentPattern, {
+              cwd: src,
+              ignore: storyPattern
+            });
+
+          case 3:
+            files = _context4.sent;
+            lib = {};
+            i = 0;
+
+          case 6:
+            if (!(i < files.length)) {
+              _context4.next = 21;
+              break;
+            }
+
+            _context4.prev = 7;
+            _f = files[i];
+            _context4.next = 11;
+            return (0, _generateComponentDoc.parseComponentDoc)({ inputPath: _path2.default.resolve(src + '/', _f) });
+
+          case 11:
+            component = _context4.sent;
+
+            lib[component.name] = './lib/' + _f.replace('.jsx', '.js');
+            _context4.next = 18;
+            break;
+
+          case 15:
+            _context4.prev = 15;
+            _context4.t0 = _context4['catch'](7);
+
+            parseComponentDocErrorHandler(_context4.t0);
+
+          case 18:
+            i++;
+            _context4.next = 6;
+            break;
+
+          case 21:
+            _context4.next = 23;
+            return (0, _writeIndex2.default)({ index: 'lib', exports: lib, outputDir: outputDir, es5: true });
+
+          case 23:
+          case 'end':
+            return _context4.stop();
+        }
+      }
+    }, _callee4, this, [[7, 15]]);
+  }));
+
+  return function generateTranspiledIndex(_x3) {
+    return _ref5.apply(this, arguments);
+  };
+}();
+
 var _glob = require('glob');
 
 var _glob2 = _interopRequireDefault(_glob);
@@ -132,6 +191,16 @@ var _writeIndex2 = _interopRequireDefault(_writeIndex);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function parseComponentDocErrorHandler(err) {
+  if (err.message === 'IGNORED') {
+    console.warn(_chalk2.default.yellow('Ignored:', f));
+  } else if (err.message === 'No suitable component definition found.') {
+    return;
+  } else {
+    console.warn(_chalk2.default.red('Error parsing file:', f, err.message));
+  }
+}
+
 exports.default = function () {
   var _ref3 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee3(_ref4) {
     var src = _ref4.src,
@@ -157,18 +226,9 @@ exports.default = function () {
             return (0, _writeIndex2.default)({ index: 'docs', exports: exports.docs, outputDir: outputDir });
 
           case 7:
-            if (!production) {
-              _context3.next = 10;
-              break;
-            }
-
-            _context3.next = 10;
-            return (0, _writeIndex2.default)({ index: 'lib', exports: exports.lib, outputDir: outputDir, es5: true });
-
-          case 10:
             return _context3.abrupt('return', exports);
 
-          case 11:
+          case 8:
           case 'end':
             return _context3.stop();
         }
