@@ -1,0 +1,12 @@
+machine:
+  node:
+    version: 6.9.1
+deployment:
+  npm:
+    branch: master
+    commands:
+      - npm run release
+  gh-pages:
+    branch: master
+    commands:
+      - npm run gh-pages
