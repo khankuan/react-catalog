@@ -1,7 +1,7 @@
 {
   "name": "react-library-tool",
   "version": "1.0.0",
-  "description": "React Library is a UI Component development tool",
+  "description": "React Library is a UI Component development and documentation tool",
   "repository": {
     "type": "git",
     "url": "khankuan/react-library"
