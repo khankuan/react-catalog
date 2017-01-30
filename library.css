@@ -1,0 +1,1055 @@
+.react-library-nav-header {
+  font-weight: 400;
+  font-size: 16px;
+  margin: 10px 0;
+  color: #666;
+}
+
+.react-library-well {
+  padding: 20px;
+  border: 1px dashed;
+}
+
+.react-library-well > * {
+  vertical-align: top;
+}
+
+.react-library-well-title {
+  margin-bottom: 20px;
+  display: block
+}
+
+.react-library-well-dark {
+  background: black;
+}
+.react-library-well-dark > .react-library-well-title {
+  color: white;
+}
+
+.react-library-well-light {
+  background: white;
+}
+
+.react-library-well-dark {
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.react-library-well-light {
+  border-color: rgba(0, 0, 0, 0.8);
+}
+
+.react-library-list-layout {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: -10px;
+  -ms-flex-align: start;
+      align-items: flex-start;
+}
+
+.react-library-list-layout > .react-library-list-layout-item {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.react-library-page {
+  width: 100%;
+  overflow-y: auto;
+  position: relative;
+}
+
+.react-library-page-wrapper {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  padding: 10px;
+}
+
+@media all and (max-width: 768px) {
+  .react-library-page-wrapper {
+    margin-top: 60px;
+  }
+}
+.react-library-nav-link {
+  text-decoration: none;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  color: #999;
+  cursor: pointer;
+  padding: 5px 0;
+  letter-spacing: 0.03em;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  text-transform: capitalize;
+}
+
+.react-library-nav-link.active {
+  color: #008cff;
+}
+
+.react-library-nav-link.active.selected {
+  background: #f3f3f3;
+}
+
+.react-library-nav-link.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.react-library-nav-link .link-text {
+  -ms-flex-positive: 1;
+      flex-grow: 1
+}
+
+.react-library-nav-link .link-text:hover {
+  text-decoration: underline;
+}
+
+.react-library-nav-link .expand {
+  font-size: 14px;
+  text-align: center;
+  display: inline-block;
+  width: 20px;
+}
+
+.react-library-nav-link .expand:hover {
+  color: black;
+}
+.react-library-left-bar {
+  width: 260px;
+  border-right: 1px solid #ccc;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  overflow-y: auto;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+
+.react-library-left-bar .show-button {
+  visibility: hidden;
+  position: absolute;
+  font-size: 36px;
+  font-weight: 100;
+  cursor: pointer;
+  right: 0;
+  top: 0;
+  display: inline-block;
+  width: 30px;
+  color: #ccc;
+  padding: 10px;
+}
+
+.react-library-left-bar .app-title {
+  margin: 0;
+  padding: 10px;
+  padding-top: 20px;
+  font-size: 20px;
+  font-weight: 400;
+  color: #bbb;
+}
+
+.react-library-left-bar .bar-header {
+  padding-left: 10px;
+  margin-bottom: 5px;
+}
+
+.react-library-left-bar .page-link {
+  padding-left: 20px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+.react-library-left-bar .category-link {
+  padding-left: 20px;
+  font-weight: 700;
+}
+
+.react-library-left-bar .component-link {
+  padding-left: 30px;
+  word-break: break-all;
+}
+
+.react-library-left-bar .story-link {
+  padding-left: 40px;
+  word-break: break-all;
+  font-style: italic;
+  font-size: 12px;
+}
+
+.react-library-left-bar .bar-search {
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+.react-library-left-bar .bar-search input {
+  background: #f3f3f3;
+  color: orange;
+  margin: 0;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 30px;
+  font-size: 16px;
+  border: none;
+  -ms-flex-positive: 1;
+      flex-grow: 1;
+  outline: none;
+  margin-top: 5px;
+}
+
+.react-library-left-bar .bar-search input::-webkit-input-placeholder {
+  color: orange;
+}
+
+.react-library-left-bar .bar-search input:-ms-input-placeholder {
+  color: orange;
+}
+
+.react-library-left-bar .bar-search input::placeholder {
+  color: orange;
+}
+
+.react-library-left-bar .bar-search input::-moz-selection {
+  background: #ffe5b4;
+  color: #ff7518;
+}
+
+.react-library-left-bar .bar-search input::selection {
+  background: #ffe5b4;
+  color: #ff7518;
+}
+
+.react-library-left-bar .bar-search .clear-button {
+  position: absolute;
+  font-size: 36px;
+  font-weight: 100;
+  cursor: pointer;
+  right: 0;
+  top: 0;
+  display: inline-block;
+  width: 30px;
+  text-align: center;
+  color: orange;
+}
+
+.react-library-left-bar .bar-search .clear-button:hover {
+  opacity: 1;
+}
+
+.react-library-left-bar-categories {
+  overflow-y: auto;
+  padding-top: 5px;
+  padding-bottom: 50px;
+}
+
+@media all and (max-width: 768px) {
+  .react-library-left-bar {
+    position: absolute;
+    top: 0;
+    background: white;
+    width: 100vw;
+    z-index: 1;
+    height: 60px;
+    transition: height 0.2s ease-out;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0px;
+    overflow: hidden;
+  }
+
+  .react-library-left-bar.show {
+    height: 100vh;
+  }
+
+  .react-library-left-bar .show-button {
+    visibility: visible;
+  }
+}
+.react-library-main {
+  -ms-flex-positive: 1;
+      flex-grow: 1;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  overflow-x: auto;
+}
+
+.react-library-main-header {
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  font-size: 13px;
+}
+
+.react-library-main-header .component-title {
+  font-weight: 400;
+  font-size: 28px;
+  margin: 0;
+  margin-bottom: 10px;
+  color: #999;
+  letter-spacing: 0.03em;
+}
+
+.react-library-main-header .story-title {
+  font-weight: 400;
+  font-size: 14px;
+  color: #999;
+  margin: 10px 0;
+  margin-top: 30px;
+  letter-spacing: 0.03em;
+  font-style: italic;
+}
+
+.react-library-main-header .header-description {
+  font-size: 13px;
+  margin: 5px 0;
+}
+
+.react-library-main-header .header-categories {
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 10px;
+}
+
+.react-library-main-header .header-categories .category-link {
+  padding-right: 10px;
+}
+
+.react-library-main-header .header-tags {
+  color: #aaa;
+  font-size: 12px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+.react-library-main .previewer {
+  -ms-flex-positive: 1;
+      flex-grow: 1;
+}
+
+.react-library-main .default-error {
+  padding: 20px;
+  color: #999;
+}
+.react-library-markdown code {
+  background: #eee;
+  padding: 0px 3px;
+  color: #c05b4d;
+}
+.react-library-round-button {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  outline: none;
+  border: 2px solid black;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: opacity ease-in 0.1s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  font-size: 11px;
+}
+
+.react-library-round-button:hover {
+  opacity: 1;
+}
+
+.react-library-round-button.theme-dark {
+  background: #333;
+  border-color: white;
+  color: white;
+}
+
+.react-library-round-button.theme-light {
+  background: white;
+  border-color: #333;
+  color: #333;
+}
+.react-library-render-safe {
+  color: red;
+  font-size: 13px;
+}
+/* BASICS */
+
+.CodeMirror {
+  /* Set height, width, borders, and global font properties here */
+  font-family: monospace;
+  height: 300px;
+  color: black;
+}
+
+/* PADDING */
+
+.CodeMirror-lines {
+  padding: 4px 0; /* Vertical padding around content */
+}
+.CodeMirror pre {
+  padding: 0 4px; /* Horizontal padding of content */
+}
+
+.CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {
+  background-color: white; /* The little square between H and V scrollbars */
+}
+
+/* GUTTER */
+
+.CodeMirror-gutters {
+  border-right: 1px solid #ddd;
+  background-color: #f7f7f7;
+  white-space: nowrap;
+}
+.CodeMirror-linenumbers {}
+.CodeMirror-linenumber {
+  padding: 0 3px 0 5px;
+  min-width: 20px;
+  text-align: right;
+  color: #999;
+  white-space: nowrap;
+}
+
+.CodeMirror-guttermarker { color: black; }
+.CodeMirror-guttermarker-subtle { color: #999; }
+
+/* CURSOR */
+
+.CodeMirror-cursor {
+  border-left: 1px solid black;
+  border-right: none;
+  width: 0;
+}
+/* Shown when moving in bi-directional text */
+.CodeMirror div.CodeMirror-secondarycursor {
+  border-left: 1px solid silver;
+}
+.cm-fat-cursor .CodeMirror-cursor {
+  width: auto;
+  border: 0 !important;
+  background: #7e7;
+}
+.cm-fat-cursor div.CodeMirror-cursors {
+  z-index: 1;
+}
+
+.cm-animate-fat-cursor {
+  width: auto;
+  border: 0;
+  animation: blink 1.06s steps(1) infinite;
+  background-color: #7e7;
+}
+@keyframes blink {
+  0% {}
+  50% { background-color: transparent; }
+  100% {}
+}
+
+/* Can style cursor different in overwrite (non-insert) mode */
+.CodeMirror-overwrite .CodeMirror-cursor {}
+
+.cm-tab { display: inline-block; text-decoration: inherit; }
+
+.CodeMirror-rulers {
+  position: absolute;
+  left: 0; right: 0; top: -50px; bottom: -20px;
+  overflow: hidden;
+}
+.CodeMirror-ruler {
+  border-left: 1px solid #ccc;
+  top: 0; bottom: 0;
+  position: absolute;
+}
+
+/* DEFAULT THEME */
+
+.cm-s-default .cm-header {color: blue;}
+.cm-s-default .cm-quote {color: #090;}
+.cm-negative {color: #d44;}
+.cm-positive {color: #292;}
+.cm-header, .cm-strong {font-weight: bold;}
+.cm-em {font-style: italic;}
+.cm-link {text-decoration: underline;}
+.cm-strikethrough {text-decoration: line-through;}
+
+.cm-s-default .cm-keyword {color: #708;}
+.cm-s-default .cm-atom {color: #219;}
+.cm-s-default .cm-number {color: #164;}
+.cm-s-default .cm-def {color: #00f;}
+.cm-s-default .cm-variable,
+.cm-s-default .cm-punctuation,
+.cm-s-default .cm-property,
+.cm-s-default .cm-operator {}
+.cm-s-default .cm-variable-2 {color: #05a;}
+.cm-s-default .cm-variable-3 {color: #085;}
+.cm-s-default .cm-comment {color: #a50;}
+.cm-s-default .cm-string {color: #a11;}
+.cm-s-default .cm-string-2 {color: #f50;}
+.cm-s-default .cm-meta {color: #555;}
+.cm-s-default .cm-qualifier {color: #555;}
+.cm-s-default .cm-builtin {color: #30a;}
+.cm-s-default .cm-bracket {color: #997;}
+.cm-s-default .cm-tag {color: #170;}
+.cm-s-default .cm-attribute {color: #00c;}
+.cm-s-default .cm-hr {color: #999;}
+.cm-s-default .cm-link {color: #00c;}
+
+.cm-s-default .cm-error {color: #f00;}
+.cm-invalidchar {color: #f00;}
+
+.CodeMirror-composing { border-bottom: 2px solid; }
+
+/* Default styles for common addons */
+
+div.CodeMirror span.CodeMirror-matchingbracket {color: #0f0;}
+div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
+.CodeMirror-matchingtag { background: rgba(255, 150, 0, .3); }
+.CodeMirror-activeline-background {background: #e8f2ff;}
+
+/* STOP */
+
+/* The rest of this file contains styles related to the mechanics of
+   the editor. You probably shouldn't touch them. */
+
+.CodeMirror {
+  position: relative;
+  overflow: hidden;
+  background: white;
+}
+
+.CodeMirror-scroll {
+  overflow: scroll !important; /* Things will break if this is overridden */
+  /* 30px is the magic margin used to hide the element's real scrollbars */
+  /* See overflow: hidden in .CodeMirror */
+  margin-bottom: -30px; margin-right: -30px;
+  padding-bottom: 30px;
+  height: 100%;
+  outline: none; /* Prevent dragging from highlighting the element */
+  position: relative;
+}
+.CodeMirror-sizer {
+  position: relative;
+  border-right: 30px solid transparent;
+}
+
+/* The fake, visible scrollbars. Used to force redraw during scrolling
+   before actual scrolling happens, thus preventing shaking and
+   flickering artifacts. */
+.CodeMirror-vscrollbar, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {
+  position: absolute;
+  z-index: 6;
+  display: none;
+}
+.CodeMirror-vscrollbar {
+  right: 0; top: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.CodeMirror-hscrollbar {
+  bottom: 0; left: 0;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+.CodeMirror-scrollbar-filler {
+  right: 0; bottom: 0;
+}
+.CodeMirror-gutter-filler {
+  left: 0; bottom: 0;
+}
+
+.CodeMirror-gutters {
+  position: absolute; left: 0; top: 0;
+  min-height: 100%;
+  z-index: 3;
+}
+.CodeMirror-gutter {
+  white-space: normal;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: -30px;
+}
+.CodeMirror-gutter-wrapper {
+  position: absolute;
+  z-index: 4;
+  background: none !important;
+  border: none !important;
+}
+.CodeMirror-gutter-background {
+  position: absolute;
+  top: 0; bottom: 0;
+  z-index: 4;
+}
+.CodeMirror-gutter-elt {
+  position: absolute;
+  cursor: default;
+  z-index: 4;
+}
+.CodeMirror-gutter-wrapper {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+      user-select: none;
+}
+
+.CodeMirror-lines {
+  cursor: text;
+  min-height: 1px; /* prevents collapsing before first draw */
+}
+.CodeMirror pre {
+  /* Reset some styles that the rest of the page might have set */ border-radius: 0;
+  border-width: 0;
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  margin: 0;
+  white-space: pre;
+  word-wrap: normal;
+  line-height: inherit;
+  color: inherit;
+  z-index: 2;
+  position: relative;
+  overflow: visible;
+  -webkit-tap-highlight-color: transparent;
+  font-variant-ligatures: contextual;
+}
+.CodeMirror-wrap pre {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  word-break: normal;
+}
+
+.CodeMirror-linebackground {
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  z-index: 0;
+}
+
+.CodeMirror-linewidget {
+  position: relative;
+  z-index: 2;
+  overflow: auto;
+}
+
+.CodeMirror-widget {}
+
+.CodeMirror-code {
+  outline: none;
+}
+
+/* Force content-box sizing for the elements where we expect it */
+.CodeMirror-scroll,
+.CodeMirror-sizer,
+.CodeMirror-gutter,
+.CodeMirror-gutters,
+.CodeMirror-linenumber {
+  box-sizing: content-box;
+}
+
+.CodeMirror-measure {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.CodeMirror-cursor {
+  position: absolute;
+  pointer-events: none;
+}
+.CodeMirror-measure pre { position: static; }
+
+div.CodeMirror-cursors {
+  visibility: hidden;
+  position: relative;
+  z-index: 3;
+}
+div.CodeMirror-dragcursors {
+  visibility: visible;
+}
+
+.CodeMirror-focused div.CodeMirror-cursors {
+  visibility: visible;
+}
+
+.CodeMirror-selected { background: #d9d9d9; }
+.CodeMirror-focused .CodeMirror-selected { background: #d7d4f0; }
+.CodeMirror-crosshair { cursor: crosshair; }
+.CodeMirror-line::-moz-selection, .CodeMirror-line > span::-moz-selection, .CodeMirror-line > span > span::-moz-selection { background: #d7d4f0; }
+.CodeMirror-line::selection, .CodeMirror-line > span::selection, .CodeMirror-line > span > span::selection { background: #d7d4f0; }
+.CodeMirror-line::-moz-selection, .CodeMirror-line > span::-moz-selection, .CodeMirror-line > span > span::-moz-selection { background: #d7d4f0; }
+
+.cm-searching {
+  background: #ffa;
+  background: rgba(255, 255, 0, .4);
+}
+
+/* Used to force a border model for a node */
+.cm-force-border { padding-right: .1px; }
+
+@media print {
+  /* Hide the cursor when printing */
+  .CodeMirror div.CodeMirror-cursors {
+    visibility: hidden;
+  }
+}
+
+/* See issue #2901 */
+.cm-tab-wrap-hack:after { content: ''; }
+
+/* Help users use markselection to safely style text background */
+span.CodeMirror-selectedtext { background: none; }
+/*
+
+    Name:       material
+    Author:     Michael Kaminsky (http://github.com/mkaminsky11)
+
+    Original material color scheme by Mattia Astorino (https://github.com/equinusocio/material-theme)
+
+*/
+
+.cm-s-material.CodeMirror {
+  background-color: #263238;
+  color: rgba(233, 237, 237, 1);
+}
+.cm-s-material .CodeMirror-gutters {
+  background: #263238;
+  color: rgb(83,127,126);
+  border: none;
+}
+.cm-s-material .CodeMirror-guttermarker, .cm-s-material .CodeMirror-guttermarker-subtle, .cm-s-material .CodeMirror-linenumber { color: rgb(83,127,126); }
+.cm-s-material .CodeMirror-cursor { border-left: 1px solid #f8f8f0; }
+.cm-s-material div.CodeMirror-selected { background: rgba(255, 255, 255, 0.15); }
+.cm-s-material.CodeMirror-focused div.CodeMirror-selected { background: rgba(255, 255, 255, 0.10); }
+.cm-s-material .CodeMirror-line::-moz-selection, .cm-s-material .CodeMirror-line > span::-moz-selection, .cm-s-material .CodeMirror-line > span > span::-moz-selection { background: rgba(255, 255, 255, 0.10); }
+.cm-s-material .CodeMirror-line::selection, .cm-s-material .CodeMirror-line > span::selection, .cm-s-material .CodeMirror-line > span > span::selection { background: rgba(255, 255, 255, 0.10); }
+.cm-s-material .CodeMirror-line::-moz-selection, .cm-s-material .CodeMirror-line > span::-moz-selection, .cm-s-material .CodeMirror-line > span > span::-moz-selection { background: rgba(255, 255, 255, 0.10); }
+
+.cm-s-material .CodeMirror-activeline-background { background: rgba(0, 0, 0, 0); }
+.cm-s-material .cm-keyword { color: rgba(199, 146, 234, 1); }
+.cm-s-material .cm-operator { color: rgba(233, 237, 237, 1); }
+.cm-s-material .cm-variable-2 { color: #80CBC4; }
+.cm-s-material .cm-variable-3 { color: #82B1FF; }
+.cm-s-material .cm-builtin { color: #DECB6B; }
+.cm-s-material .cm-atom { color: #F77669; }
+.cm-s-material .cm-number { color: #F77669; }
+.cm-s-material .cm-def { color: rgba(233, 237, 237, 1); }
+.cm-s-material .cm-string { color: #C3E88D; }
+.cm-s-material .cm-string-2 { color: #80CBC4; }
+.cm-s-material .cm-comment { color: #546E7A; }
+.cm-s-material .cm-variable { color: #82B1FF; }
+.cm-s-material .cm-tag { color: #80CBC4; }
+.cm-s-material .cm-meta { color: #80CBC4; }
+.cm-s-material .cm-attribute { color: #FFCB6B; }
+.cm-s-material .cm-property { color: #80CBAE; }
+.cm-s-material .cm-qualifier { color: #DECB6B; }
+.cm-s-material .cm-variable-3 { color: #DECB6B; }
+.cm-s-material .cm-tag { color: rgba(255, 83, 112, 1); }
+.cm-s-material .cm-error {
+  color: rgba(255, 255, 255, 1.0);
+  background-color: #EC5F67;
+}
+.cm-s-material .CodeMirror-matchingbracket {
+  text-decoration: underline;
+  color: white !important;
+}
+.react-library-previewer {
+  margin: 30px;
+  position: relative;
+  color: unset;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-align: start;
+      align-items: flex-start;
+}
+
+.react-library-previewer.theme-checker {
+  background-image: -webkit-linear-gradient(45deg, rgba(0,0,0,0.04) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.04) 75%, rgba(0,0,0,0.04) 100%), -webkit-linear-gradient(45deg, rgba(0,0,0,0.04) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.04) 75%, rgba(0,0,0,0.04) 100%);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+  border: 1px dashed #ddd;
+}
+
+.react-library-previewer.theme-dark {
+  background: #333;
+  border: 1px dashed #999;
+}
+
+.react-library-previewer.theme-light {
+  background: white;
+  border: 1px dashed #ddd;
+}
+
+.react-library-previewer .previewer-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.react-library-previewer .previewer-controls button {
+  margin-left: 10px
+}
+
+.react-library-previewer .previewer-error {
+  color: red;
+  padding: 0 10px;
+  margin: 0;
+  white-space: pre-wrap;
+  font-size: 12px;
+}
+
+.react-library-previewer .previewer-html {
+  width: 100%;
+  font-size: 12px;
+}
+
+.react-library-previewer .CodeMirror {
+  background: none;
+  height: 100%;
+}
+
+.react-library-previewer .previewer-jsx {
+  width: 100%;
+}
+.react-library-sequence-controls {
+  font-size: 14px;
+}
+
+.react-library-sequence-controls .sequence-list {
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+.react-library-sequence-controls .steppers {
+  padding-left: 20px;
+  padding-top: 10px;
+  font-size: 12px;
+}
+
+.react-library-sequence-controls .sequence-link {
+  display: inline-block;
+  padding: 5px;
+}
+
+.react-library-sequence-controls .sequence-arrow {
+  color: #aaa;
+}
+.react-library-documentation-table {
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-size: 12px;
+}
+
+.react-library-documentation-table table {
+  border-collapse: collapse;
+  width: 100%;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.react-library-documentation-table table thead tr {
+  background: #f3f3f3;
+  font-weight: 700;
+}
+
+.react-library-documentation-table table tr {
+  background: #fcfcfc;
+}
+
+.react-library-documentation-table table tr.alt {
+  background: #f3f3f3;
+}
+
+.react-library-documentation-table table tr td {
+  padding: 5px 10px;
+  max-width: 200px;
+  vertical-align: middle;
+  word-wrap: break-word;
+}
+
+.react-library-documentation-table .field-type {
+  padding-right: 5px;
+}
+
+.react-library-documentation-table .field-description {
+  cursor: pointer;
+}
+
+.react-library-documentation-table .type-value {
+  color: #999;
+}
+
+.react-library-documentation-table .type-value.changable {
+  cursor: pointer;
+}
+
+.react-library-documentation-table .type-value.changable:hover {
+  color: #1a98ff;
+}
+
+.react-library-documentation-table .type-value.changable.active {
+  color: #008cff;
+}
+
+.react-library-documentation-table .type-prefix {
+  opacity: 0.45;
+}
+
+.react-library-documentation-table .type-oneof span {
+  padding: 3px;
+  display: inline-block;
+}
+
+.react-library-documentation-table .type-number {
+  max-width: 60px;
+}
+
+.react-library-documentation-table .type-string {
+  max-width: 60px;
+}
+.react-library-right-bar {
+  width: 400px;
+  border-left: 1px solid #ccc;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.react-library-right-bar .bar-header {
+  margin: 10px;
+}
+
+.react-library-dependency {
+  font-size: 13px;
+  width: 100%;
+}
+
+.react-library-dependency tbody tr td {
+  color: #999;
+  vertical-align: top;
+}
+
+.react-library-dependency tbody tr td .dependency {
+  display: inline;
+  padding: 5px;
+  padding-left: 0px;
+}
+
+.react-library-dependency .table-type {
+  padding: 5px 10px;
+  padding-right: 0px;
+  width: 90px;
+  color: #666;
+}
+
+.react-library-dependency .table-names {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-align: center;
+      align-items: center;
+}
+.react-library-browse-component-sequence .sequence-controls {
+  margin-bottom: 20px;
+}
+.react-library-browse-component {
+  border-top: 1px solid transparent;
+}
+
+.react-library-browse-component .component-link {
+  color: #999;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.react-library-browse-component .component-link:hover {
+  text-decoration: underline;
+}
+
+.react-library-browse-component .component-description {
+  font-size: 14px;
+  padding: 10px;
+  color: #aaa;
+}
+
+.react-library-browse-component .component-header select {
+  margin-left: 10px;
+  outline: none;
+}
+
+.react-library-browse-component .component-content {
+  margin-left: 20px;
+}
+
+.react-library-browse-component .component-content .component-output {
+  margin-left: 20px;
+}
+
+.react-library-browse-component .content-empty {
+  color: #aaa;
+  font-size: 12px;
+  font-style: italic;
+}
+.react-library-browse {
+  padding: 30px;
+  width: 100%;
+  overflow-y: auto;
+  padding-bottom: 100px;
+  background: #f3f3f3;
+  box-sizing: border-box;
+}
+
+@media all and (max-width: 768px) {
+  .react-library-browse {
+    margin-top: 60px;
+  }
+}
+
+.react-library-browse .browse-header {
+  border-bottom: 2px solid #f3f3f3;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.react-library-browse .browse-header .option-group label {
+  padding-right: 10px;
+  font-size: 13px;
+}
+
+.react-library-browse .component-section {
+  padding-bottom: 40px;
+}
+body {
+  margin: 0;
+}
+
+.react-library-app {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #666;
+  height: 100vh;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: stretch;
+      align-items: stretch;
+}
+
+/*# sourceMappingURL=library.css.map*/
