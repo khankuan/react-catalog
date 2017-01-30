@@ -2,13 +2,9 @@ machine:
   node:
     version: 6.9.1
 deployment:
-  npm:
-    branch: master
-    commands:
-      - npm run release
-  gh-pages:
+  release:
     branch: master
     commands:
       - git config --global user.email "khankuan@gmail.com"
       - git config --global user.name "khankuan"
-      - npm run gh-pages
+      - npm run release
