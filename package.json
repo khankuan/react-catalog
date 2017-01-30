@@ -13,11 +13,14 @@
     "test-docs": "babel-node ./scripts/index.js --test",
     "lint-docs": "babel-node ./scripts/index.js --lint",
     "transpile-docs": "babel-node ./scripts/index.js --transpile",
-    "build": "rm -rf dist && babel ./scripts --out-dir ./dist"
+    "build": "rm -rf dist && babel ./scripts --out-dir ./dist",
+    "prepublish": "npm run build && npm run build-docs",
+    "postpublish": "npm run publish-docs"
   },
   "keywords": [
     "react",
-    "react-component"
+    "react-component",
+    "documentation"
   ],
   "bin": {
     "react-library": "./bin/react-library.js"
