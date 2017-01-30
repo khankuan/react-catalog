@@ -12,6 +12,7 @@
     "publish-docs": "babel-node ./scripts/index.js --publish",
     "test-docs": "babel-node ./scripts/index.js --test",
     "lint-docs": "babel-node ./scripts/index.js --lint",
+    "transpile-docs": "babel-node ./scripts/index.js --transpile",
     "build": "rm -rf dist && babel ./scripts --out-dir ./dist"
   },
   "keywords": [
@@ -46,9 +47,9 @@
     "chokidar": "^1.6.0",
     "classnames": "^2.2.5",
     "cross-spawn": "^4.0.0",
-    "css-loader": "^0.24.0",
+    "css-loader": "^0.26.1",
     "dom-helpers": "^3.2.0",
-    "extract-text-webpack-plugin": "^1.0.1",
+    "extract-text-webpack-plugin": "2.0.0-rc.2",
     "fuse.js": "^2.4.1",
     "gh-pages": "^0.11.0",
     "glob": "^7.0.5",
@@ -61,7 +62,7 @@
     "markdown-loader": "^0.1.7",
     "mkdirp": "^0.5.1",
     "ncp": "^2.0.0",
-    "postcss-loader": "^0.11.0",
+    "postcss-loader": "^1.2.2",
     "react": "^15.3.1",
     "react-addons-test-utils": "^15.3.1",
     "react-codemirror": "^0.2.6",
@@ -76,8 +77,8 @@
     "standard": "^8.0.0",
     "style-loader": "^0.13.1",
     "watch": "^0.19.1",
-    "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1"
+    "webpack": "^2.2.0",
+    "webpack-dev-server": "^2.2.0"
   },
   "peerDependencies": {
     "react": "^15.0.0",

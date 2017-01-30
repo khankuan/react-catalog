@@ -35,6 +35,9 @@ exports.default = function () {
               (0, _webpack2.default)(webpackConfig).run(function (err, stats) {
                 if (err) {
                   reject(err);
+                } else if (stats.hasErrors()) {
+                  var info = stats.toJson();
+                  reject(info.errors);
                 } else {
                   resolve();
                 }

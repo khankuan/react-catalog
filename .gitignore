@@ -1,3 +1,5 @@
 node_modules
 npm-debug.log
-library-build/public
+library-build
+library-tests/*
+!library-tests/__snapshots__

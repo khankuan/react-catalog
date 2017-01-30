@@ -28,7 +28,7 @@ var run = function () {
             return (0, _test2.default)(conf, { update: _commander2.default.update });
 
           case 4:
-            _context.next = 31;
+            _context.next = 36;
             break;
 
           case 6:
@@ -41,58 +41,71 @@ var run = function () {
             return (0, _build2.default)(conf);
 
           case 9:
-            _context.next = 31;
+            _context.next = 36;
             break;
 
           case 11:
-            if (!_commander2.default.publish) {
+            if (!_commander2.default.transpile) {
               _context.next = 16;
               break;
             }
 
             _context.next = 14;
-            return (0, _publish2.default)(conf);
+            return (0, _transpile2.default)(conf);
 
           case 14:
-            _context.next = 31;
+            _context.next = 36;
             break;
 
           case 16:
-            if (!_commander2.default.lint) {
-              _context.next = 29;
+            if (!_commander2.default.publish) {
+              _context.next = 21;
               break;
             }
 
-            _context.prev = 17;
-            _context.next = 20;
-            return (0, _lint2.default)(conf, { fix: _commander2.default.fix });
+            _context.next = 19;
+            return (0, _publish2.default)(conf);
 
-          case 20:
-            _context.next = 27;
+          case 19:
+            _context.next = 36;
             break;
 
-          case 22:
+          case 21:
+            if (!_commander2.default.lint) {
+              _context.next = 34;
+              break;
+            }
+
             _context.prev = 22;
-            _context.t0 = _context['catch'](17);
+            _context.next = 25;
+            return (0, _lint2.default)(conf, { fix: _commander2.default.fix });
+
+          case 25:
+            _context.next = 32;
+            break;
+
+          case 27:
+            _context.prev = 27;
+            _context.t0 = _context['catch'](22);
 
             console.error(_chalk2.default.red(_context.t0));
             console.error(_chalk2.default.red('standard: Use JavaScript Standard Style (http://standardjs.com)'));
             console.error(_chalk2.default.red('Run again with --fix` to automatically fix some problems.'));
 
-          case 27:
-            _context.next = 31;
+          case 32:
+            _context.next = 36;
             break;
 
-          case 29:
-            _context.next = 31;
+          case 34:
+            _context.next = 36;
             return (0, _start2.default)(conf);
 
-          case 31:
+          case 36:
           case 'end':
             return _context.stop();
         }
       }
-    }, _callee, this, [[17, 22]]);
+    }, _callee, this, [[22, 27]]);
   }));
 
   return function run() {
@@ -136,10 +149,14 @@ var _lint = require('./lint');
 
 var _lint2 = _interopRequireDefault(_lint);
 
+var _transpile = require('./transpile');
+
+var _transpile2 = _interopRequireDefault(_transpile);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //  Script
-_commander2.default.version(_package2.default.version).option('-c, --config <path>', 'Config file path').option('-b, --build', 'Build docs').option('-t, --test', 'Run test').option('-p, --publish', 'Publish to gh-pages').option('-u, --update', 'Run test and update').option('-l, --lint', 'Lint code').option('-f, --fix', 'Lint code and fix').parse(process.argv);
+_commander2.default.version(_package2.default.version).option('-c, --config <path>', 'Config file path').option('-b, --build', 'Build docs').option('-t, --test', 'Run test').option('-p, --publish', 'Publish to gh-pages').option('-u, --update', 'Run test and update').option('-l, --lint', 'Lint code').option('-f, --fix', 'Lint code and fix').option('-r, --transpile', 'Transpile').parse(process.argv);
 
 run().catch(function (err) {
   console.error(_chalk2.default.red('Error starting', err.stack || err));

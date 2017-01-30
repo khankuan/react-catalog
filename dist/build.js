@@ -69,7 +69,7 @@ exports.default = function () {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return (0, _clearOutput2.default)({ outputDir: outputDir + '/!(__tests__)' });
+            return (0, _clearOutput2.default)({ outputDir: outputDir });
 
           case 2:
             console.log(_chalk2.default.green('Folder reset.'));
@@ -80,27 +80,20 @@ exports.default = function () {
           case 5:
             console.log(_chalk2.default.green('Assets generated.'));
 
-            //  Transpile to lib
+            //  Generate docs and story index
             _context.next = 8;
-            return (0, _transpile2.default)({ src: src, outputDir: outputDir, storyPattern: storyPattern });
-
-          case 8:
-            console.log(_chalk2.default.green('Src transpiled'));
-
-            //  Generate component index, docs and story index
-            _context.next = 11;
             return (0, _generateComponentIndexAndDocs2.default)({ src: src, componentPattern: componentPattern, storyPattern: storyPattern, outputDir: outputDir, production: true });
 
-          case 11:
+          case 8:
             console.log(_chalk2.default.green('Component docs generated.'));
             (0, _generateStoryIndex2.default)({ src: src, storyPattern: storyPattern, outputDir: outputDir });
             console.log(_chalk2.default.green('Stories generated.'));
 
             //  Generate config file
-            _context.next = 16;
+            _context.next = 13;
             return (0, _generateConfig2.default)({ outputDir: outputDir, title: title, pagesDir: pagesDir });
 
-          case 16:
+          case 13:
             console.log(_chalk2.default.green('Config generated.'));
 
             //  Start build and server
@@ -113,24 +106,24 @@ exports.default = function () {
               configureWebpack: configureWebpack,
               production: true
             });
-            _context.next = 21;
+            _context.next = 18;
             return (0, _startWebpackProd2.default)({ webpackConfig: webpackConfig, outputDir: outputPublicDir });
 
-          case 21:
+          case 18:
             console.log(_chalk2.default.green('Bundle built.'));
 
             if (!postBuild) {
-              _context.next = 26;
+              _context.next = 23;
               break;
             }
 
-            _context.next = 25;
+            _context.next = 22;
             return postBuild();
 
-          case 25:
+          case 22:
             console.log(_chalk2.default.green('Post build completed.'));
 
-          case 26:
+          case 23:
           case 'end':
             return _context.stop();
         }

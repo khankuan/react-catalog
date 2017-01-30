@@ -7,6 +7,7 @@ export default function (configPath) {
     src: 'src',
     pagesDir: 'src/pages',
     outputDir: 'library-build',
+    testDir: 'library-tests',
     assets: [],
     title: 'React Library',
     componentPattern: '**/*.jsx',

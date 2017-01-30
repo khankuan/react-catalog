@@ -74,7 +74,7 @@ exports.default = function () {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return (0, _clearOutput2.default)({ outputDir: outputDir + '/!(__tests__)' });
+            return (0, _clearOutput2.default)({ outputDir: outputDir });
 
           case 2:
             console.log(_chalk2.default.green('Folder reset.'));

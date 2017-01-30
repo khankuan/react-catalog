@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
@@ -17,7 +17,7 @@ module.exports = {
   cacheDirectory: true,
   presets: [
   // let, const, destructuring, classes, modules
-  require.resolve('babel-preset-es2015'),
+  ["es2015", { "modules": false }],
   // exponentiation
   require.resolve('babel-preset-stage-0'),
   // JSX, Flow
