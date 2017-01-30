@@ -9,4 +9,6 @@ deployment:
   gh-pages:
     branch: master
     commands:
+      - git config --global user.email "khankuan@gmail.com"
+      - git config --global user.name "khankuan"
       - npm run gh-pages
