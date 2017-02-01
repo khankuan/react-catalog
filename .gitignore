@@ -3,3 +3,4 @@ npm-debug.log
 library-build
 library-tests/*
 !library-tests/__snapshots__
+dist
