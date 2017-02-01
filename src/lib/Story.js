@@ -18,7 +18,7 @@ export default class Story {
         this.handleCalls.push({ method, args })
       } else {
         args = args.map(arg => {
-          if (arg.preventDefault) {
+          if (arg && arg.preventDefault) {
             return `[Event ${arg.constructor.name}]`;
           }
           return arg

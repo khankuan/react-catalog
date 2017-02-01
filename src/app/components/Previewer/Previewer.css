@@ -1,9 +1,9 @@
 .react-library-previewer {
-  margin: 30px;
   position: relative;
   color: unset;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: flex-start;
 }
 
@@ -25,13 +25,13 @@
 }
 
 .react-library-previewer .previewer-controls {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
+  width: calc(100% - 10px);
+  padding: 5px;
+  text-align: right;
 }
 
 .react-library-previewer .previewer-controls button {
-  margin-left: 10px
+  margin-left: 5px
 }
 
 .react-library-previewer .previewer-error {
@@ -54,4 +54,8 @@
 
 .react-library-previewer .previewer-jsx {
   width: 100%;
+}
+
+.react-library-previewer.has-padding {
+  padding: 20px;
 }
