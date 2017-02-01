@@ -6,6 +6,7 @@ import 'codemirror/mode/htmlmixed/htmlmixed'
 import 'codemirror/mode/jsx/jsx'
 const beautifyHtml = require('js-beautify').html
 import reactElementToJSXString from 'react-element-to-jsx-string'
+import uncontrollable from 'uncontrollable';
 
 import * as components from 'build/components'
 import RoundButton from '../RoundButton/RoundButton'
@@ -17,9 +18,9 @@ import 'codemirror/theme/material.css'
 import './Previewer.css'
 
 const modes = ['react', 'jsx', 'html']
-const themes = ['checker', 'dark', 'light']
+const themes = ['checker', 'light', 'dark']
 
-export default class Previewer extends Component {
+class Previewer extends Component {
 
   static propTypes = {
     component: PropTypes.node,
@@ -28,7 +29,9 @@ export default class Previewer extends Component {
     mode: PropTypes.oneOf(modes),
     theme: PropTypes.oneOf(themes),
     onModeChange: PropTypes.func.isRequired,
-    onThemeChange: PropTypes.func.isRequired
+    onThemeChange: PropTypes.func.isRequired,
+    hasPadding: PropTypes.bool,
+    controlsFirst: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -57,7 +60,7 @@ export default class Previewer extends Component {
     return (
       <Codemirror
         className='previewer-html'
-        value={beautifyHtml(htmlString, { indent_size: 2, unformatted: [] })}
+        value={beautifyHtml(htmlString, { indent_size: 2, unformatted: [], wrap_attributes: 'force' })}
         options={{
           mode: 'htmlmixed',
           theme: theme === 'dark' ? 'material' : 'default',
@@ -88,14 +91,12 @@ export default class Previewer extends Component {
   renderSequenceSource () {
     const { component, mode, renderProps } = this.props
     let output
-    if (renderProps) {
-      const Component = components[component.props.component]
-      const sequenceComponent = <Component {...renderProps} />
-      if (mode === 'html') {
-        output = this.renderHtml(sequenceComponent)
-      } else if (mode === 'jsx') {
-        output = this.renderJSX(sequenceComponent)
-      }
+    const Component = components[component.props.component]
+    const sequenceComponent = <Component {...renderProps} />
+    if (mode === 'html') {
+      output = this.renderHtml(sequenceComponent)
+    } else if (mode === 'jsx') {
+      output = this.renderJSX(sequenceComponent)
     }
 
     return (
@@ -132,18 +133,31 @@ export default class Previewer extends Component {
     }
   }
 
-  render () {
-    const { theme, className } = this.props
+  renderControls() {
+    const { theme } = this.props
     const buttonTheme = theme === 'dark' ? 'light' : 'dark'
     return (
-      <div className={cx('react-library-previewer', `theme-${theme}`, className)}>
+      <div className='previewer-controls'>
+        <RoundButton theme={buttonTheme} onClick={this.handleModeClick}>{'</>'}</RoundButton>
+        <RoundButton theme={buttonTheme} onClick={this.handleThemeClick}>{'B/W'}</RoundButton>
+      </div>
+    )
+  }
+
+  render () {
+    const { theme, hasPadding, controlsFirst, className } = this.props
+    return (
+      <div className={cx('react-library-previewer', `theme-${theme}`, hasPadding && 'has-padding', className)}>
+        { controlsFirst ? this.renderControls() : null }
         <RenderSafe>{this.renderComponent()}</RenderSafe>
         <RenderSafe>{this.renderComponentSource()}</RenderSafe>
-        <div className='previewer-controls'>
-          <RoundButton theme={buttonTheme} onClick={this.handleModeClick}>{'</>'}</RoundButton>
-          <RoundButton theme={buttonTheme} onClick={this.handleThemeClick}>{'B/W'}</RoundButton>
-        </div>
+        { controlsFirst ? null : this.renderControls() }
       </div>
     )
   }
 }
+
+export default uncontrollable(Previewer, {
+  mode: 'onModeChange',
+  theme: 'onThemeChange',
+});

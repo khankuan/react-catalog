@@ -8,6 +8,7 @@ import NavLink from '../NavLink/NavLink'
 import RenderSafe from '../RenderSafe/RenderSafe'
 import BrowseComponentSequence from '../BrowseComponentSequence/BrowseComponentSequence'
 import Well from '../Well/Well'
+import Previewer from '../Previewer/Previewer'
 
 import './BrowseComponent.css'
 
@@ -45,7 +46,7 @@ export default class BrowseComponent extends Component {
   renderStoryOutput (name, story) {
     let output
     if (story.sequence) {
-      output = <BrowseComponentSequence className='component-sequence' story={story} component={name} />
+      output = <BrowseComponentSequence className='component-sequence' story={story} component={name} theme={story.theme} />
     } else if (Array.isArray(story.content)) {
       output = React.Children.map(story.content, (child, i) => React.cloneElement(child, { key: i }))
     } else if (React.isValidElement(story.content)) {
@@ -53,9 +54,7 @@ export default class BrowseComponent extends Component {
     } else {
       const Component = components[name]
       output = (
-        <RenderSafe>
-          <Component {...story.content} />
-        </RenderSafe>
+        <Component {...story.content} />
       )
     }
     return output
@@ -67,9 +66,18 @@ export default class BrowseComponent extends Component {
       <div key={story.title} className='component-content-story' id={story.title}>
         {showName ? <h5><NavLink className='component-link' to={`/${category}/${name}/${story.title}`}>{story.title}</NavLink></h5> : null}
         { story.description ? <p className='component-description'>{story.description}</p> : null }
-        <Well className='component-output' theme={story.theme}>
-          {output}
-        </Well>
+        <RenderSafe>
+          {
+            story.sequence ? output :
+              <Previewer
+                className='component-output'
+                hasPadding
+                controlsFirst
+                component={Array.isArray(output) ? <div>{output}</div> : output}
+                defaultTheme={story.theme || 'light'}
+              />
+          }
+        </RenderSafe>
       </div>
     )
   }
@@ -79,9 +87,15 @@ export default class BrowseComponent extends Component {
     return (
       <div key='default' className='component-content-story'>
         {showName ? <h5><NavLink className='component-link' to={`/${category}/${name}`}>Default</NavLink></h5> : null}
-        <Well className='component-output'>
-          <RenderSafe><Component key='default' /></RenderSafe>
-        </Well>
+          <RenderSafe>
+          <Previewer
+            className='component-output'
+            hasPadding
+            controlsFirst
+            component={<Component key='default' />}
+            defaultTheme='light'
+          />
+        </RenderSafe>
       </div>
     )
   }

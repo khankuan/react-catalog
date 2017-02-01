@@ -3,7 +3,7 @@ import React, { PropTypes, Component } from 'react'
 import SequenceControls from '../SequenceControls/SequenceControls'
 import Sequencer from '../Sequencer/Sequencer'
 import RenderSafe from '../RenderSafe/RenderSafe'
-import Well from '../Well/Well'
+import Previewer from '../Previewer/Previewer';
 
 import './BrowseComponentSequence.css'
 
@@ -13,7 +13,8 @@ export default class BrowseComponentSequence extends Component {
     story: PropTypes.shape({
       sequence: PropTypes.array
     }),
-    component: PropTypes.string
+    component: PropTypes.string,
+    theme: PropTypes.string,
   }
 
   state ={
@@ -24,9 +25,13 @@ export default class BrowseComponentSequence extends Component {
     this.setState({ stepIndex: i })
   }
 
+  handleProps = componentProps => {
+    this.setState({ componentProps });
+  }
+
   render () {
     const { story, component } = this.props
-    const { stepIndex } = this.state
+    const { stepIndex, componentProps } = this.state
     return (
       <div className='react-library-browse-component-sequence'>
         <SequenceControls
@@ -36,9 +41,14 @@ export default class BrowseComponentSequence extends Component {
           stepIndex={stepIndex}
           onStepChange={this.handleStepChange} />
         <RenderSafe key='output'>
-          <Well theme={story.theme}>
-            <Sequencer component={component} story={story} stepIndex={stepIndex} />
-          </Well>
+          <Previewer
+            hasPadding
+            controlsFirst
+            renderProps={componentProps}
+            component={<Sequencer component={component} story={story} stepIndex={stepIndex} onPropsChange={this.handleProps} />}
+            defaultTheme={story.theme || 'light'}
+          />
+
         </RenderSafe>
       </div>
     )

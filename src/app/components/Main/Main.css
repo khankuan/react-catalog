@@ -54,6 +54,7 @@
 
 .react-library-main .previewer {
   flex-grow: 1;
+  margin: 30px;
 }
 
 .react-library-main .default-error {
