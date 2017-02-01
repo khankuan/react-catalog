@@ -340,6 +340,7 @@
 .react-library-main .previewer {
   -ms-flex-positive: 1;
       flex-grow: 1;
+  margin: 30px;
 }
 
 .react-library-main .default-error {
@@ -770,13 +771,14 @@ span.CodeMirror-selectedtext { background: none; }
   color: white !important;
 }
 .react-library-previewer {
-  margin: 30px;
   position: relative;
   color: unset;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
       flex-direction: column;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
   -ms-flex-align: start;
       align-items: flex-start;
 }
@@ -799,13 +801,13 @@ span.CodeMirror-selectedtext { background: none; }
 }
 
 .react-library-previewer .previewer-controls {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
+  width: calc(100% - 10px);
+  padding: 5px;
+  text-align: right;
 }
 
 .react-library-previewer .previewer-controls button {
-  margin-left: 10px
+  margin-left: 5px
 }
 
 .react-library-previewer .previewer-error {
@@ -828,6 +830,10 @@ span.CodeMirror-selectedtext { background: none; }
 
 .react-library-previewer .previewer-jsx {
   width: 100%;
+}
+
+.react-library-previewer.has-padding {
+  padding: 20px;
 }
 .react-library-sequence-controls {
   font-size: 14px;
