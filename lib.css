@@ -24,6 +24,7 @@
 .demo-card {
   padding: 10px;
   background: white;
+  display: inline-block;
 }
 
 .demo-card-depth-1 {
