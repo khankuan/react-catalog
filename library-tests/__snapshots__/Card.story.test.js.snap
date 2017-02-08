@@ -13,6 +13,7 @@ exports[`test Card.story - High emphasis 1`] = `
     </div>
   </div>
   <br />
+  <br />
   <div
     className="demo-card demo-card-depth-2">
     <div
