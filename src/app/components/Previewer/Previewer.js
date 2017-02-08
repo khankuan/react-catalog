@@ -109,7 +109,7 @@ class Previewer extends Component {
   renderComponent () {
     const { component, mode } = this.props
     if (mode === 'react') {
-      return component
+      return <div>{component}</div>
     }
     return (
       <div style={{ display: 'none' }}>
