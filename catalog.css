@@ -1,44 +1,44 @@
-.react-library-nav-header {
+.react-catalog-nav-header {
   font-weight: 400;
   font-size: 16px;
   margin: 10px 0;
   color: #666;
 }
 
-.react-library-well {
+.react-catalog-well {
   padding: 20px;
   border: 1px dashed;
 }
 
-.react-library-well > * {
+.react-catalog-well > * {
   vertical-align: top;
 }
 
-.react-library-well-title {
+.react-catalog-well-title {
   margin-bottom: 20px;
   display: block
 }
 
-.react-library-well-dark {
+.react-catalog-well-dark {
   background: black;
 }
-.react-library-well-dark > .react-library-well-title {
+.react-catalog-well-dark > .react-catalog-well-title {
   color: white;
 }
 
-.react-library-well-light {
+.react-catalog-well-light {
   background: white;
 }
 
-.react-library-well-dark {
+.react-catalog-well-dark {
   border-color: rgba(255, 255, 255, 0.8);
 }
 
-.react-library-well-light {
+.react-catalog-well-light {
   border-color: rgba(0, 0, 0, 0.8);
 }
 
-.react-library-list-layout {
+.react-catalog-list-layout {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
@@ -48,17 +48,17 @@
       align-items: flex-start;
 }
 
-.react-library-list-layout > .react-library-list-layout-item {
+.react-catalog-list-layout > .react-catalog-list-layout-item {
   margin-right: 10px;
   margin-bottom: 10px;
 }
-.react-library-page {
+.react-catalog-page {
   width: 100%;
   overflow-y: auto;
   position: relative;
 }
 
-.react-library-page-wrapper {
+.react-catalog-page-wrapper {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
@@ -67,11 +67,11 @@
 }
 
 @media all and (max-width: 768px) {
-  .react-library-page-wrapper {
+  .react-catalog-page-wrapper {
     margin-top: 60px;
   }
 }
-.react-library-nav-link {
+.react-catalog-nav-link {
   text-decoration: none;
   display: -ms-flexbox;
   display: flex;
@@ -88,39 +88,39 @@
   text-transform: capitalize;
 }
 
-.react-library-nav-link.active {
+.react-catalog-nav-link.active {
   color: #008cff;
 }
 
-.react-library-nav-link.active.selected {
+.react-catalog-nav-link.active.selected {
   background: #f3f3f3;
 }
 
-.react-library-nav-link.disabled {
+.react-catalog-nav-link.disabled {
   pointer-events: none;
   opacity: 0.5;
 }
 
-.react-library-nav-link .link-text {
+.react-catalog-nav-link .link-text {
   -ms-flex-positive: 1;
       flex-grow: 1
 }
 
-.react-library-nav-link .link-text:hover {
+.react-catalog-nav-link .link-text:hover {
   text-decoration: underline;
 }
 
-.react-library-nav-link .expand {
+.react-catalog-nav-link .expand {
   font-size: 14px;
   text-align: center;
   display: inline-block;
   width: 20px;
 }
 
-.react-library-nav-link .expand:hover {
+.react-catalog-nav-link .expand:hover {
   color: black;
 }
-.react-library-left-bar {
+.react-catalog-left-bar {
   width: 260px;
   border-right: 1px solid #ccc;
   -ms-flex-negative: 0;
@@ -134,7 +134,7 @@
   box-sizing: border-box;
 }
 
-.react-library-left-bar .show-button {
+.react-catalog-left-bar .show-button {
   visibility: hidden;
   position: absolute;
   font-size: 36px;
@@ -148,7 +148,7 @@
   padding: 10px;
 }
 
-.react-library-left-bar .app-title {
+.react-catalog-left-bar .app-title {
   margin: 0;
   padding: 10px;
   padding-top: 20px;
@@ -157,35 +157,35 @@
   color: #bbb;
 }
 
-.react-library-left-bar .bar-header {
+.react-catalog-left-bar .bar-header {
   padding-left: 10px;
   margin-bottom: 5px;
 }
 
-.react-library-left-bar .page-link {
+.react-catalog-left-bar .page-link {
   padding-left: 20px;
   -ms-flex-negative: 0;
       flex-shrink: 0;
 }
 
-.react-library-left-bar .category-link {
+.react-catalog-left-bar .category-link {
   padding-left: 20px;
   font-weight: 700;
 }
 
-.react-library-left-bar .component-link {
+.react-catalog-left-bar .component-link {
   padding-left: 30px;
   word-break: break-all;
 }
 
-.react-library-left-bar .story-link {
+.react-catalog-left-bar .story-link {
   padding-left: 40px;
   word-break: break-all;
   font-style: italic;
   font-size: 12px;
 }
 
-.react-library-left-bar .bar-search {
+.react-catalog-left-bar .bar-search {
   display: -ms-flexbox;
   display: flex;
   position: relative;
@@ -195,7 +195,7 @@
       flex-shrink: 0;
 }
 
-.react-library-left-bar .bar-search input {
+.react-catalog-left-bar .bar-search input {
   background: #f3f3f3;
   color: orange;
   margin: 0;
@@ -210,29 +210,33 @@
   margin-top: 5px;
 }
 
-.react-library-left-bar .bar-search input::-webkit-input-placeholder {
+.react-catalog-left-bar .bar-search input::-webkit-input-placeholder {
   color: orange;
 }
 
-.react-library-left-bar .bar-search input:-ms-input-placeholder {
+.react-catalog-left-bar .bar-search input::-moz-placeholder {
   color: orange;
 }
 
-.react-library-left-bar .bar-search input::placeholder {
+.react-catalog-left-bar .bar-search input:-ms-input-placeholder {
   color: orange;
 }
 
-.react-library-left-bar .bar-search input::-moz-selection {
+.react-catalog-left-bar .bar-search input::placeholder {
+  color: orange;
+}
+
+.react-catalog-left-bar .bar-search input::-moz-selection {
   background: #ffe5b4;
   color: #ff7518;
 }
 
-.react-library-left-bar .bar-search input::selection {
+.react-catalog-left-bar .bar-search input::selection {
   background: #ffe5b4;
   color: #ff7518;
 }
 
-.react-library-left-bar .bar-search .clear-button {
+.react-catalog-left-bar .bar-search .clear-button {
   position: absolute;
   font-size: 36px;
   font-weight: 100;
@@ -245,18 +249,18 @@
   color: orange;
 }
 
-.react-library-left-bar .bar-search .clear-button:hover {
+.react-catalog-left-bar .bar-search .clear-button:hover {
   opacity: 1;
 }
 
-.react-library-left-bar-categories {
+.react-catalog-left-bar-categories {
   overflow-y: auto;
   padding-top: 5px;
   padding-bottom: 50px;
 }
 
 @media all and (max-width: 768px) {
-  .react-library-left-bar {
+  .react-catalog-left-bar {
     position: absolute;
     top: 0;
     background: white;
@@ -270,15 +274,15 @@
     overflow: hidden;
   }
 
-  .react-library-left-bar.show {
+  .react-catalog-left-bar.show {
     height: 100vh;
   }
 
-  .react-library-left-bar .show-button {
+  .react-catalog-left-bar .show-button {
     visibility: visible;
   }
 }
-.react-library-main {
+.react-catalog-main {
   -ms-flex-positive: 1;
       flex-grow: 1;
   display: -ms-flexbox;
@@ -288,7 +292,7 @@
   overflow-x: auto;
 }
 
-.react-library-main-header {
+.react-catalog-main-header {
   padding: 20px;
   border-bottom: 1px solid #ccc;
   -ms-flex-negative: 0;
@@ -296,7 +300,7 @@
   font-size: 13px;
 }
 
-.react-library-main-header .component-title {
+.react-catalog-main-header .component-title {
   font-weight: 400;
   font-size: 28px;
   margin: 0;
@@ -305,7 +309,7 @@
   letter-spacing: 0.03em;
 }
 
-.react-library-main-header .story-title {
+.react-catalog-main-header .story-title {
   font-weight: 400;
   font-size: 14px;
   color: #999;
@@ -315,44 +319,44 @@
   font-style: italic;
 }
 
-.react-library-main-header .header-description {
+.react-catalog-main-header .header-description {
   font-size: 13px;
   margin: 5px 0;
 }
 
-.react-library-main-header .header-categories {
+.react-catalog-main-header .header-categories {
   display: -ms-flexbox;
   display: flex;
   padding-left: 10px;
 }
 
-.react-library-main-header .header-categories .category-link {
+.react-catalog-main-header .header-categories .category-link {
   padding-right: 10px;
 }
 
-.react-library-main-header .header-tags {
+.react-catalog-main-header .header-tags {
   color: #aaa;
   font-size: 12px;
   padding-left: 10px;
   padding-bottom: 10px;
 }
 
-.react-library-main .previewer {
+.react-catalog-main .previewer {
   -ms-flex-positive: 1;
       flex-grow: 1;
   margin: 30px;
 }
 
-.react-library-main .default-error {
+.react-catalog-main .default-error {
   padding: 20px;
   color: #999;
 }
-.react-library-markdown code {
+.react-catalog-markdown code {
   background: #eee;
   padding: 0px 3px;
   color: #c05b4d;
 }
-.react-library-round-button {
+.react-catalog-round-button {
   display: inline-block;
   width: 40px;
   height: 40px;
@@ -369,22 +373,22 @@
   font-size: 11px;
 }
 
-.react-library-round-button:hover {
+.react-catalog-round-button:hover {
   opacity: 1;
 }
 
-.react-library-round-button.theme-dark {
+.react-catalog-round-button.theme-dark {
   background: #333;
   border-color: white;
   color: white;
 }
 
-.react-library-round-button.theme-light {
+.react-catalog-round-button.theme-light {
   background: white;
   border-color: #333;
   color: #333;
 }
-.react-library-render-safe {
+.react-catalog-render-safe {
   color: red;
   font-size: 13px;
 }
@@ -770,7 +774,7 @@ span.CodeMirror-selectedtext { background: none; }
   text-decoration: underline;
   color: white !important;
 }
-.react-library-previewer {
+.react-catalog-previewer {
   position: relative;
   color: unset;
   display: -ms-flexbox;
@@ -781,34 +785,34 @@ span.CodeMirror-selectedtext { background: none; }
       justify-content: space-between;
 }
 
-.react-library-previewer.theme-checker {
+.react-catalog-previewer.theme-checker {
   background-image: -webkit-linear-gradient(45deg, rgba(0,0,0,0.04) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.04) 75%, rgba(0,0,0,0.04) 100%), -webkit-linear-gradient(45deg, rgba(0,0,0,0.04) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.04) 75%, rgba(0,0,0,0.04) 100%);
   background-size: 24px 24px;
   background-position: 0 0, 12px 12px;
   border: 1px dashed #ddd;
 }
 
-.react-library-previewer.theme-dark {
+.react-catalog-previewer.theme-dark {
   background: #333;
   border: 1px dashed #999;
 }
 
-.react-library-previewer.theme-light {
+.react-catalog-previewer.theme-light {
   background: white;
   border: 1px dashed #ddd;
 }
 
-.react-library-previewer .previewer-controls {
+.react-catalog-previewer .previewer-controls {
   width: calc(100% - 10px);
   padding: 5px;
   text-align: right;
 }
 
-.react-library-previewer .previewer-controls button {
+.react-catalog-previewer .previewer-controls button {
   margin-left: 5px
 }
 
-.react-library-previewer .previewer-error {
+.react-catalog-previewer .previewer-error {
   color: red;
   padding: 0 10px;
   margin: 0;
@@ -816,120 +820,120 @@ span.CodeMirror-selectedtext { background: none; }
   font-size: 12px;
 }
 
-.react-library-previewer .previewer-html {
+.react-catalog-previewer .previewer-html {
   width: 100%;
   font-size: 12px;
 }
 
-.react-library-previewer .CodeMirror {
+.react-catalog-previewer .CodeMirror {
   background: none;
   height: 100%;
 }
 
-.react-library-previewer .previewer-jsx {
+.react-catalog-previewer .previewer-jsx {
   width: 100%;
 }
 
-.react-library-previewer.has-padding {
+.react-catalog-previewer.has-padding {
   padding: 20px;
 }
-.react-library-sequence-controls {
+.react-catalog-sequence-controls {
   font-size: 14px;
 }
 
-.react-library-sequence-controls .sequence-list {
+.react-catalog-sequence-controls .sequence-list {
   padding-left: 20px;
   padding-top: 10px;
 }
 
-.react-library-sequence-controls .steppers {
+.react-catalog-sequence-controls .steppers {
   padding-left: 20px;
   padding-top: 10px;
   font-size: 12px;
 }
 
-.react-library-sequence-controls .sequence-link {
+.react-catalog-sequence-controls .sequence-link {
   display: inline-block;
   padding: 5px;
 }
 
-.react-library-sequence-controls .sequence-arrow {
+.react-catalog-sequence-controls .sequence-arrow {
   color: #aaa;
 }
-.react-library-documentation-table {
+.react-catalog-documentation-table {
   overflow-y: auto;
   overflow-x: hidden;
   font-size: 12px;
 }
 
-.react-library-documentation-table table {
+.react-catalog-documentation-table table {
   border-collapse: collapse;
   width: 100%;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
 }
 
-.react-library-documentation-table table thead tr {
+.react-catalog-documentation-table table thead tr {
   background: #f3f3f3;
   font-weight: 700;
 }
 
-.react-library-documentation-table table tr {
+.react-catalog-documentation-table table tr {
   background: #fcfcfc;
 }
 
-.react-library-documentation-table table tr.alt {
+.react-catalog-documentation-table table tr.alt {
   background: #f3f3f3;
 }
 
-.react-library-documentation-table table tr td {
+.react-catalog-documentation-table table tr td {
   padding: 5px 10px;
   max-width: 200px;
   vertical-align: middle;
   word-wrap: break-word;
 }
 
-.react-library-documentation-table .field-type {
+.react-catalog-documentation-table .field-type {
   padding-right: 5px;
 }
 
-.react-library-documentation-table .field-description {
+.react-catalog-documentation-table .field-description {
   cursor: pointer;
 }
 
-.react-library-documentation-table .type-value {
+.react-catalog-documentation-table .type-value {
   color: #999;
 }
 
-.react-library-documentation-table .type-value.changable {
+.react-catalog-documentation-table .type-value.changable {
   cursor: pointer;
 }
 
-.react-library-documentation-table .type-value.changable:hover {
+.react-catalog-documentation-table .type-value.changable:hover {
   color: #1a98ff;
 }
 
-.react-library-documentation-table .type-value.changable.active {
+.react-catalog-documentation-table .type-value.changable.active {
   color: #008cff;
 }
 
-.react-library-documentation-table .type-prefix {
+.react-catalog-documentation-table .type-prefix {
   opacity: 0.45;
 }
 
-.react-library-documentation-table .type-oneof span {
+.react-catalog-documentation-table .type-oneof span {
   padding: 3px;
   display: inline-block;
 }
 
-.react-library-documentation-table .type-number {
+.react-catalog-documentation-table .type-number {
   max-width: 60px;
 }
 
-.react-library-documentation-table .type-string {
+.react-catalog-documentation-table .type-string {
   max-width: 60px;
 }
-.react-library-right-bar {
+.react-catalog-right-bar {
   width: 400px;
   border-left: 1px solid #ccc;
   -ms-flex-negative: 0;
@@ -937,34 +941,34 @@ span.CodeMirror-selectedtext { background: none; }
   box-sizing: border-box;
 }
 
-.react-library-right-bar .bar-header {
+.react-catalog-right-bar .bar-header {
   margin: 10px;
 }
 
-.react-library-dependency {
+.react-catalog-dependency {
   font-size: 13px;
   width: 100%;
 }
 
-.react-library-dependency tbody tr td {
+.react-catalog-dependency tbody tr td {
   color: #999;
   vertical-align: top;
 }
 
-.react-library-dependency tbody tr td .dependency {
+.react-catalog-dependency tbody tr td .dependency {
   display: inline;
   padding: 5px;
   padding-left: 0px;
 }
 
-.react-library-dependency .table-type {
+.react-catalog-dependency .table-type {
   padding: 5px 10px;
   padding-right: 0px;
   width: 90px;
   color: #666;
 }
 
-.react-library-dependency .table-names {
+.react-catalog-dependency .table-names {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
@@ -972,48 +976,48 @@ span.CodeMirror-selectedtext { background: none; }
   -ms-flex-align: center;
       align-items: center;
 }
-.react-library-browse-component-sequence .sequence-controls {
+.react-catalog-browse-component-sequence .sequence-controls {
   margin-bottom: 20px;
 }
-.react-library-browse-component {
+.react-catalog-browse-component {
   border-top: 1px solid transparent;
 }
 
-.react-library-browse-component .component-link {
+.react-catalog-browse-component .component-link {
   color: #999;
   text-decoration: none;
   display: inline-block;
 }
 
-.react-library-browse-component .component-link:hover {
+.react-catalog-browse-component .component-link:hover {
   text-decoration: underline;
 }
 
-.react-library-browse-component .component-description {
+.react-catalog-browse-component .component-description {
   font-size: 14px;
   padding: 10px;
   color: #aaa;
 }
 
-.react-library-browse-component .component-header select {
+.react-catalog-browse-component .component-header select {
   margin-left: 10px;
   outline: none;
 }
 
-.react-library-browse-component .component-content {
+.react-catalog-browse-component .component-content {
   margin-left: 20px;
 }
 
-.react-library-browse-component .component-content .component-output {
+.react-catalog-browse-component .component-content .component-output {
   margin-left: 20px;
 }
 
-.react-library-browse-component .content-empty {
+.react-catalog-browse-component .content-empty {
   color: #aaa;
   font-size: 12px;
   font-style: italic;
 }
-.react-library-browse {
+.react-catalog-browse {
   padding: 30px;
   width: 100%;
   overflow-y: auto;
@@ -1023,30 +1027,30 @@ span.CodeMirror-selectedtext { background: none; }
 }
 
 @media all and (max-width: 768px) {
-  .react-library-browse {
+  .react-catalog-browse {
     margin-top: 60px;
   }
 }
 
-.react-library-browse .browse-header {
+.react-catalog-browse .browse-header {
   border-bottom: 2px solid #f3f3f3;
   padding-bottom: 20px;
   margin-bottom: 20px;
 }
 
-.react-library-browse .browse-header .option-group label {
+.react-catalog-browse .browse-header .option-group label {
   padding-right: 10px;
   font-size: 13px;
 }
 
-.react-library-browse .component-section {
+.react-catalog-browse .component-section {
   padding-bottom: 40px;
 }
 body {
   margin: 0;
 }
 
-.react-library-app {
+.react-catalog-app {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #666;
   height: 100vh;
@@ -1056,4 +1060,4 @@ body {
       align-items: stretch;
 }
 
-/*# sourceMappingURL=library.css.map*/
+/*# sourceMappingURL=catalog.css.map*/
