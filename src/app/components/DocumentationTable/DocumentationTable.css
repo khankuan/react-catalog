@@ -1,73 +1,73 @@
-.react-gallery-documentation-table {
+.react-catalog-documentation-table {
   overflow-y: auto;
   overflow-x: hidden;
   font-size: 12px;
 }
 
-.react-gallery-documentation-table table {
+.react-catalog-documentation-table table {
   border-collapse: collapse;
   width: 100%;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
 }
 
-.react-gallery-documentation-table table thead tr {
+.react-catalog-documentation-table table thead tr {
   background: #f3f3f3;
   font-weight: 700;
 }
 
-.react-gallery-documentation-table table tr {
+.react-catalog-documentation-table table tr {
   background: #fcfcfc;
 }
 
-.react-gallery-documentation-table table tr.alt {
+.react-catalog-documentation-table table tr.alt {
   background: #f3f3f3;
 }
 
-.react-gallery-documentation-table table tr td {
+.react-catalog-documentation-table table tr td {
   padding: 5px 10px;
   max-width: 200px;
   vertical-align: middle;
   word-wrap: break-word;
 }
 
-.react-gallery-documentation-table .field-type {
+.react-catalog-documentation-table .field-type {
   padding-right: 5px;
 }
 
-.react-gallery-documentation-table .field-description {
+.react-catalog-documentation-table .field-description {
   cursor: pointer;
 }
 
-.react-gallery-documentation-table .type-value {
+.react-catalog-documentation-table .type-value {
   color: #999;
 }
 
-.react-gallery-documentation-table .type-value.changable {
+.react-catalog-documentation-table .type-value.changable {
   cursor: pointer;
 }
 
-.react-gallery-documentation-table .type-value.changable:hover {
+.react-catalog-documentation-table .type-value.changable:hover {
   color: #1a98ff;
 }
 
-.react-gallery-documentation-table .type-value.changable.active {
+.react-catalog-documentation-table .type-value.changable.active {
   color: #008cff;
 }
 
-.react-gallery-documentation-table .type-prefix {
+.react-catalog-documentation-table .type-prefix {
   opacity: 0.45;
 }
 
-.react-gallery-documentation-table .type-oneof span {
+.react-catalog-documentation-table .type-oneof span {
   padding: 3px;
   display: inline-block;
 }
 
-.react-gallery-documentation-table .type-number {
+.react-catalog-documentation-table .type-number {
   max-width: 60px;
 }
 
-.react-gallery-documentation-table .type-string {
+.react-catalog-documentation-table .type-string {
   max-width: 60px;
 }

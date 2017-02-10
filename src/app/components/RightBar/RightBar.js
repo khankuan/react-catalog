@@ -118,7 +118,7 @@ export default class RightBar extends Component {
     return (
       <div>
         <h4 className='bar-header'>Dependencies</h4>
-        <table className='react-gallery-dependency'>
+        <table className='react-catalog-dependency'>
           <tbody>
             {this.renderDependenciesRow('Uses', on)}
             {this.renderDependenciesRow('Used by', by)}
@@ -132,7 +132,7 @@ export default class RightBar extends Component {
     const { error } = this.props
 
     return (
-      <div className='react-gallery-right-bar'>
+      <div className='react-catalog-right-bar'>
         {this.renderDependencies()}
         <div>
           <h4 className='bar-header'>Properties</h4>

@@ -1,4 +1,4 @@
-import { Story } from 'react-gallery'
+import { Story } from 'react-catalog'
 import React from 'react'
 import Card from './Card'
 

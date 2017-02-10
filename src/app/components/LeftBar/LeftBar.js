@@ -308,7 +308,7 @@ export default class LeftBar extends Component {
       this.renderSearch(search)
     ]
     output.push(
-      <div className='react-gallery-left-bar-categories' key='bar-categories'>
+      <div className='react-catalog-left-bar-categories' key='bar-categories'>
         {componentCategories.map(section => this.renderCategorySection(section, query))}
       </div>
     )
@@ -368,7 +368,7 @@ export default class LeftBar extends Component {
   render () {
     const { search } = this.state
     return (
-      <div className={cx('react-gallery-left-bar', { show: this.state.show })}>
+      <div className={cx('react-catalog-left-bar', { show: this.state.show })}>
         <h1 className='app-title'>{config.title}{this.renderClose()}</h1>
         {this.renderStatic()}
         {this.renderCategories(this.getSavedQuery(), search)}

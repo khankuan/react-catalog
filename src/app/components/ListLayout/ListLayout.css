@@ -1,12 +1,12 @@
 
-.react-gallery-list-layout {
+.react-catalog-list-layout {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: -10px;
   align-items: flex-start;
 }
 
-.react-gallery-list-layout > .react-gallery-list-layout-item {
+.react-catalog-list-layout > .react-catalog-list-layout-item {
   margin-right: 10px;
   margin-bottom: 10px;
 }

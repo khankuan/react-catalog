@@ -158,7 +158,7 @@ export default class BrowseComponent extends Component {
     const { name, mode, category, story } = this.props
     const content = this.renderContent(category, name, mode, story)
     return (
-      <div className='react-gallery-browse-component'>
+      <div className='react-catalog-browse-component'>
         <h4 className='component-header'>
           <NavLink className='component-link' to={`/${category}/${name}`}>{name}</NavLink>
           {(!mode && !story) ? this.renderStorySelect(name) : null}

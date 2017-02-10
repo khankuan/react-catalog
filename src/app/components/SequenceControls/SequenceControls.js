@@ -20,7 +20,7 @@ export default class SequenceControls extends Component {
     const { story, stepIndex, onStepChange, className } = this.props
     const { sequence } = story
     return (
-      <div className={cx('react-gallery-sequence-controls', className)}>
+      <div className={cx('react-catalog-sequence-controls', className)}>
         <div className='sequence-list'>
           {
             sequence.map((step, i) => ([

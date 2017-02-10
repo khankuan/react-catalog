@@ -7,14 +7,14 @@ const Well = ({ className, theme, title, children, ...props }) => (
   <div
     {...props}
     className={cx(
-      'react-gallery-well',
-      `react-gallery-well-${theme}`,
+      'react-catalog-well',
+      `react-catalog-well-${theme}`,
       className,
     )}
   >
     {
       title ?
-        <span className='react-gallery-well-title'>
+        <span className='react-catalog-well-title'>
           {title}
         </span>
       : null

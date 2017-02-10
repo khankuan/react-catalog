@@ -1,33 +1,33 @@
 
-.react-gallery-well {
+.react-catalog-well {
   padding: 20px;
   border: 1px dashed;
 }
 
-.react-gallery-well > * {
+.react-catalog-well > * {
   vertical-align: top;
 }
 
-.react-gallery-well-title {
+.react-catalog-well-title {
   margin-bottom: 20px;
   display: block
 }
 
-.react-gallery-well-dark {
+.react-catalog-well-dark {
   background: black;
 }
-.react-gallery-well-dark > .react-gallery-well-title {
+.react-catalog-well-dark > .react-catalog-well-title {
   color: white;
 }
 
-.react-gallery-well-light {
+.react-catalog-well-light {
   background: white;
 }
 
-.react-gallery-well-dark {
+.react-catalog-well-dark {
   border-color: rgba(255, 255, 255, 0.8);
 }
 
-.react-gallery-well-light {
+.react-catalog-well-light {
   border-color: rgba(0, 0, 0, 0.8);
 }

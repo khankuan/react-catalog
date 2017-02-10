@@ -12,9 +12,9 @@ const StaticPage = ({ title, children, className, ...props }) => {
     children = <Comp />
   }
   return (
-    <div {...props} className='react-gallery-page'>
+    <div {...props} className='react-catalog-page'>
       <DocumentTitle title={title} />
-      <div className={cx('react-gallery-page-wrapper', className)}>
+      <div className={cx('react-catalog-page-wrapper', className)}>
         {children}
       </div>
     </div>

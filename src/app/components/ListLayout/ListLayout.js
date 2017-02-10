@@ -9,12 +9,12 @@ const ListLayout = ({
   ...props
 }) => {
   const classNames = cx(
-    'react-gallery-list-layout',
+    'react-catalog-list-layout',
     className,
   );
   const mappedChildren = React.Children.map(children, child => (
     child ? React.cloneElement(child, {
-      className: cx('react-gallery-list-layout-item', child.props.className),
+      className: cx('react-catalog-list-layout-item', child.props.className),
     }) : null
   )).filter(x => !!x);
 

@@ -1,9 +1,9 @@
 import React from 'react'
 
-import './react-gallery-docs-configuration.css'
+import './react-catalog-docs-configuration.css'
 
 const Configuration = () => (
-  <div className='react-gallery-docs-configuration'>
+  <div className='react-catalog-docs-configuration'>
     <p>The table below contains the list of configuration available:</p>
     <table>
       <thead>
@@ -27,12 +27,12 @@ const Configuration = () => (
         <tr>
           <td>outputDir</td>
           <td>Directory that will contain all files generated</td>
-          <td>gallery-build</td>
+          <td>catalog-build</td>
         </tr>
         <tr>
           <td>testDir</td>
           <td>Directory that will contain all tests generated and snapshots</td>
-          <td>gallery-tests</td>
+          <td>catalog-tests</td>
         </tr>
         <tr>
           <td>assets</td>
@@ -42,7 +42,7 @@ const Configuration = () => (
         <tr>
           <td>title</td>
           <td>Title of your project</td>
-          <td>React Gallery</td>
+          <td>React Catalog</td>
         </tr>
         <tr>
           <td>componentPattern</td>

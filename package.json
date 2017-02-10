@@ -1,10 +1,10 @@
 {
-  "name": "react-gallery",
-  "version": "1.0.0",
-  "description": "React Gallery is a UI Component development and documentation tool",
+  "name": "react-catalog",
+  "version": "1.0.7",
+  "description": "React Catalog is a UI Component development and documentation tool",
   "repository": {
     "type": "git",
-    "url": "khankuan/react-gallery"
+    "url": "khankuan/react-catalog"
   },
   "main": "src",
   "directories": {
@@ -27,7 +27,7 @@
     "documentation"
   ],
   "bin": {
-    "react-gallery": "./bin/react-gallery.js"
+    "react-catalog": "./bin/react-catalog.js"
   },
   "author": "khankuan <khankuan@gmail.com>",
   "license": "ISC",

@@ -1,6 +1,6 @@
 node_modules
 npm-debug.log
-gallery-build
-gallery-tests/*
-!gallery-tests/__snapshots__
+catalog-build
+catalog-tests/*
+!catalog-tests/__snapshots__
 dist

@@ -1,23 +1,23 @@
-.react-gallery-sequence-controls {
+.react-catalog-sequence-controls {
   font-size: 14px;
 }
 
-.react-gallery-sequence-controls .sequence-list {
+.react-catalog-sequence-controls .sequence-list {
   padding-left: 20px;
   padding-top: 10px;
 }
 
-.react-gallery-sequence-controls .steppers {
+.react-catalog-sequence-controls .steppers {
   padding-left: 20px;
   padding-top: 10px;
   font-size: 12px;
 }
 
-.react-gallery-sequence-controls .sequence-link {
+.react-catalog-sequence-controls .sequence-link {
   display: inline-block;
   padding: 5px;
 }
 
-.react-gallery-sequence-controls .sequence-arrow {
+.react-catalog-sequence-controls .sequence-arrow {
   color: #aaa;
 }

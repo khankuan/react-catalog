@@ -33,7 +33,7 @@ export default class BrowseComponentSequence extends Component {
     const { story, component } = this.props
     const { stepIndex, componentProps } = this.state
     return (
-      <div className='react-gallery-browse-component-sequence'>
+      <div className='react-catalog-browse-component-sequence'>
         <SequenceControls
           key='control'
           className='sequence-controls'

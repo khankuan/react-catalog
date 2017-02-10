@@ -1,18 +1,18 @@
-.react-gallery-main {
+.react-catalog-main {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   overflow-x: auto;
 }
 
-.react-gallery-main-header {
+.react-catalog-main-header {
   padding: 20px;
   border-bottom: 1px solid #ccc;
   flex-shrink: 0;
   font-size: 13px;
 }
 
-.react-gallery-main-header .component-title {
+.react-catalog-main-header .component-title {
   font-weight: 400;
   font-size: 28px;
   margin: 0;
@@ -21,7 +21,7 @@
   letter-spacing: 0.03em;
 }
 
-.react-gallery-main-header .story-title {
+.react-catalog-main-header .story-title {
   font-weight: 400;
   font-size: 14px;
   color: #999;
@@ -31,33 +31,33 @@
   font-style: italic;
 }
 
-.react-gallery-main-header .header-description {
+.react-catalog-main-header .header-description {
   font-size: 13px;
   margin: 5px 0;
 }
 
-.react-gallery-main-header .header-categories {
+.react-catalog-main-header .header-categories {
   display: flex;
   padding-left: 10px;
 }
 
-.react-gallery-main-header .header-categories .category-link {
+.react-catalog-main-header .header-categories .category-link {
   padding-right: 10px;
 }
 
-.react-gallery-main-header .header-tags {
+.react-catalog-main-header .header-tags {
   color: #aaa;
   font-size: 12px;
   padding-left: 10px;
   padding-bottom: 10px;
 }
 
-.react-gallery-main .previewer {
+.react-catalog-main .previewer {
   flex-grow: 1;
   margin: 30px;
 }
 
-.react-gallery-main .default-error {
+.react-catalog-main .default-error {
   padding: 20px;
   color: #999;
 }

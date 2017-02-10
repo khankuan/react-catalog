@@ -77,7 +77,7 @@ export default class Browse extends Component {
 
     if (component) {
       return (
-        <div className='react-gallery-browse'>
+        <div className='react-catalog-browse'>
           <DocumentTitle title={`${component} - Browse ${category}`} />
           {this.renderComponentBrowse(component, category, story)}
         </div>
@@ -85,7 +85,7 @@ export default class Browse extends Component {
     }
 
     return (
-      <div className='react-gallery-browse'>
+      <div className='react-catalog-browse'>
         <DocumentTitle title={`Browse ${category}`} />
         {this.renderHeader(category, mode)}
         {this.renderContent(category, mode, story)}

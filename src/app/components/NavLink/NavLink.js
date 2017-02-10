@@ -29,7 +29,7 @@ const NavLink = ({ expandable, expanded, onExpandClick, active, activeHighlights
       {...passProps}
       to={to}
       className={cx(
-          'react-gallery-nav-link',
+          'react-catalog-nav-link',
           { active, selected: active && activeHighlights, disabled },
           className
         )

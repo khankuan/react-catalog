@@ -1,17 +1,17 @@
-.react-gallery-page {
+.react-catalog-page {
   width: 100%;
   overflow-y: auto;
   position: relative;
 }
 
-.react-gallery-page-wrapper {
+.react-catalog-page-wrapper {
   display: flex;
   flex-direction: column;
   padding: 10px;
 }
 
 @media all and (max-width: 768px) {
-  .react-gallery-page-wrapper {
+  .react-catalog-page-wrapper {
     margin-top: 60px;
   }
 }

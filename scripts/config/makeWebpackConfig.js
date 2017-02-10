@@ -32,7 +32,7 @@ const devPlugins = [
   new webpack.NoEmitOnErrorsPlugin(),
 ]
 
-const extractGalleryCss = new ExtractTextPlugin({ filename: 'gallery.css' })
+const extractCatalogCss = new ExtractTextPlugin({ filename: 'catalog.css' })
 const extractSourceCss = new ExtractTextPlugin({ filename: 'lib.css' })
 const extractPagesCss = new ExtractTextPlugin({ filename: 'pages.css' })
 const prodPlugins = [
@@ -50,7 +50,7 @@ const prodPlugins = [
       screw_ie8: true
     }
   }),
-  extractGalleryCss,
+  extractCatalogCss,
   extractSourceCss,
   extractPagesCss,
 ];
@@ -63,7 +63,7 @@ const cssLoader = {
 }
 
 export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pagesDir, configureWebpack, production }) {
-  const gallerySrc = path.resolve(__dirname, '../../src')
+  const catalogSrc = path.resolve(__dirname, '../../src')
   const srcSrc = path.resolve(process.cwd(), src)
   const pagesSrc = pagesDir ? path.resolve(process.cwd(), pagesDir) : null
   outputDir = path.resolve(process.cwd(), outputDir)
@@ -71,7 +71,7 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
 
   let output = {
     entry: {
-      app: ['babel-polyfill', path.resolve(gallerySrc, './app/index.js')],
+      app: ['babel-polyfill', path.resolve(catalogSrc, './app/index.js')],
       vendor: [
         'react',
         'react-router',
@@ -106,7 +106,7 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
           ],
           include: [
             srcSrc,
-            gallerySrc,
+            catalogSrc,
             outputDir,
             pagesSrc
           ],
@@ -114,11 +114,11 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
         {
           test: /\.css$/,
           include: [
-            gallerySrc,
+            catalogSrc,
             outputDir,
             /node_modules/,
           ],
-          use: production ? extractGalleryCss.extract({
+          use: production ? extractCatalogCss.extract({
             use: [cssLoader, 'postcss-loader'],
           }) : ['style-loader', cssLoader, 'postcss-loader'],
         },
@@ -166,7 +166,7 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
       modules: ['node_modules'],
       alias: {
         build: outputDir,
-        'react-gallery': gallerySrc
+        'react-catalog': catalogSrc
       }
     },
     plugins: [

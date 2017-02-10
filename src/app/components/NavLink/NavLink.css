@@ -1,4 +1,4 @@
-.react-gallery-nav-link {
+.react-catalog-nav-link {
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -10,34 +10,34 @@
   text-transform: capitalize;
 }
 
-.react-gallery-nav-link.active {
+.react-catalog-nav-link.active {
   color: #008cff;
 }
 
-.react-gallery-nav-link.active.selected {
+.react-catalog-nav-link.active.selected {
   background: #f3f3f3;
 }
 
-.react-gallery-nav-link.disabled {
+.react-catalog-nav-link.disabled {
   pointer-events: none;
   opacity: 0.5;
 }
 
-.react-gallery-nav-link .link-text {
+.react-catalog-nav-link .link-text {
   flex-grow: 1
 }
 
-.react-gallery-nav-link .link-text:hover {
+.react-catalog-nav-link .link-text:hover {
   text-decoration: underline;
 }
 
-.react-gallery-nav-link .expand {
+.react-catalog-nav-link .expand {
   font-size: 14px;
   text-align: center;
   display: inline-block;
   width: 20px;
 }
 
-.react-gallery-nav-link .expand:hover {
+.react-catalog-nav-link .expand:hover {
   color: black;
 }

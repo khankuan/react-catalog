@@ -1,4 +1,4 @@
-.react-gallery-browse {
+.react-catalog-browse {
   padding: 30px;
   width: 100%;
   overflow-y: auto;
@@ -8,22 +8,22 @@
 }
 
 @media all and (max-width: 768px) {
-  .react-gallery-browse {
+  .react-catalog-browse {
     margin-top: 60px;
   }
 }
 
-.react-gallery-browse .browse-header {
+.react-catalog-browse .browse-header {
   border-bottom: 2px solid #f3f3f3;
   padding-bottom: 20px;
   margin-bottom: 20px;
 }
 
-.react-gallery-browse .browse-header .option-group label {
+.react-catalog-browse .browse-header .option-group label {
   padding-right: 10px;
   font-size: 13px;
 }
 
-.react-gallery-browse .component-section {
+.react-catalog-browse .component-section {
   padding-bottom: 40px;
 }

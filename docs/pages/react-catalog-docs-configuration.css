@@ -1,18 +1,18 @@
-.react-gallery-docs-configuration {
+.react-catalog-docs-configuration {
   margin-top: 20px;
 }
 
-.react-gallery-docs-configuration td {
+.react-catalog-docs-configuration td {
   max-width: 600px;
   padding: 10px 20px;
   border-top: 1px solid #ddd;
 }
 
-.react-gallery-docs-configuration thead td {
+.react-catalog-docs-configuration thead td {
   font-weight: 700;
 }
 
-.react-gallery-docs-configuration table {
+.react-catalog-docs-configuration table {
   border-spacing: 0;
   margin: 40px auto;
   font-size: 14px;

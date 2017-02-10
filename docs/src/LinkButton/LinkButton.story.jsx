@@ -1,4 +1,4 @@
-import { Story } from 'react-gallery'
+import { Story } from 'react-catalog'
 import LinkButton from './LinkButton'
 
 const story = new Story(LinkButton)

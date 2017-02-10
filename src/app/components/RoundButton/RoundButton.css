@@ -1,4 +1,4 @@
-.react-gallery-round-button {
+.react-catalog-round-button {
   display: inline-block;
   width: 40px;
   height: 40px;
@@ -12,17 +12,17 @@
   font-size: 11px;
 }
 
-.react-gallery-round-button:hover {
+.react-catalog-round-button:hover {
   opacity: 1;
 }
 
-.react-gallery-round-button.theme-dark {
+.react-catalog-round-button.theme-dark {
   background: #333;
   border-color: white;
   color: white;
 }
 
-.react-gallery-round-button.theme-light {
+.react-catalog-round-button.theme-light {
   background: white;
   border-color: #333;
   color: #333;

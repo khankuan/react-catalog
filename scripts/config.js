@@ -6,10 +6,10 @@ export default function (configPath) {
   let config = {
     src: 'src',
     pagesDir: 'src/pages',
-    outputDir: 'gallery-build',
-    testDir: 'gallery-tests',
+    outputDir: 'catalog-build',
+    testDir: 'catalog-tests',
     assets: [],
-    title: 'React Gallery',
+    title: 'React Catalog',
     componentPattern: '**/*.jsx',
     storyPattern: '**/*.story.jsx',
     configureWebpack: null,
@@ -17,7 +17,7 @@ export default function (configPath) {
     port: 9000
   }
 
-  const configFile = path.resolve(process.cwd() + '/', configPath || 'gallery.config.js')
+  const configFile = path.resolve(process.cwd() + '/', configPath || 'catalog.config.js')
 
   if (!fs.existsSync(configFile)) {
     return config
