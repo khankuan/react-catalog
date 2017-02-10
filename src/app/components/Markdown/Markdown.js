@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown'
 import './Markdown.css'
 
 const Markdown = ({ className, ...props }) =>
-  <ReactMarkdown {...props} className={cx('react-library-markdown', className)} />
+  <ReactMarkdown {...props} className={cx('react-gallery-markdown', className)} />
 
 Markdown.propTypes = {
   className: PropTypes.string

@@ -14,7 +14,7 @@ export default class RenderSafe extends Component {
     const { error } = this.state
     if (error) {
       return (
-        <div className='react-library-render-safe'>Rendering error: {error.stack || error}</div>
+        <div className='react-gallery-render-safe'>Rendering error: {error.stack || error}</div>
       )
     }
     return this.props.children

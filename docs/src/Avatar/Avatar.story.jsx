@@ -1,4 +1,4 @@
-import { Story } from 'react-library'
+import { Story } from 'react-gallery'
 import Avatar from './Avatar'
 
 const story = new Story(Avatar)

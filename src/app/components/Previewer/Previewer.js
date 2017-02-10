@@ -147,7 +147,7 @@ class Previewer extends Component {
   render () {
     const { theme, hasPadding, controlsFirst, className } = this.props
     return (
-      <div className={cx('react-library-previewer', `theme-${theme}`, hasPadding && 'has-padding', className)}>
+      <div className={cx('react-gallery-previewer', `theme-${theme}`, hasPadding && 'has-padding', className)}>
         { controlsFirst ? this.renderControls() : null }
         <RenderSafe>{this.renderComponent()}</RenderSafe>
         <RenderSafe>{this.renderComponentSource()}</RenderSafe>

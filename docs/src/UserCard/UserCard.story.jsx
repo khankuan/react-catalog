@@ -1,4 +1,4 @@
-import { Story } from 'react-library'
+import { Story } from 'react-gallery'
 import UserCard from './UserCard'
 const delay = time => new Promise(resolve => setTimeout(resolve, time))
 const story = new Story(UserCard)

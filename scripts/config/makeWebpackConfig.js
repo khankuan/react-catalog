@@ -32,7 +32,7 @@ const devPlugins = [
   new webpack.NoEmitOnErrorsPlugin(),
 ]
 
-const extractLibraryCss = new ExtractTextPlugin({ filename: 'library.css' })
+const extractGalleryCss = new ExtractTextPlugin({ filename: 'gallery.css' })
 const extractSourceCss = new ExtractTextPlugin({ filename: 'lib.css' })
 const extractPagesCss = new ExtractTextPlugin({ filename: 'pages.css' })
 const prodPlugins = [
@@ -50,7 +50,7 @@ const prodPlugins = [
       screw_ie8: true
     }
   }),
-  extractLibraryCss,
+  extractGalleryCss,
   extractSourceCss,
   extractPagesCss,
 ];
@@ -63,7 +63,7 @@ const cssLoader = {
 }
 
 export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pagesDir, configureWebpack, production }) {
-  const librarySrc = path.resolve(__dirname, '../../src')
+  const gallerySrc = path.resolve(__dirname, '../../src')
   const srcSrc = path.resolve(process.cwd(), src)
   const pagesSrc = pagesDir ? path.resolve(process.cwd(), pagesDir) : null
   outputDir = path.resolve(process.cwd(), outputDir)
@@ -71,7 +71,7 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
 
   let output = {
     entry: {
-      app: ['babel-polyfill', path.resolve(librarySrc, './app/index.js')],
+      app: ['babel-polyfill', path.resolve(gallerySrc, './app/index.js')],
       vendor: [
         'react',
         'react-router',
@@ -106,7 +106,7 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
           ],
           include: [
             srcSrc,
-            librarySrc,
+            gallerySrc,
             outputDir,
             pagesSrc
           ],
@@ -114,34 +114,31 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
         {
           test: /\.css$/,
           include: [
-            librarySrc,
+            gallerySrc,
             outputDir,
             /node_modules/,
           ],
-          loader: production ? extractLibraryCss.extract({
-            loader: [cssLoader, 'postcss-loader'],
-          }) : undefined,
-          use: production ? undefined : ['style-loader', cssLoader, 'postcss-loader'],
+          use: production ? extractGalleryCss.extract({
+            use: [cssLoader, 'postcss-loader'],
+          }) : ['style-loader', cssLoader, 'postcss-loader'],
         },
         {
           test: /\.css$/,
           include: [
             srcSrc,
           ],
-          loader: production ? extractSourceCss.extract({
-            loader: [cssLoader, 'postcss-loader'],
-          }) : undefined,
-          use: production ? undefined : ['style-loader', cssLoader, 'postcss-loader'],
+          use: production ? extractSourceCss.extract({
+            use: [cssLoader, 'postcss-loader'],
+          }) : ['style-loader', cssLoader, 'postcss-loader'],
         },
         {
           test: /\.css$/,
           include: [
             pagesSrc,
           ],
-          loader: production ? extractPagesCss.extract({
-            loader: [cssLoader, 'postcss-loader'],
-          }) : undefined,
-          use: production ? undefined : ['style-loader', cssLoader, 'postcss-loader'],
+          use: production ? extractPagesCss.extract({
+            use: [cssLoader, 'postcss-loader'],
+          }) : ['style-loader', cssLoader, 'postcss-loader'],
         },
         {
           test: /\.json$/,
@@ -169,7 +166,7 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
       modules: ['node_modules'],
       alias: {
         build: outputDir,
-        'react-library': librarySrc
+        'react-gallery': gallerySrc
       }
     },
     plugins: [

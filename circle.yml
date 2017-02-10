@@ -7,4 +7,6 @@ deployment:
     commands:
       - git config --global user.email "khankuan@gmail.com"
       - git config --global user.name "khankuan"
+      - npm run build
+      - npm run build-docs
       - npm run release

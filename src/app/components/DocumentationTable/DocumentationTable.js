@@ -244,7 +244,7 @@ export default class DocumentationTable extends Component {
     const { schema } = this.props
 
     return (
-      <div className='react-library-documentation-table'>
+      <div className='react-gallery-documentation-table'>
         <table>
           <thead>
             <tr>

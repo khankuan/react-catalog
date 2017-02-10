@@ -1,5 +1,5 @@
 import React from 'react'
-import { Page, NavHeader } from 'react-library'
+import { Page, NavHeader } from 'react-gallery'
 
 import Introduction from './introduction'
 import Quickstart from './quickstart'

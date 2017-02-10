@@ -6,7 +6,7 @@ const RoundButton = ({ className, theme, ...props }) => {
   return (
     <button
       {...props}
-      className={cx('react-library-round-button', `theme-${theme}`, props.className)} />
+      className={cx('react-gallery-round-button', `theme-${theme}`, props.className)} />
   )
 }
 

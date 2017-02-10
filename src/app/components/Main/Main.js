@@ -136,7 +136,7 @@ export default class Main extends Component {
     const componentDoc = docs[component]
     const description = componentDoc ? componentDoc.description : null
     return (
-      <div className='react-library-main-header'>
+      <div className='react-gallery-main-header'>
         <h2 className='component-title'>{component}</h2>
         {this.renderHeaderCategories(componentDoc)}
         {this.renderHeaderTags(componentDoc)}
@@ -174,7 +174,7 @@ export default class Main extends Component {
     }
 
     return (
-      <div className='react-library-main'>
+      <div className='react-gallery-main'>
         <DocumentTitle title={`${component}${(story && story.title) ? ` - ${story.title}` : ''}`} />
         {this.renderHeader(story)}
         { !story && !doc.hasDefault ? this.renderDefaultError(component) : this.renderPreview() }

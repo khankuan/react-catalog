@@ -1,4 +1,4 @@
-import { Story } from 'react-library'
+import { Story } from 'react-gallery'
 import React from 'react'
 import Card from './Card'
 

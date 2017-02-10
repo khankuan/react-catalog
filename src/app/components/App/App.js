@@ -191,7 +191,7 @@ export default class App extends Component {
     const { category, component, story } = routeParams
     const browse = category && !component && !story
     return (
-      <div className='react-library-app'>
+      <div className='react-gallery-app'>
         <LeftBar routeParams={routeParams} location={location} browse={browse} />
         {this.renderContent(routeParams, location, browse)}
       </div>

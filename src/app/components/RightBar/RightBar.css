@@ -1,38 +1,38 @@
-.react-library-right-bar {
+.react-gallery-right-bar {
   width: 400px;
   border-left: 1px solid #ccc;
   flex-shrink: 0;
   box-sizing: border-box;
 }
 
-.react-library-right-bar .bar-header {
+.react-gallery-right-bar .bar-header {
   margin: 10px;
 }
 
-.react-library-dependency {
+.react-gallery-dependency {
   font-size: 13px;
   width: 100%;
 }
 
-.react-library-dependency tbody tr td {
+.react-gallery-dependency tbody tr td {
   color: #999;
   vertical-align: top;
 }
 
-.react-library-dependency tbody tr td .dependency {
+.react-gallery-dependency tbody tr td .dependency {
   display: inline;
   padding: 5px;
   padding-left: 0px;
 }
 
-.react-library-dependency .table-type {
+.react-gallery-dependency .table-type {
   padding: 5px 10px;
   padding-right: 0px;
   width: 90px;
   color: #666;
 }
 
-.react-library-dependency .table-names {
+.react-gallery-dependency .table-names {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
