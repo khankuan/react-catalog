@@ -1,18 +1,18 @@
-.react-library-main {
+.react-gallery-main {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   overflow-x: auto;
 }
 
-.react-library-main-header {
+.react-gallery-main-header {
   padding: 20px;
   border-bottom: 1px solid #ccc;
   flex-shrink: 0;
   font-size: 13px;
 }
 
-.react-library-main-header .component-title {
+.react-gallery-main-header .component-title {
   font-weight: 400;
   font-size: 28px;
   margin: 0;
@@ -21,7 +21,7 @@
   letter-spacing: 0.03em;
 }
 
-.react-library-main-header .story-title {
+.react-gallery-main-header .story-title {
   font-weight: 400;
   font-size: 14px;
   color: #999;
@@ -31,33 +31,33 @@
   font-style: italic;
 }
 
-.react-library-main-header .header-description {
+.react-gallery-main-header .header-description {
   font-size: 13px;
   margin: 5px 0;
 }
 
-.react-library-main-header .header-categories {
+.react-gallery-main-header .header-categories {
   display: flex;
   padding-left: 10px;
 }
 
-.react-library-main-header .header-categories .category-link {
+.react-gallery-main-header .header-categories .category-link {
   padding-right: 10px;
 }
 
-.react-library-main-header .header-tags {
+.react-gallery-main-header .header-tags {
   color: #aaa;
   font-size: 12px;
   padding-left: 10px;
   padding-bottom: 10px;
 }
 
-.react-library-main .previewer {
+.react-gallery-main .previewer {
   flex-grow: 1;
   margin: 30px;
 }
 
-.react-library-main .default-error {
+.react-gallery-main .default-error {
   padding: 20px;
   color: #999;
 }

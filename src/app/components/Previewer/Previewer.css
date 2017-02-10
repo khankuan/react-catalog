@@ -1,4 +1,4 @@
-.react-library-previewer {
+.react-gallery-previewer {
   position: relative;
   color: unset;
   display: flex;
@@ -6,34 +6,34 @@
   justify-content: space-between;
 }
 
-.react-library-previewer.theme-checker {
+.react-gallery-previewer.theme-checker {
   background-image: -webkit-linear-gradient(45deg, rgba(0,0,0,0.04) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.04) 75%, rgba(0,0,0,0.04) 100%), -webkit-linear-gradient(45deg, rgba(0,0,0,0.04) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.04) 75%, rgba(0,0,0,0.04) 100%);
   background-size: 24px 24px;
   background-position: 0 0, 12px 12px;
   border: 1px dashed #ddd;
 }
 
-.react-library-previewer.theme-dark {
+.react-gallery-previewer.theme-dark {
   background: #333;
   border: 1px dashed #999;
 }
 
-.react-library-previewer.theme-light {
+.react-gallery-previewer.theme-light {
   background: white;
   border: 1px dashed #ddd;
 }
 
-.react-library-previewer .previewer-controls {
+.react-gallery-previewer .previewer-controls {
   width: calc(100% - 10px);
   padding: 5px;
   text-align: right;
 }
 
-.react-library-previewer .previewer-controls button {
+.react-gallery-previewer .previewer-controls button {
   margin-left: 5px
 }
 
-.react-library-previewer .previewer-error {
+.react-gallery-previewer .previewer-error {
   color: red;
   padding: 0 10px;
   margin: 0;
@@ -41,20 +41,20 @@
   font-size: 12px;
 }
 
-.react-library-previewer .previewer-html {
+.react-gallery-previewer .previewer-html {
   width: 100%;
   font-size: 12px;
 }
 
-.react-library-previewer .CodeMirror {
+.react-gallery-previewer .CodeMirror {
   background: none;
   height: 100%;
 }
 
-.react-library-previewer .previewer-jsx {
+.react-gallery-previewer .previewer-jsx {
   width: 100%;
 }
 
-.react-library-previewer.has-padding {
+.react-gallery-previewer.has-padding {
   padding: 20px;
 }

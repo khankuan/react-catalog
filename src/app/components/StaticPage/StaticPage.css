@@ -1,17 +1,17 @@
-.react-library-page {
+.react-gallery-page {
   width: 100%;
   overflow-y: auto;
   position: relative;
 }
 
-.react-library-page-wrapper {
+.react-gallery-page-wrapper {
   display: flex;
   flex-direction: column;
   padding: 10px;
 }
 
 @media all and (max-width: 768px) {
-  .react-library-page-wrapper {
+  .react-gallery-page-wrapper {
     margin-top: 60px;
   }
 }

@@ -15,7 +15,7 @@ export function generateStoriesTest ({ importedPath, name }) {
 import React from 'react'
 import renderer from 'react-test-renderer'
 import story from '${importedPath}'
-import { Story } from 'react-library'
+import { Story } from 'react-gallery'
 
 jest.useFakeTimers()
 

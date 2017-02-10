@@ -1,5 +1,5 @@
-# Library Build Files
-The library output files are generated at the `outputDir` folder, defaults to `library-build`. Test snapshots are stored in `testDir` folder, defaults to `library-tests`. You might want to include these folders in gitignore, except `library-tests/__snapshots__`.
+# Gallery Build Files
+The gallery output files are generated at the `outputDir` folder, defaults to `gallery-build`. Test snapshots are stored in `testDir` folder, defaults to `gallery-tests`. You might want to include these folders in gitignore, except `gallery-tests/__snapshots__`.
 
 # Writing of Component Docs
 
@@ -29,12 +29,12 @@ Categories and tags are used in the navigation as well as the component search. 
 PropTypes provides the reader with option to interact with the documentation. PropTypes also help to identity required fields which will help to identity stories that cannot have a default story.
 
 ## Dependencies
-The library detects dependencies of components by inspecting the component source code. No actions are required for the dependencies to be detected.
+The gallery detects dependencies of components by inspecting the component source code. No actions are required for the dependencies to be detected.
 
 # Stories
-Stories are one of the key concept of the library. Stories help to define the use cases of components. Readers will be able to find out how they can use the component you've built. On the other hand, stories are great use cases to be tested, and are part of the generated testing (more details below). Stories have a `title`, `description` as well as `content`. Both `title` and `description` are also included in the component search. For components that have no `isRequired` propTypes, a `Default` story would be included when the `@default` rule is added to the description. Here is an example of a story file `CheckBox.story.js`:
+Stories are one of the key concept of the gallery. Stories help to define the use cases of components. Readers will be able to find out how they can use the component you've built. On the other hand, stories are great use cases to be tested, and are part of the generated testing (more details below). Stories have a `title`, `description` as well as `content`. Both `title` and `description` are also included in the component search. For components that have no `isRequired` propTypes, a `Default` story would be included when the `@default` rule is added to the description. Here is an example of a story file `CheckBox.story.js`:
 ```
-import { Story } from 'react-library'
+import { Story } from 'react-gallery'
 import React from 'react'
 import CheckBox from './CheckBox'
 
@@ -85,10 +85,10 @@ story.sequence({
 Notice that the `onClick` handler is created with `story.handler(NAME)`. This automatically handles the callback by display the method and arguments to the reader. Tests generated for sequences will take snapshots of the callbacks and their arguments. Note that native events are not supported for snapshot testing, be sure to mock them.
 
 # Custom Pages
-Custom pages gives you much more flexibility of what to include in your library documentation. Currently, React, Html and Markdown are supported. Export your custom pages by including a `index.js` file in the `pagesDir` folder. You can use the `NavHeader` component to add a section header to the pages. The `Page` component is a wrapper on `Route` in [react-router](https://github.com/reactjs/react-router) and adds `title`, `className`. Here is an example usage:
+Custom pages gives you much more flexibility of what to include in your gallery documentation. Currently, React, Html and Markdown are supported. Export your custom pages by including a `index.js` file in the `pagesDir` folder. You can use the `NavHeader` component to add a section header to the pages. The `Page` component is a wrapper on `Route` in [react-router](https://github.com/reactjs/react-router) and adds `title`, `className`. Here is an example usage:
 ```
 import React from 'react'
-import { Page, NavHeader } from 'react-library'
+import { Page, NavHeader } from 'react-gallery'
 
 import DesignConcept from './DesignConcept'
 import Guidelines from './Guidelines'
@@ -116,33 +116,33 @@ Tests are generated based on default props (if component does not have required 
   ..,
   "scripts": {
     ..,
-    "test": "react-library --test",
-    "update-test": "react-library --test --update"
+    "test": "react-gallery --test",
+    "update-test": "react-gallery --test --update"
   },
   ..
 ```
 `test` is used for testing if the snapshots output have changed. For the initial run, snapshots will be generated and no changes will be detected. For subsequent runs, you will see test failing if components produced a different output. After seeing test failing, you would check each of the fail cases to verify that the difference in snapshot is expected. After they are verified, run `update-test` so that the new snapshots will overwrite the old ones.
 
 # Linting
-Linting is always helpful to reduce code inconsistency and more important identify problematic code. The library adopted [StandardJS](http://standardjs.com). To run lint, add this to the scripts in `package.json`:
+Linting is always helpful to reduce code inconsistency and more important identify problematic code. The gallery adopted [StandardJS](http://standardjs.com). To run lint, add this to the scripts in `package.json`:
 ```
   ..,
   "scripts": {
     ..,
-    "lint": "react-library --lint",
-    "fix-lint": "react-library --lint --fix"
+    "lint": "react-gallery --lint",
+    "fix-lint": "react-gallery --lint --fix"
   },
   ..
 ```
 `fix-lint` is provided by StandardJS to automatically fix certain errors/warnings that it knows how to fix.
 
 # Transpile
-You might want to transpile the components to es5 for exporting. The transpiled folder is at `library-build/lib/*` and the index file of all the components is at `library-build/lib.js`
+You might want to transpile the components to es5 for exporting. The transpiled folder is at `gallery-build/lib/*` and the index file of all the components is at `gallery-build/lib.js`
 ```
   ..,
   "scripts": {
     ..,
-    "lint": "react-library --transpile",
+    "lint": "react-gallery --transpile",
   },
   ..
 ```

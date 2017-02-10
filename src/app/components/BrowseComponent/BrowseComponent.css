@@ -1,37 +1,37 @@
-.react-library-browse-component {
+.react-gallery-browse-component {
   border-top: 1px solid transparent;
 }
 
-.react-library-browse-component .component-link {
+.react-gallery-browse-component .component-link {
   color: #999;
   text-decoration: none;
   display: inline-block;
 }
 
-.react-library-browse-component .component-link:hover {
+.react-gallery-browse-component .component-link:hover {
   text-decoration: underline;
 }
 
-.react-library-browse-component .component-description {
+.react-gallery-browse-component .component-description {
   font-size: 14px;
   padding: 10px;
   color: #aaa;
 }
 
-.react-library-browse-component .component-header select {
+.react-gallery-browse-component .component-header select {
   margin-left: 10px;
   outline: none;
 }
 
-.react-library-browse-component .component-content {
+.react-gallery-browse-component .component-content {
   margin-left: 20px;
 }
 
-.react-library-browse-component .component-content .component-output {
+.react-gallery-browse-component .component-content .component-output {
   margin-left: 20px;
 }
 
-.react-library-browse-component .content-empty {
+.react-gallery-browse-component .content-empty {
   color: #aaa;
   font-size: 12px;
   font-style: italic;

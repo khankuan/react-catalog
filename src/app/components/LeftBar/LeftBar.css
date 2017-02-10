@@ -1,4 +1,4 @@
-.react-library-left-bar {
+.react-gallery-left-bar {
   width: 260px;
   border-right: 1px solid #ccc;
   flex-shrink: 0;
@@ -9,7 +9,7 @@
   box-sizing: border-box;
 }
 
-.react-library-left-bar .show-button {
+.react-gallery-left-bar .show-button {
   visibility: hidden;
   position: absolute;
   font-size: 36px;
@@ -23,7 +23,7 @@
   padding: 10px;
 }
 
-.react-library-left-bar .app-title {
+.react-gallery-left-bar .app-title {
   margin: 0;
   padding: 10px;
   padding-top: 20px;
@@ -32,41 +32,41 @@
   color: #bbb;
 }
 
-.react-library-left-bar .bar-header {
+.react-gallery-left-bar .bar-header {
   padding-left: 10px;
   margin-bottom: 5px;
 }
 
-.react-library-left-bar .page-link {
+.react-gallery-left-bar .page-link {
   padding-left: 20px;
   flex-shrink: 0;
 }
 
-.react-library-left-bar .category-link {
+.react-gallery-left-bar .category-link {
   padding-left: 20px;
   font-weight: 700;
 }
 
-.react-library-left-bar .component-link {
+.react-gallery-left-bar .component-link {
   padding-left: 30px;
   word-break: break-all;
 }
 
-.react-library-left-bar .story-link {
+.react-gallery-left-bar .story-link {
   padding-left: 40px;
   word-break: break-all;
   font-style: italic;
   font-size: 12px;
 }
 
-.react-library-left-bar .bar-search {
+.react-gallery-left-bar .bar-search {
   display: flex;
   position: relative;
   align-items: center;
   flex-shrink: 0;
 }
 
-.react-library-left-bar .bar-search input {
+.react-gallery-left-bar .bar-search input {
   background: #f3f3f3;
   color: orange;
   margin: 0;
@@ -80,16 +80,16 @@
   margin-top: 5px;
 }
 
-.react-library-left-bar .bar-search input::placeholder {
+.react-gallery-left-bar .bar-search input::placeholder {
   color: orange;
 }
 
-.react-library-left-bar .bar-search input::selection {
+.react-gallery-left-bar .bar-search input::selection {
   background: #ffe5b4;
   color: #ff7518;
 }
 
-.react-library-left-bar .bar-search .clear-button {
+.react-gallery-left-bar .bar-search .clear-button {
   position: absolute;
   font-size: 36px;
   font-weight: 100;
@@ -102,18 +102,18 @@
   color: orange;
 }
 
-.react-library-left-bar .bar-search .clear-button:hover {
+.react-gallery-left-bar .bar-search .clear-button:hover {
   opacity: 1;
 }
 
-.react-library-left-bar-categories {
+.react-gallery-left-bar-categories {
   overflow-y: auto;
   padding-top: 5px;
   padding-bottom: 50px;
 }
 
 @media all and (max-width: 768px) {
-  .react-library-left-bar {
+  .react-gallery-left-bar {
     position: absolute;
     top: 0;
     background: white;
@@ -127,11 +127,11 @@
     overflow: hidden;
   }
 
-  .react-library-left-bar.show {
+  .react-gallery-left-bar.show {
     height: 100vh;
   }
 
-  .react-library-left-bar .show-button {
+  .react-gallery-left-bar .show-button {
     visibility: visible;
   }
 }
