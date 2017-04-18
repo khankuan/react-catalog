@@ -1,6 +1,10 @@
 machine:
   node:
     version: 6.9.1
+test:
+  override:
+    - npm run build
+    - npm run build-docs
 deployment:
   release:
     branch: master
