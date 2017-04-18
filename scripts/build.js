@@ -7,6 +7,7 @@ import generateConfig from './utils/generateConfig'
 import startWebpackProd from './utils/startWebpackProd'
 import transpile from './utils/transpile'
 import makeWebpackConfig from './config/makeWebpackConfig'
+import makeWebpackDistConfig from './config/makeWebpackDistConfig'
 
 export default async function build ({ src, pagesDir, assets, outputDir, head, body, title,
   componentPattern, storyPattern, configureWebpack, postBuild }) {
@@ -28,17 +29,21 @@ export default async function build ({ src, pagesDir, assets, outputDir, head, b
 
   //  Start build and server
   const outputPublicDir = `${outputDir}/public`
-  const webpackConfig = makeWebpackConfig({
+  const configOpts = {
     src,
     outputDir,
     outputPublicDir,
     pagesDir,
     configureWebpack,
     production: true,
-  })
-
-  await startWebpackProd({ webpackConfig, outputDir: outputPublicDir })
+  }
+  const webpackConfig = makeWebpackConfig(configOpts)
+  await startWebpackProd({ webpackConfig })
   console.log(chalk.green('Bundle built.'))
+
+  const webpackDistConfig = makeWebpackDistConfig(configOpts)
+  await startWebpackProd({ webpackConfig: webpackDistConfig })
+  console.log(chalk.green('Dist built.'))
 
   if (postBuild) {
     await postBuild()
