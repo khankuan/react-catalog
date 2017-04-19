@@ -1,0 +1,75 @@
+.demo-avatar {
+  height: 40px;
+  width: 40px;
+  display: inline-block;
+  border-width: 3px;
+  border-style: solid;
+}
+
+.demo-avatar-type-round {
+  border-radius: 22px;
+}
+
+.demo-avatar-type-square {
+  border-radius: 2px;
+}
+
+.demo-avatar-theme-light {
+  border-color: #ccc;
+}
+
+.demo-avatar-theme-dark {
+  border-color: #999;
+}
+.demo-card {
+  padding: 10px;
+  background: white;
+  display: inline-block;
+}
+
+.demo-card-depth-1 {
+  box-shadow: 0 1px 2px #ccc;
+}
+
+.demo-card-depth-2 {
+  box-shadow: 0 2px 6px #888;
+}
+.demo-link-button {
+  cursor: pointer;
+  padding: 5px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.demo-link-button:hover {
+  text-decoration: underline;
+}
+.demo-user-card-info {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  width: 200px;
+}
+
+.demo-user-card-info .demo-name {
+  padding-left: 10px;
+}
+
+.demo-user-card-actions {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid #ccc;
+  text-align: center;
+}
+
+.demo-user-card-actions .demo-action {
+  display: block;
+}
+
+.demo-user-card-more {
+  padding-top: 10px;
+  text-align: center;
+}
+
+/*# sourceMappingURL=lib.css.map*/
