@@ -4,7 +4,7 @@ import makeWebpackConfig from './makeWebpackConfig'
 
 export default function makeWebpackDistConfig(opts) {
   const config = makeWebpackConfig(opts)
-  const outputDistDir = path.resolve(process.cwd(), `${outputPublicDir}/dist`)
+  const outputDistDir = path.resolve(process.cwd(), `${opts.outputPublicDir}/dist`)
 
   const { outputPublicDir } = opts
   config.output = {
