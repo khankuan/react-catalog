@@ -1,6 +1,7 @@
 import webpack from 'webpack'
 import path from 'path'
 import makeWebpackConfig from './makeWebpackConfig'
+const StatsPlugin = require("stats-webpack-plugin")
 
 export default function makeWebpackDistConfig(opts) {
   const config = makeWebpackConfig(opts)
@@ -23,10 +24,34 @@ export default function makeWebpackDistConfig(opts) {
   )
 
   config.externals = {
-    ...(config.plugins.externals || {}),
-    react: 'react',
-    'react-dom': 'react-dom',
+    ...(config.externals || {}),
+    react: {
+      root: 'React',
+      commonjs2: 'react',
+      commonjs: 'react',
+      amd: 'react',
+    },
+    'react-dom': {
+      root: 'ReactDOM',
+      commonjs2: 'react-dom',
+      commonjs: 'react-dom',
+      amd: 'react-dom',
+    },
   }
+
+    config.profile = true
+    config.plugins.push(
+      new StatsPlugin('stats.json', {
+        timings: true,
+        assets: true,
+        chunks: true,
+        chunkModules: true,
+        modules: true,
+        children: true,
+        cached: true,
+        reasons: true
+      })
+    )
 
   return config
 }
