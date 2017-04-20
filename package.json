@@ -82,6 +82,7 @@
     "react-test-renderer": "^15.4.0",
     "rimraf": "^2.5.4",
     "standard": "^8.0.0",
+    "stats-webpack-plugin": "^0.6.0",
     "style-loader": "^0.13.1",
     "uncontrollable": "^4.0.3",
     "watch": "^0.19.1",
