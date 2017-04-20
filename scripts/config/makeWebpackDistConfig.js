@@ -1,7 +1,7 @@
 import webpack from 'webpack'
 import path from 'path'
 import makeWebpackConfig from './makeWebpackConfig'
-const StatsPlugin = require("stats-webpack-plugin")
+import StatsPlugin from 'stats-webpack-plugin'
 
 export default function makeWebpackDistConfig(opts) {
   const config = makeWebpackConfig(opts)
@@ -11,6 +11,7 @@ export default function makeWebpackDistConfig(opts) {
   config.output = {
     path: outputDistDir,
     filename: '[name].js',
+    library: 'components',
     libraryTarget: 'umd',
   }
 
@@ -19,8 +20,8 @@ export default function makeWebpackDistConfig(opts) {
   }
 
   config.plugins = config.plugins.filter(plugin =>
-    !(plugin.constructor === webpack.optimize.CommonsChunkPlugin && plugin.chunkNames === 'lib') &&
-    !(plugin.constructor === webpack.optimize.CommonsChunkPlugin && plugin.chunkNames === 'vendor')
+    !(plugin.constructor === webpack.optimize.CommonsChunkPlugin && plugin.chunkNames[0] === 'lib') &&
+    !(plugin.constructor === webpack.optimize.CommonsChunkPlugin && plugin.chunkNames[0] === 'vendor')
   )
 
   config.externals = {
