@@ -39,19 +39,19 @@ export default function makeWebpackDistConfig(opts) {
     },
   }
 
-    config.profile = true
-    config.plugins.push(
-      new StatsPlugin('stats.json', {
-        timings: true,
-        assets: true,
-        chunks: true,
-        chunkModules: true,
-        modules: true,
-        children: true,
-        cached: true,
-        reasons: true
-      })
-    )
+  config.profile = true
+  config.plugins.push(
+    new StatsPlugin('stats.json', {
+      timings: true,
+      assets: true,
+      chunks: true,
+      chunkModules: true,
+      modules: true,
+      children: true,
+      cached: true,
+      reasons: true
+    })
+  )
 
   return config
 }
