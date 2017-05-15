@@ -41,7 +41,7 @@ export default function resolveToIdentifier(path, name) {
       break;
     case types.ImportDeclaration.name:
       let specifier = node.specifiers.find(specifier => specifier.local.name === name)
-      if (specifier === -1) {
+      if (!specifier) {
         specifier = node.specifiers[0]
       }
       return (specifier.imported || specifier.local).name;
