@@ -1,3 +1,5 @@
+
+process.traceDeprecation = true;
 import path from 'path'
 import webpack from 'webpack'
 import babelDev from './babel.dev'
@@ -6,16 +8,6 @@ import autoprefixer from 'autoprefixer'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 const commonPlugins = [
-  new webpack.LoaderOptionsPlugin({
-    options: {
-      postcss: [
-        autoprefixer({
-          browsers: ['last 2 version']
-        })
-      ],
-      context: process.cwd(),
-    },
-  }),
   new webpack.optimize.CommonsChunkPlugin({
     name: 'lib',
     chunks: ['components', 'app'],
@@ -59,6 +51,17 @@ const cssLoader = {
   loader: 'css-loader',
   options: {
     sourceMap: true,
+  },
+}
+
+const postCssLoader = {
+  loader: 'postcss-loader',
+  options: {
+    plugins: [
+      autoprefixer({
+        browsers: ['last 2 version']
+      }),
+    ],
   },
 }
 
@@ -119,8 +122,8 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
             /node_modules/,
           ],
           use: production ? extractCatalogCss.extract({
-            use: [cssLoader, 'postcss-loader'],
-          }) : ['style-loader', cssLoader, 'postcss-loader'],
+            use: [cssLoader, postCssLoader],
+          }) : ['style-loader', cssLoader, postCssLoader],
         },
         {
           test: /\.css$/,
@@ -128,8 +131,8 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
             srcSrc,
           ],
           use: production ? extractSourceCss.extract({
-            use: [cssLoader, 'postcss-loader'],
-          }) : ['style-loader', cssLoader, 'postcss-loader'],
+            use: [cssLoader, postCssLoader],
+          }) : ['style-loader', cssLoader, postCssLoader],
         },
         {
           test: /\.css$/,
@@ -137,8 +140,8 @@ export default function makeWebpackConfig ({ outputDir, outputPublicDir, src, pa
             pagesSrc,
           ],
           use: production ? extractPagesCss.extract({
-            use: [cssLoader, 'postcss-loader'],
-          }) : ['style-loader', cssLoader, 'postcss-loader'],
+            use: [cssLoader, postCssLoader],
+          }) : ['style-loader', cssLoader, postCssLoader],
         },
         {
           test: /\.json$/,
