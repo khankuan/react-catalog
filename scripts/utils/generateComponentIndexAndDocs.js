@@ -5,13 +5,13 @@ import Promise from 'bluebird'
 import generateComponentDoc, { parseComponentDoc } from './generateComponentDoc'
 import writeIndex from './writeIndex'
 
-function parseComponentDocErrorHandler (err) {
+function parseComponentDocErrorHandler (f, err) {
   if (err.message === 'IGNORED') {
     console.warn(chalk.yellow('Ignored:', f))
   } else if (err.message === 'No suitable component definition found.') {
     return
   } else {
-    console.warn(chalk.red('Error parsing file:', f, err.message))
+    console.warn(chalk.red('Error parsing file:', f, err.message, err.stack))
   }
 }
 
@@ -35,7 +35,7 @@ export async function generateComponentDocs ({ src, componentPattern, storyPatte
         exports.components[name] = path.relative(outputDir, `./${src}/${f}`)
         exports.docs[name] = `./docs/${name}`
       })
-      .catch(parseComponentDocErrorHandler)
+      .catch(parseComponentDocErrorHandler.bind(null, f))
   }
 
   return exports
@@ -57,12 +57,12 @@ export async function generateTranspiledIndex ({ src, componentPattern, storyPat
 
   const lib = {};
   for (let i = 0; i < files.length; i++) {
+    const f = files[i]
     try {
-      const f = files[i]
       const component = await parseComponentDoc({ inputPath: path.resolve(src + '/', f) })
       lib[component.name] = `./lib/${f.replace('.jsx', '.js')}`
     } catch (err) {
-      parseComponentDocErrorHandler(err);
+      parseComponentDocErrorHandler(f, err);
     }
   }
   await writeIndex({ index: 'lib', exports: lib, outputDir, es5: true })
