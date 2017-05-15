@@ -1,5 +1,4 @@
 
-process.traceDeprecation = true;
 import path from 'path'
 import webpack from 'webpack'
 import babelDev from './babel.dev'
