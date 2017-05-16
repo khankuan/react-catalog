@@ -2,7 +2,7 @@ export function generateDefaultTest ({ data, it, name, componentPath }) {
   const test = `
 import React from 'react'
 import ${name} from '${componentPath}'
-import ReactTestUtils from 'react-addons-test-utils'
+import ReactTestUtils from 'react-dom/test-utils'
 it('${it}', () => {
   expect(ReactTestUtils.createRenderer().render(${data})).toMatchSnapshot();
 })
